@@ -17,18 +17,24 @@
   }
   
 #navigation__logo {
-    margin-left:2vw;
-    margin-top: 4vh;
+    margin-left:15vw;
+    margin-top: 3vh;
     float: left;
     color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom:1px solid white;
+    border-top:1px solid white;
   }
   
 #navigation__signIn {
     font-weight: bold;
-    margin-top: 4vh;
+    margin-top: 3vh;
     margin-right:2vw;
     float: right;
     color: white;
+    cursor: pointer;
+    
 }
 
 
