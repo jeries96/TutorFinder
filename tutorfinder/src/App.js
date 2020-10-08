@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 // To navigate between pages 
-import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import {Switch , Route ,HashRouter} from 'react-router-dom';
 
 //components
 import Nav from './Components/Nav/Nav' 
@@ -11,7 +11,7 @@ import SignIn from './Components/SignIn/SignIn'
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
     <div className="App"> 
       <Nav/>
       <Switch> 
@@ -24,7 +24,7 @@ function App() {
      
       
     </div>
-    </Router>
+    </HashRouter>
   );
 }
 

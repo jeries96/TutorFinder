@@ -1,9 +1,31 @@
 import React from 'react'
-
+import './SignIn.css'
 function SignIn(){
     return (
-        <div>   
-            <h1>Sign In Page </h1>
+        <div className="SignInForm__Wrapper">   
+           <form className="SignInForm">
+
+            <h2>Login</h2>
+            <div class="container">
+            <b>Username</b>
+            <br></br>
+            <input type="text" id="SignInForm__textInput" placeholder="Enter Username" name="name" required />
+            <br></br>
+            <b>Password</b>
+            <br></br>
+            <input type="password" id="SignInForm__passwordInput" placeholder="Enter Password" name="password" required />
+            <br></br>
+            <span class="psw">Forgot password?</span> 
+            <br></br>  
+            <button type="submit">Login</button>
+ 
+            </div>
+
+            <div class="container">
+                <h3>Dont have an account? register</h3>
+            </div>
+
+        </form>
 
         </div>
     )
