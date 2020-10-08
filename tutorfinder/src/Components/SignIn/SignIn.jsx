@@ -1,12 +1,15 @@
 import React from 'react'
 import './SignIn.css'
 function SignIn(){
+
+
+    
     return (
         <div className="SignInForm__Wrapper">   
            <form className="SignInForm">
 
-            <h2>Login</h2>
-            <div class="container">
+            <h2 className="SignInForm__Title">Login</h2>
+            <div className="container">
             <b>Username</b>
             <br></br>
             <input type="text" id="SignInForm__textInput" placeholder="Enter Username" name="name" required />
@@ -15,15 +18,15 @@ function SignIn(){
             <br></br>
             <input type="password" id="SignInForm__passwordInput" placeholder="Enter Password" name="password" required />
             <br></br>
-            <span class="psw">Forgot password?</span> 
+            <span className="psw">Forgot password?</span> 
             <br></br>  
             <button type="submit">Login</button>
- 
+           
+                <h3>Dont have an account? register</h3>
+            
             </div>
 
-            <div class="container">
-                <h3>Dont have an account? register</h3>
-            </div>
+            
 
         </form>
 

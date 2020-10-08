@@ -1,6 +1,5 @@
 import React from 'react'
 import './Nav.css';
-
 import {useHistory} from "react-router-dom";
 function Nav (){
     let History=useHistory();
@@ -15,7 +14,8 @@ function Nav (){
         <div className="navigation">
             <ul className="navigation__menu">
                 <li id="navigation__logo"> TutorFinder </li>
-                <li id="navigation__signIn" onClick={HandleSignIn}> Sign IN  </li>
+                <li id="navigation__signIn" onClick={HandleSignIn}> SignIn  </li>
+                
             </ul>
         </div>
     </div>

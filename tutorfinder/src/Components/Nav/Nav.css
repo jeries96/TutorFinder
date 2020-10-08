@@ -17,8 +17,9 @@
   }
   
 #navigation__logo {
-    margin-left:15vw;
-    margin-top: 3vh;
+    position: relative;
+    margin-left:15%;
+    margin-top: 1.5%;
     float: left;
     color: white;
     font-weight: bold;
@@ -29,8 +30,8 @@
   
 #navigation__signIn {
     font-weight: bold;
-    margin-top: 3vh;
-    margin-right:2vw;
+    margin-top: 1.5%;
+    margin-right:2%;
     float: right;
     color: white;
     cursor: pointer;
@@ -38,6 +39,6 @@
 }
 
 
-  
+
 
   
