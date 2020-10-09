@@ -8,19 +8,16 @@ import {Switch , Route ,HashRouter} from 'react-router-dom';
 import Nav from './Components/Nav/Nav' 
 import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
-import SubjectCard from './Components/Cards/SubjectCards/SubjectCard'
 function App() {
   return (
     <HashRouter>
-
+      
     <div className="App"> 
       <Nav/>
-    <SubjectCard />
       <Switch> 
 
       <Route path="/" exact component={HomePage} />
       <Route path="/SignIn" component={SignIn} />
-       
 
       </Switch>
       
