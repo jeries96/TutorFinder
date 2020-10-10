@@ -18,20 +18,19 @@
   
 #navigation__logo {
     position: relative;
-    margin-left:15%;
+    margin-left:10%;
     margin-top: 1.5%;
     float: left;
     color: white;
     font-weight: bold;
     font-size: 20px;
-    border-bottom:1px solid white;
-    border-top:1px solid white;
+    font-style: oblique;
   }
   
 #navigation__signIn {
     font-weight: bold;
     margin-top: 1.5%;
-    margin-right:2%;
+    margin-right:5%;
     float: right;
     color: white;
     cursor: pointer;
