@@ -18,22 +18,26 @@
   
 #navigation__logo {
     position: relative;
-    margin-left:10%;
+    margin-right:10%;
     margin-top: 1.5%;
-    float: left;
+    float: right;
     color: white;
     font-weight: bold;
     font-size: 20px;
     font-style: oblique;
+    
   }
   
 #navigation__signIn {
     font-weight: bold;
     margin-top: 1.5%;
-    margin-right:5%;
-    float: right;
+    margin-left:5%;
+    float: left;
     color: white;
     cursor: pointer;
+    padding:5px;
+    border: 1px solid white;
+    border-radius: 5px;
     
 }
 

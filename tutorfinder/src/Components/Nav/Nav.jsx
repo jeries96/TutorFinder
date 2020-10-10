@@ -5,16 +5,17 @@ function Nav (){
 
 
     return (
-    <div>
+    <div dir="rtl">
         <div className="navigation">
             <ul className="navigation__menu">
+                <Link to="/SignIn">
+                <li id="navigation__signIn"> התחבר  </li>
+                </Link>
                 <Link to="/">
-                <li id="navigation__logo"> TutorFinder </li>
+                <li id="navigation__logo">  מציאת מורים </li>
                 </Link>
 
-                <Link to="/SignIn">
-                <li id="navigation__signIn"> SignIn  </li>
-                </Link>
+               
             </ul>
         </div>
     </div>

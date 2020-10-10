@@ -7,23 +7,23 @@ function SignIn(){
 
     
     return (
-        <div className="SignInForm__Wrapper">   
+        <div dir="rtl" className="SignInForm__Wrapper">   
            <form className="SignInForm">
 
-            <h2 className="SignInForm__Title">Welcome Back</h2>
+            <h2 className="SignInForm__Title">ברוך הבא</h2>
             <div className="container">
             <br></br>
-            <input type="text" id="SignInForm__textInput" placeholder="Enter Username" name="name" required />
+            <input type="text" id="SignInForm__textInput" placeholder="שם משתמש" name="name" required />
             
-            <input type="password" id="SignInForm__passwordInput" placeholder="Enter Password" name="password" required/>
+            <input type="password" id="SignInForm__passwordInput" placeholder="סיסמה" name="password" required/>
                 
             <br></br>
             
              
-            <button className="SignInForm__button--submit" type="submit">Login</button>
+            <button className="SignInForm__button--submit" type="submit">התחבר</button>
                  <br></br> 
-                 <h3 >Dont have an account?<Link to="/SignUp"> <b id="SignInForm__button--signUp">Sign Up</b></Link> </h3>
-                 <Link><b id="SignInForm__button--forgotPassword">Forgot password?</b></Link> 
+                 <h3 >עדיין לא נרשמת?<Link to="/SignUp"> <b id="SignInForm__button--signUp">להרשמה</b></Link> </h3>
+                 <Link><b id="SignInForm__button--forgotPassword">שכחתי סיסמה</b></Link> 
             </div>
 
             

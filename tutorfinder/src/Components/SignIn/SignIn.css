@@ -53,7 +53,7 @@
 
 #SignInForm__button--signUp{
   border: none;
-  color: black;
+  color: rgb(9, 76, 131);
 }
 #SignInForm__button--signUp:hover{
   border: none;
@@ -63,7 +63,7 @@
 
 #SignInForm__button--forgotPassword{
   border: none;
-  color: black;
+  color: rgb(9, 76, 131);
 }
 #SignInForm__button--forgotPassword:hover{
   border: none;

@@ -17,6 +17,7 @@ function App() {
       
     <div className="App"> 
       <Nav/>
+      
       <Switch> 
 
       <Route path="/" exact component={HomePage} />
