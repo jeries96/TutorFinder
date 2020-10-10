@@ -1,21 +1,20 @@
 import React from 'react'
 import './Nav.css';
-import {useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 function Nav (){
-    let History=useHistory();
 
-    function HandleSignIn(e){
-        e.preventDefault();
-        History.push('/SignIn')
-    }
 
     return (
     <div>
         <div className="navigation">
             <ul className="navigation__menu">
+                <Link to="/">
                 <li id="navigation__logo"> TutorFinder </li>
-                <li id="navigation__signIn" onClick={HandleSignIn}> SignIn  </li>
-                
+                </Link>
+
+                <Link to="/SignIn">
+                <li id="navigation__signIn"> SignIn  </li>
+                </Link>
             </ul>
         </div>
     </div>
