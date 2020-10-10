@@ -7,7 +7,7 @@ function SubjectCard(props){
     <div>
         <div className="subject-card__Wrapper">
                 
-                <img className="subject-card__image" src={srcImg} alt="subject" />
+                <img className="subject-card__image" src={srcImg} alt="subjectImage" />
                 <div className="subject-card__details">
                 
                 <div className="subject-card__name">  
