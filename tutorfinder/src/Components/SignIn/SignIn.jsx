@@ -15,7 +15,8 @@ function SignIn(){
             <br></br>
             <input type="text" id="SignInForm__textInput" placeholder="Enter Username" name="name" required />
             
-            <input type="password" id="SignInForm__passwordInput" placeholder="Enter Password" name="password" required />
+            <input type="password" id="SignInForm__passwordInput" placeholder="Enter Password" name="password" required/>
+                
             <br></br>
             
              

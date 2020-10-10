@@ -24,7 +24,7 @@
 
 #SignInForm__textInput, #SignInForm__passwordInput {
   width: 70%;
-  padding: 18px 26px;
+  padding: 20px 26px;
   margin: 2% 2%;
   display: inline-block;
   border: 1px solid #ccc;
@@ -32,15 +32,19 @@
   font-size: large;
 }
 
+
+
 .SignInForm__button--submit {
   background-color:rgb(9, 76, 131);
   color: white;
-  padding: 18px 26px;
+  padding: 20px 26px;
   margin: 5% 5%;
   cursor: pointer;
   width: 70%;
   font-size: large;
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px solid rgb(9, 76, 131);
+
 }
 
 .SignInForm__button--submit:hover {
