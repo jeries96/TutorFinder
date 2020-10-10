@@ -8,6 +8,8 @@ import {Switch , Route ,HashRouter} from 'react-router-dom';
 import Nav from './Components/Nav/Nav' 
 import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
+import SignUp from './Components/SignUp/SignUp';
+
 function App() {
   return (
     <HashRouter>
@@ -18,7 +20,7 @@ function App() {
 
       <Route path="/" exact component={HomePage} />
       <Route path="/SignIn" component={SignIn} />
-
+      <Route path="/SignUp" component={SignUp} />
       </Switch>
       
       

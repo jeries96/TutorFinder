@@ -21,7 +21,7 @@ function SignIn(){
              
             <button className="SignInForm__button--submit" type="submit">Login</button>
                  <br></br> 
-                 <h3 >Dont have an account?<Link> <b id="SignInForm__button--signUp">Sign Up</b></Link> </h3>
+                 <h3 >Dont have an account?<Link to="/SignUp"> <b id="SignInForm__button--signUp">Sign Up</b></Link> </h3>
                  <Link><b id="SignInForm__button--forgotPassword">Forgot password?</b></Link> 
             </div>
 
