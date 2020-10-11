@@ -9,7 +9,6 @@ import Nav from './Components/Nav/Nav'
 import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
 import SignUp from './Components/SignUp/SignUp';
-import Footer from './Components/Footer/Footer'
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
       <Route path="/SignIn" component={SignIn} />
       <Route path="/SignUp" component={SignUp} />
       </Switch>
-      <Footer />
       
     </div>
     </HashRouter>
