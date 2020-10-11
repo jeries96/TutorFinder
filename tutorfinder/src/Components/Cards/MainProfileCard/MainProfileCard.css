@@ -1,0 +1,62 @@
+.MainProfileCard__Wrapper{
+  background: #fff;
+  flex: 1;
+  margin-bottom: 50px;
+  padding: 22px 30px 32px 30px;
+
+}
+.MainProfileCard__Header{
+  align-items: flex-start;
+  display: flex;
+}
+.MainProfileCard__Header__ProfilePicture_holder{
+  padding-left: 22px;
+}
+.MainProfileCard__Header__ProfilePicture{
+border-radius: 50%;
+display: block;
+height: 100px;
+width: 100px;
+}
+
+
+.MainProfileCard__Header__ProfileInfo_holder{
+padding-left: 38px;
+text-align: right;
+}
+
+.MainProfileCard__Header__ProfileInfo_Name{
+  color: #111;
+    font-family: 'Muli', sans-serif;;
+    font-size: 23px;
+    margin-bottom: 5px;
+
+}
+
+
+
+.MainProfileCard__Header__TeachingLocation_holder{
+border-right: 1px solid #eaeaea;
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 9px;
+    padding-left: 22px;
+    
+}
+
+.MainProfileCard__Header__TeachingLocation_Title{
+  text-align: center;
+    color: #4f6f96;
+    font-family: 'Muli', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    
+}
+.MainProfileCard__Header__TeachingLocation_locations{
+
+}
+.MainProfileCard__Header__TeachingLocation_location{
+  
+}
