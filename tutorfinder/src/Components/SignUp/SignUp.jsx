@@ -11,10 +11,10 @@ function SignUp (){
          <h2 className="SignUpForm__Title">הרשמה  </h2>
          <div className="container">
          <br></br>
-         <input type="text" id="SignUpForm__textInput" placeholder="שם פרטי" name="name" required />
-         <input type="text" id="SignUpForm__textInput" placeholder="שם משפחה" name="Lastname" required />
+         <input type="text" className="SignUpForm__textInput" placeholder="שם פרטי" name="name" required />
+         <input type="text" className="SignUpForm__textInput" placeholder="שם משפחה" name="Lastname" required />
          
-         <input type="email" id="SignUpForm__textInput" placeholder="דואר אלקטרוני" name="email" required />
+         <input type="email" className="SignUpForm__textInput" placeholder="דואר אלקטרוני" name="email" required />
          
          <input type="password" id="SignUpForm__passwordInput" placeholder="סיסמה" name="password" required />
          <br></br>

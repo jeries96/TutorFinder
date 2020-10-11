@@ -70,3 +70,6 @@
   color: rgb(9, 76, 131);
   
 }
+@media only screen and (max-width: 1024px) {
+  .SignInForm__Wrapper { width:100%}
+}

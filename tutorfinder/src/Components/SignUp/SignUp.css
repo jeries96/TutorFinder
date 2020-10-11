@@ -21,7 +21,7 @@
   
 }
 
-#SignUpForm__textInput, #SignUpForm__passwordInput {
+.SignUpForm__textInput, #SignUpForm__passwordInput {
   width: 70%;
   padding: 20px 26px;
   margin: 2% 2%;
@@ -64,3 +64,9 @@
 .required {
   color: red;
 }
+
+/* For mobile phones And Tablets : */
+@media only screen and (max-width: 1024px) {
+  .SignUpForm__Wrapper { width:100%}
+}
+

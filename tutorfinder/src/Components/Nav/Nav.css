@@ -41,6 +41,9 @@
     
 }
 
+@media only screen and (max-width: 1024px) {
+  #navigation__logo , #navigation__signIn { margin-top: 2.5%;}
+}
 
 
 
