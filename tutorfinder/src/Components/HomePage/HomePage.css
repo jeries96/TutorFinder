@@ -1,10 +1,14 @@
 .HomePage__subject {
     display:grid;
-    grid-template-columns: 33.3% 33.3% 33.3% ;
+    grid-template-columns: 20vw 60vw 20vw ;
     grid-template-rows: auto;
+    grid-template-areas: 
+    " . cards .";
 
 }
 
-.slider {
-    display:flex;
+.cardsSlides{
+    display:grid;
+    grid-area: cards ;
 }
+

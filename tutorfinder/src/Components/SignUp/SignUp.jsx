@@ -10,7 +10,8 @@ import Select from 'react-select';
 function SignUp (){
     const collegeOptions = [
         { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
-        { value: "ortBrauda", label: "מכללת אורט בראודה" }
+        { value: "ortBrauda", label: "מכללת אורט בראודה" },
+        { value: "other", label: "אחר" }
       ]
     return (
         <div dir="rtl" className="SignUpForm__Wrapper">
