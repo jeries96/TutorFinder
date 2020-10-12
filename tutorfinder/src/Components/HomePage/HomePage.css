@@ -3,12 +3,29 @@
     grid-template-columns: 20vw 60vw 20vw ;
     grid-template-rows: auto;
     grid-template-areas: 
-    " . cards .";
+    " . cards ."
+    " . profile . ";
 
 }
 
 .cardsSlides{
-    display:grid;
     grid-area: cards ;
 }
+
+button.rec-dot{
+    display: none;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .HomePage__subject { grid-template-columns: 0vw 95vw 0vw;}
+  }
+
+  @media only screen and (max-width: 540px) {
+    .HomePage__subject { grid-template-columns: 0vw 90vw 0vw;}
+  }
+
+  @media only screen and (max-width: 350px) {
+    .HomePage__subject { grid-template-columns: 0vw 80vw 0vw;}
+  }
+
 

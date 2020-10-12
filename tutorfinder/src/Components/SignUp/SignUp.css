@@ -23,7 +23,7 @@
 
 .SignUpForm__textInput, .SignUpForm__passwordInput {
   width: 70%;
-  padding: 16px 20px;
+  padding: 8px 16px;
   margin: 2% 2%;
   display: inline-block;
   border: 1px solid #ccc;

@@ -9,6 +9,7 @@ import Nav from './Components/Nav/Nav'
 import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
 import SignUp from './Components/SignUp/SignUp';
+import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/" exact component={HomePage} />
       <Route path="/SignIn" component={SignIn} />
       <Route path="/SignUp" component={SignUp} />
+      <Route path="/profiles" component={MainProfileCard} />
       </Switch>
       
     </div>
