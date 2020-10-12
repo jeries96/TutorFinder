@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import SubSubjectCard from '../Cards/SubjectCards/SubSubjectCard/SubSubjectCard'
 import MainProfileCard from '../Cards/MainProfileCard/MainProfileCard'
 import SubjectCards from '../Cards/SubjectCards/SubjectCard'
-            
+
 function HomePage (){
     
     return (

@@ -12,8 +12,14 @@
     font-size:23px;
     font-weight: bolder;
 }
+.SubjectCard__WrapperTitle > h2 { 
+    margin-top:5%;
+    color: rgb(9, 76, 131);
+    font-weight: bold;
+    font-size: 26px;
+}
 
 .rec.rec-arrow {
-    background-color: none;
+    background-color: whitesmoke;
     box-shadow: none;
 }

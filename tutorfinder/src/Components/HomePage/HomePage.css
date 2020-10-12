@@ -1,6 +1,6 @@
 .HomePage__subject {
     display:grid;
-    grid-template-columns: 20vw 60vw 20vw ;
+    grid-template-columns: 15vw 70vw 15vw ;
     grid-template-rows: auto;
     grid-template-areas: 
     " . cards ."
@@ -12,6 +12,7 @@
     grid-area: cards ;
 }
 
+/*  Card sliders bottom dots -> UnVisible */ 
 button.rec-dot{
     display: none;
   }

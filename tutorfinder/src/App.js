@@ -10,14 +10,14 @@ import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
 import SignUp from './Components/SignUp/SignUp';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
-
+import Testimonials from './Components/HomePage/Testimonials/Testimonials'
 function App() {
   return (
     <HashRouter>
       
     <div className="App"> 
       <Nav/>
-      
+      <Testimonials />
       <Switch> 
 
       <Route path="/" exact component={HomePage} />

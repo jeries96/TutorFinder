@@ -12,7 +12,7 @@ function Nav (){
                 <li id="navigation__signIn"> התחבר  </li>
                 </Link>
                 <Link to="/">
-                <li id="navigation__logo">  מציאת מורים </li>
+                <li id="navigation__logo"> Moorem </li>
                 </Link>
 
                
