@@ -1,7 +1,7 @@
 import React from 'react';
 import './SubjectCard.css'
 // For image slider 
-import Carousel from 'react-elastic-carousel';
+import Carousel  from 'react-elastic-carousel';
 //Components : 
 import SubSubjectCard from '../SubjectCards/SubSubjectCard/SubSubjectCard'
 
@@ -18,6 +18,8 @@ function SubjectCard (props){
 ]}]
 
 
+
+
     return (
 
          <div className="SubjectCard__Wrapper">
@@ -26,13 +28,12 @@ function SubjectCard (props){
              </div>
              {
                  data.map((subject ,index) => {
-                     console.log(data)
                    return ( <div> <h3 className="SubjectCard__Title"> {subject.subjectName}</h3> 
                    <Carousel className ="cardsSlides" isRTL={true} itemsToShow={3}>
                             {subject.subSubjects.map((subSubject , index) => {
-                                return (
+                                return (  
                                                         <SubSubjectCard 
-                                                         key={index} 
+                                                         key={subSubject.subSubjectName} 
                                                          subjectName={subSubject.subSubjectName} 
                                                          srcimg={subSubject.subSubjectImg} 
                                                          price={subSubject.subSubjectPrice} 

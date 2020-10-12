@@ -12,26 +12,26 @@
     ;
     
 }
-
+.Testimonials__title { color:rgb(9, 76, 131);}
 .star {
     grid-area: star;
     width: 100%;
-    margin-bottom: 50px;
-    margin-top:50px;
+    margin-bottom: 10%;
+    margin-top:10%;
 }
 
 .expert {
     grid-area: expert;
     width: 100%;
-    margin-bottom: 50px;
-    margin-top:50px;
+    margin-bottom: 10%;
+    margin-top:10%;
    
 }
 .stam {
     grid-area: stam;
     width: 100%;
-    margin-bottom: 50px;
-    margin-top:50px;
+    margin-bottom: 10%;
+    margin-top:10%;
     
 }
 
