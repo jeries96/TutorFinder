@@ -3,7 +3,8 @@
   flex: 1;
   margin-bottom: 50px;
   padding: 22px 30px 32px 30px;
-  width:50vw;
+  width: 100%;
+
 }
 .MainProfileCard__Header{
   align-items: flex-start;
@@ -17,8 +18,8 @@
 .MainProfileCard__Header__ProfilePicture{
 border-radius: 50%;
 display: block;
-height: 100px;
-width: 100px;
+height: 50%;
+width: 40%;
 }
 
 
@@ -89,3 +90,23 @@ border-right: 1px solid #eaeaea;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+
+@media only screen and (max-width: 400px) {
+  /* For tablets: */
+  .MainProfileCard__Wrapper{width: 340px;}
+  .MainProfileCard__Header__ProfilePicture{width: 30%;}
+}
+@media only screen and (max-width: 600px) {
+  /* For tablets: */
+  .MainProfileCard__Wrapper{width: 400px;}
+  .MainProfileCard__Header__ProfilePicture
+  {width: 70%;}
+}
+@media only screen and (min-width: 768px) {
+  .MainProfileCard__Header__ProfilePicture
+  {width: 50%;}
+  /* For desktop: */
+  .MainProfileCard__Wrapper{width: 700px;}
+  
+}
+

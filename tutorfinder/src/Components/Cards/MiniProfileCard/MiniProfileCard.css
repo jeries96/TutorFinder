@@ -1,0 +1,236 @@
+.MiniProfileCard__Wrapper{
+  /* 
+  flex: 1;
+  
+  
+  width: 100%; */
+  margin-top: 20px;
+  cursor: pointer;
+  background: #fff;
+  padding: 22px 30px 32px 30px;
+  display: grid;
+  grid-template-columns: 25% 37.5% 37.5% ;
+  grid-template-rows: 55% 30% 15%;
+  grid-template-areas: 
+  "ProfilePicture  ProfileInfo TeachingPlaces"
+  "bio bio bio"
+  ". . Button";
+}
+.MiniProfileCard__Wrapper:hover{
+  /* background: rgb(196, 191, 191); */
+  box-shadow: 5px 5px 5px 5px lightgray;
+  transition: 0.5s;
+}
+/* .MiniProfileCard__Header{
+  align-items: flex-start;
+  display: flex;
+  width:100%;
+} */
+.MiniProfileCard__Header__ProfilePicture_holder{
+  /* padding-left: 10%; */
+  grid-area: ProfilePicture;
+
+}
+.MiniProfileCard__Header__ProfilePicture{
+  border-radius: 50%;
+  display: block;
+  height: 100%;
+  width: 50%;
+  
+}
+
+
+.MiniProfileCard__Header__ProfileInfo_holder{
+  grid-area: ProfileInfo;
+  text-align: right;
+  margin-top: 1%;
+  /* padding-left: 20%; */
+  /* 
+  
+   */
+}
+
+.MiniProfileCard__Header__ProfileInfo_Name{
+  color: #111;
+    font-family: 'Muli', sans-serif;;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+
+
+.MiniProfileCard__Header__TeachingLocation_holder{
+  border-right: 1px solid #eaeaea;
+  font-size: 13px;
+    font-weight: 600;
+    margin-top: 1%;
+    text-align: center;
+/* 
+    flex: 1;
+    
+    padding-left: 22px; */
+    
+}
+
+.MiniProfileCard__Header__TeachingLocation_Title{
+  grid-area: TeachingPlaces;
+  text-align: center;
+    color: #4f6f96;
+    font-family: 'Muli', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    
+}
+.MiniProfileCard__Bio{
+  grid-area: bio;
+  margin-top: 1%;
+}
+
+
+
+.MiniProfileCard__Button{
+  grid-area: Button;
+  width: fit-content;
+  background: none;
+    border-radius: 25px;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    cursor: pointer;
+    font-family: 'Muli', sans-serif;
+    font-size:16px;
+    font-weight: 600;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+    outline: none;
+    padding: 0 28px;
+    position: relative;
+    text-align: center;
+    /* text-overflow: ellipsis; */
+    transition: background-color 0.2s, opacity 0.2s;
+    white-space: nowrap;
+    background-color: #4f6f96;
+    color: white;
+    right: 50%;
+}
+@media only screen and (max-width: 780px) {
+  .MiniProfileCard__Wrapper{
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    grid-template-rows: 20% 25% 35% 20% ;
+    grid-template-areas: 
+    "ProfilePicture  ProfilePicture"
+    "ProfileInfo TeachingPlaces"
+    "bio bio"
+    ".  Button";
+  }
+  .MiniProfileCard__Header__TeachingLocation_Title{
+    grid-area: TeachingPlaces;
+      /* text-align: right; */
+      color: #4f6f96;
+      font-family: 'Muli', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      margin-top: 5%;
+      
+  }
+  .MiniProfileCard__Header__ProfileInfo_holder{
+    padding-right: 25%;
+    grid-area: ProfileInfo;
+    text-align: right;
+    margin-top: 5%;
+    /* padding-left: 20%; */
+    /* 
+    
+     */
+  }
+  .MiniProfileCard__Header__ProfilePicture{
+    border-radius: 50%;
+    display: block;
+    height:90px;
+    width: 90px;
+    /* right: 36%; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .MiniProfileCard__Button{
+    margin-top:10% ;
+    right:40%;
+  }
+  .MiniProfileCard__Bio{
+    margin-top:5% ;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .MiniProfileCard__Wrapper{
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    grid-template-rows: 20% 25% 45% 10% ;
+    grid-template-areas: 
+    "ProfilePicture  ProfilePicture"
+    "ProfileInfo TeachingPlaces"
+    "bio bio"
+    ".  Button";
+  }
+  .MiniProfileCard__Header__TeachingLocation_Title{
+    grid-area: TeachingPlaces;
+      /* text-align: right; */
+      color: #4f6f96;
+      font-family: 'Muli', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      margin-top: 5%;
+      
+  }
+  .MiniProfileCard__Header__ProfileInfo_holder{
+    padding-right: 25%;
+    grid-area: ProfileInfo;
+    text-align: right;
+    margin-top: 5%;
+    /* padding-left: 20%; */
+    /* 
+    
+     */
+  }
+  .MiniProfileCard__Header__ProfilePicture{
+    border-radius: 50%;
+    display: block;
+    height:90px;
+    width: 90px;
+    /* right: 36%; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .MiniProfileCard__Button{
+    margin-top:10% ;
+    right:0;
+  }
+  
+  }
+  
+
+
+
+/* .MiniProfileCard__Header__ProfilePicture_holder{
+  width: 30%
+
+}
+.MiniProfileCard__Header__ProfilePicture{
+  border-radius: 50%;
+  display: block;
+  height: 50%;
+width: 70%
+} */
