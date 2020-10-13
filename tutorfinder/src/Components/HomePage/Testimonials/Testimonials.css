@@ -18,7 +18,7 @@
 }
 .star {
     grid-area: star;
-    width: 100%;
+    width: 90%;
     margin-bottom: 10%;
     margin-top:10%;
     text-align: center;
@@ -26,7 +26,7 @@
 
 .expert {
     grid-area: expert;
-    width: 100%;
+    width: 90%;
     margin-bottom: 10%;
     margin-top:10%;
     text-align: center;
@@ -34,7 +34,7 @@
 }
 .stam {
     grid-area: stam;
-    width: 100%;
+    width: 90%;
     margin-bottom: 10%;
     margin-top:10%;
     text-align: center;
@@ -42,7 +42,8 @@
 }
 
 .title {
-    text-align:center;
+    margin-top: 10%;
+    text-align: center;    
     grid-area: title;
     font-size: 28px;
     color: rgb(9, 76, 131);
