@@ -1,0 +1,5 @@
+.filter__option {
+    width: 200px;
+    display: inline-block;
+    justify-items: center;
+}
