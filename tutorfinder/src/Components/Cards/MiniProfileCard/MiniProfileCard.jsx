@@ -12,8 +12,8 @@ function MiniProfileCard(props) {
   return (
 
     <div>
+      <div className="MiniProfileCard__Filters"><Filters /> </div>
       
-      <Filters />
     <div dir="rtl" className="MiniProfileCard__Wrapper" >
        
       <div className="MiniProfileCard__Header__ProfilePicture_holder" >

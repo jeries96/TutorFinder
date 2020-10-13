@@ -18,11 +18,19 @@ function Filters(props) {
       ]
 
 
-    return (<div>
+    return (<div className="Filters-Container__wrapper">
+                    <div className="Filter__wrapper">
+                      <p> מקום</p>
                     <Select options={lessonAreaOptions} className="filter__option"/>
+                    </div>
+                    <div className="Filter__wrapper">
+                      <p> מין</p>
                     <Select options={teacherGenderOptions} className="filter__option"/>
+                    </div>
+                    <div className="Filter__wrapper">
+                      <p> :סנן לפי </p>
                     <Select options={sortOptions} className="filter__option"/>
-
+                    </div>
             </div>
             )
 }

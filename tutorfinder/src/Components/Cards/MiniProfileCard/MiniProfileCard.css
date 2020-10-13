@@ -119,7 +119,10 @@
     right: 50%;
 }
 
-
+.MiniProfileCard__Filters{
+  margin:20px;
+  text-align: center;
+}
 @media only screen and (max-width: 780px) {
   .MiniProfileCard__Wrapper{
     display: grid;
