@@ -29,6 +29,8 @@ const breakPoints = [
     { width: 1750, itemsToShow: 6,enableMouseSwipe:false },
 ]
 
+
+
     return (
 
          <div className="SubjectCard__Wrapper">
@@ -40,9 +42,8 @@ const breakPoints = [
                    return ( <div> <h3 className="SubjectCard__Title"> {subject.subjectName}</h3> 
                    <Carousel className ="cardsSlides"  breakPoints={breakPoints}  >
                             {subject.subSubjects.map((subSubject , index) => {
-                                return (                <Link to="/teachers"> 
+                                return (           <Link to="/teachers" > 
                                                         <SubSubjectCard 
-                                                           
                                                          key={subSubject.subSubjectName} 
                                                          subjectName={subSubject.subSubjectName} 
                                                          srcimg={subSubject.subSubjectImg} 

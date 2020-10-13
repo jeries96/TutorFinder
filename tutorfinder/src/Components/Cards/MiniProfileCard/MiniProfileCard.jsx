@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 
 import './MiniProfileCard.css'
 
+import Filters from '../../Utilities/Filters/Filters'
 function MiniProfileCard(props) {
 
 
 
   return (
 
+    <div>
+      <div className="MiniProfileCard__Filters"><Filters /> </div>
+      
     <div dir="rtl" className="MiniProfileCard__Wrapper" >
-
+       
       <div className="MiniProfileCard__Header__ProfilePicture_holder" >
         <img className="MiniProfileCard__Header__ProfilePicture" src="https://prod-takelessons.netdna-ssl.com/document/profile_241617_pi_f8356e0e08cf2c1767580cedc0ab7f9e8ee156e4.jpg.webp?v=1599093909" alt="profilepicture" /></div>
       <div className="MiniProfileCard__Header__ProfileInfo_holder" >
@@ -42,7 +46,7 @@ function MiniProfileCard(props) {
 
     </div>
 
-
+</div>
 
 
   )
