@@ -9,22 +9,22 @@ import Nav from './Components/Nav/Nav'
 import HomePage from './Components/HomePage/HomePage'
 import SignIn from './Components/SignIn/SignIn'
 import SignUp from './Components/SignUp/SignUp';
-import Footer from './Components/Footer/Footer'
-
+import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
+import Testimonials from './Components/HomePage/Testimonials/Testimonials'
 function App() {
   return (
     <HashRouter>
       
     <div className="App"> 
       <Nav/>
-      
+      <Testimonials />
       <Switch> 
 
       <Route path="/" exact component={HomePage} />
       <Route path="/SignIn" component={SignIn} />
       <Route path="/SignUp" component={SignUp} />
+      <Route path="/profiles" component={MainProfileCard} />
       </Switch>
-      <Footer />
       
     </div>
     </HashRouter>
