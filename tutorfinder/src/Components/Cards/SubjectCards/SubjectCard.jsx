@@ -19,6 +19,14 @@ function SubjectCard (props){
 
 
 
+const breakPoints = [
+    { width: 1, itemsToShow: 1 , showArrows:false },
+    { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows:false },
+    { width: 650, itemsToShow: 2.5 , showArrows:false },
+    { width: 1150, itemsToShow: 4, itemsToScroll: 2 ,enableMouseSwipe:false },
+    { width: 1450, itemsToShow: 5, enableMouseSwipe:false},
+    { width: 1750, itemsToShow: 6,enableMouseSwipe:false },
+]
 
     return (
 
@@ -29,7 +37,7 @@ function SubjectCard (props){
              {
                  data.map((subject ,index) => {
                    return ( <div> <h3 className="SubjectCard__Title"> {subject.subjectName}</h3> 
-                   <Carousel className ="cardsSlides" isRTL={true} itemsToShow={3}>
+                   <Carousel className ="cardsSlides"  breakPoints={breakPoints}  >
                             {subject.subSubjects.map((subSubject , index) => {
                                 return (  
                                                         <SubSubjectCard 
@@ -41,6 +49,7 @@ function SubjectCard (props){
 
                                 
                                 )
+                                
                             })}</Carousel>
                             </div> ) 
                  })
