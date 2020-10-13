@@ -4,12 +4,15 @@
     grid-template-rows: auto;
     grid-template-areas: 
     " . cards ."
-    " . profile . ";
+    " Testimonials Testimonials Testimonials ";
 
 }
 
 .cardsSlides{
     grid-area: cards ;
+}
+.HomePage__Testimonials{
+  grid-area: Testimonials;
 }
 
 /*  Card sliders bottom dots -> UnVisible */ 

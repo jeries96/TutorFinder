@@ -11,6 +11,7 @@ import SignIn from './Components/SignIn/SignIn'
 import SignUp from './Components/SignUp/SignUp';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 import Testimonials from './Components/HomePage/Testimonials/Testimonials'
+import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';
 function App() {
   return (
     <HashRouter>
@@ -23,7 +24,8 @@ function App() {
       <Route path="/" exact component={HomePage} />
       <Route path="/SignIn" component={SignIn} />
       <Route path="/SignUp" component={SignUp} />
-      <Route path="/profiles" component={MainProfileCard} />
+      <Route path="/teachers" component={MiniProfileCard} />
+      <Route path="/profile" component={MainProfileCard} />
       </Switch>
       
     </div>

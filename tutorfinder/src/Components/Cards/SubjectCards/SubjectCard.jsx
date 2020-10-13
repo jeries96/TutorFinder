@@ -4,6 +4,7 @@ import './SubjectCard.css'
 import Carousel  from 'react-elastic-carousel';
 //Components : 
 import SubSubjectCard from '../SubjectCards/SubSubjectCard/SubSubjectCard'
+import { Link } from 'react-router-dom';
 
 function SubjectCard (props){
     const data=[{subjectName:"מערכות מידע" , subSubjects:[{subSubjectName:"מערכות מידע" , subSubjectImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRxFK7gBJPTQd64UEvpYjbnX28cl_FB4n3WZg&usqp=CAU" , subSubjectRating:"4.8" , subSubjectPrice:"15.00"},
@@ -39,13 +40,14 @@ const breakPoints = [
                    return ( <div> <h3 className="SubjectCard__Title"> {subject.subjectName}</h3> 
                    <Carousel className ="cardsSlides"  breakPoints={breakPoints}  >
                             {subject.subSubjects.map((subSubject , index) => {
-                                return (  
+                                return (                <Link to="/teachers"> 
                                                         <SubSubjectCard 
+                                                           
                                                          key={subSubject.subSubjectName} 
                                                          subjectName={subSubject.subSubjectName} 
                                                          srcimg={subSubject.subSubjectImg} 
                                                          price={subSubject.subSubjectPrice} 
-                                                         rating={subSubject.subSubjectRating} />
+                                                         rating={subSubject.subSubjectRating} /></Link>
 
                                 
                                 )

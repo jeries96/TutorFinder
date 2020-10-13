@@ -3,7 +3,7 @@
     display:grid;
     background-color: rgb(231, 231, 231);
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(100%);
     grid-template-rows: auto;
 
     grid-template-areas: 
