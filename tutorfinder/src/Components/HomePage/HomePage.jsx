@@ -4,27 +4,23 @@ import './HomePage.css';
 import {Link} from 'react-router-dom';
 
 //Components
-import SubSubjectCard from '../Cards/SubjectCards/SubSubjectCard/SubSubjectCard'
-import MainProfileCard from '../Cards/MainProfileCard/MainProfileCard'
 import SubjectCards from '../Cards/SubjectCards/SubjectCard'
-import MiniProfileCard from '../Cards/MiniProfileCard/MiniProfileCard'
+
+import Testimonials from '../HomePage/Testimonials/Testimonials'
 function HomePage (){
     
     return (
         
     <div dir="rtl" className="HomePage__subject">
         <div className ="cardsSlides">
-        <MiniProfileCard/>
         
-        <MiniProfileCard/>
+        <SubjectCards/>
         
-        <MiniProfileCard/>
-        
-        <MiniProfileCard/>
-
         {/* <SubjectCards /> */}
         </div>
-        
+        <div className ="HomePage__Testimonials">
+        <Testimonials/>
+        </div>
         {/* <Link to="/profiles"><button> Profile</button> </Link> */}
     </div>
     )   ;
