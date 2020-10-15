@@ -12,7 +12,9 @@ app.use(express.static("public"));
 var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
 module.exports = secret;
 // app.use(cookies());
-const url = "mongodb+srv:LessonsAssistance:HRbC7WWaoKGWldpL@lessonsassistance.6opps.mongodb.net/test";
+
+
+const url = "mongodb+srv://nimer:N1N1N1N1@cluster0.tejcy.mongodb.net/server"
 const mongoose = require("mongoose");
 mongoose.connect(url, {
   useNewUrlParser: true,
@@ -25,14 +27,14 @@ const userRouter = require("./routing/users");
 app.use("/api/users", userRouter);
 
 
-const subjectsRouter = require("./routing/subjects");
-app.use("/api/subjects", subjectsRouter);
+// const subjectsRouter = require("./routing/subjects");
+// app.use("/api/subjects", subjectsRouter);
 
-const mainProfileRouter = require("./routing/analytics");
-app.use("/api/analytics", mainProfileRouter);
+// const mainProfileRouter = require("./routing/analytics");
+// app.use("/api/analytics", mainProfileRouter);
 
-const matchingTeachersRouter = require("./routing/bellaRouting");
-app.use("/api/PostBellaData", matchingTeachersRouter);
+// const matchingTeachersRouter = require("./routing/bellaRouting");
+// app.use("/api/PostBellaData", matchingTeachersRouter);
 
 // const statistics = require("./routing/statistics");
 // app.use("/api/statistics", statistics);

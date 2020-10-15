@@ -4,7 +4,7 @@ const SubSubjectSchema = new mongoose.Schema({
     SubSubjectInfo: {
         name: String,
         basicInfo: String,
-        img:Image,
+        img:String,
         rating:Number,
         startingPrice:Number
     }

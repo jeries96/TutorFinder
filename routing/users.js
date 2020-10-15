@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
-const express = require("express");
 const bcrypt = require('bcrypt');
 
 const UserSchema = require('../schemas/UserSchema');
@@ -14,7 +13,7 @@ var validator = require("email-validator");
 const UserModel = mongoose.model("UserModel", UserSchema);
 const KeyModel = mongoose.model("KeyModel", KeySchema);
 
-var secret = require("../index")
+var secret = require("../server")
 const saltRounds = 10
 
 var transporter = nodemailer.createTransport({
@@ -68,9 +67,9 @@ router.post('/login', (req, res) => {
 
 
 
-router.post('/createUser', [auth, admin, audit], (req, res) => {
-
-    const { firstName, lastName, location, education, phoneNumber, personalPhoto, email, password } = req.body;
+router.post('/createUser', (req, res) => {
+    const {serverSignUp} = req.body;
+    const { firstName, lastName, location, education, phoneNumber, personalPhoto, email, password }=serverSignUp;
     let regex = /[^A-Za-z0-9]/;
     let containSepcChars = regex.test(password);
 
@@ -180,7 +179,7 @@ function makeid(length) {
 router.post('/forgotPassword', (req, res) => {
     const { email } = req.body;
     if (validator.validate(email)) {
-        UserModel.find({ "userInfo.email": email, active: true }).then(checkEmail => {
+        UserModel.find({ "userInfo.email": email }).then(checkEmail => {
             if (checkEmail.length > 0) {
                 const key = makeid(10)
 

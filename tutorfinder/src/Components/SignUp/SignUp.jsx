@@ -77,7 +77,7 @@ function SignUp (){
           
           fetch('/api/users/createUser', {
             method: "POST",
-            body: JSON.stringify({ serverSignUp}),
+            body: JSON.stringify({serverSignUp}),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -95,6 +95,7 @@ function SignUp (){
          <h2 className="SignUpForm__Title">הרשמה  </h2>
          <div className="container">
         
+         <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
          <h4> שם פרטי <b className="required">*</b></h4>
          <input type="text" className="SignUpForm__textInput" placeholder="שם פרטי" name="userName" required />
@@ -104,7 +105,9 @@ function SignUp (){
          <h4> שם משפחה <b className="required">*</b></h4>
          <input type="text" className="SignUpForm__textInput" placeholder="שם משפחה" name="lastName" required />
          </div>
+         </div>
          
+         <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
          <h4> דואר אלקטרוני <b className="required">*</b></h4>
          <input type="email" className="SignUpForm__textInput" placeholder="דואר אלקטרוני" name="email" required />
@@ -114,10 +117,23 @@ function SignUp (){
          <h4> מספר פלפון </h4>
          <input type="tel"  className="SignUpForm__textInput" name="phone" maxlength={10} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="מספר פלאפון"  />
          </div>
+         </div>
 
-         <div className="SignUpForm__Selectors">
+         <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
-        <h4> אזור מגורים </h4>
+         <h4> סיסמה <b className="required">*</b> </h4>
+         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה" name="password" required />
+         </div>
+        
+         <div className="SignUpForm__inputs">
+         <h4>  שוב סיסמה <b className="required">*</b> </h4>
+         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה עוד פעם" name="repeatPassword" required />
+         </div>
+       </div>
+
+         <div className="SignUpForm__SelectorsInput">
+         <div className="SignUpForm__inputs">
+          <h4> אזור מגורים </h4>
          <Select 
          className="SignUpForm__collegeOptions"
          options={areaLocationOptions}
@@ -136,16 +152,7 @@ function SignUp (){
         
         </div>
 
-         <div className="SignUpForm__inputs">
-         <h4> סיסמה <b className="required">*</b> </h4>
-         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה" name="password" required />
-         </div>
         
-         <div className="SignUpForm__inputs">
-         <h4>  שוב סיסמה <b className="required">*</b> </h4>
-         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה עוד פעם" name="repeatPassword" required />
-         </div>
-       
          
           
          <button className="SignUpForm__button--register" type="submit">הירשם </button>

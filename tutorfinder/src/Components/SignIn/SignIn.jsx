@@ -50,7 +50,7 @@ function SignIn(){
             <button className="SignInForm__button--submit" type="submit">התחבר</button>
                  <br></br> 
                  <h3 >עדיין לא נרשמת?<Link to="/SignUp"> <b id="SignInForm__button--signUp">להרשמה</b></Link> </h3>
-                 <Link><b id="SignInForm__button--forgotPassword">שכחתי סיסמה</b></Link> 
+                 <Link to="/forgotPassword"><b id="SignInForm__button--forgotPassword">שכחתי סיסמה</b></Link> 
             </div>
 
             

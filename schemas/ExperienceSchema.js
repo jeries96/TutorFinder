@@ -6,7 +6,7 @@ const ExperienceSchema = new mongoose.Schema({
         user:UserSchema,
         subject:String,
         description:String,
-        img:Image
+        img:String
     }
 })
 
