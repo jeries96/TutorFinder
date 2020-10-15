@@ -11,7 +11,7 @@ app.use(
 app.use(express.static("public"));
 var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
 module.exports = secret;
-app.use(cookies());
+// app.use(cookies());
 const url = "mongodb+srv:LessonsAssistance:HRbC7WWaoKGWldpL@lessonsassistance.6opps.mongodb.net/test";
 const mongoose = require("mongoose");
 mongoose.connect(url, {
