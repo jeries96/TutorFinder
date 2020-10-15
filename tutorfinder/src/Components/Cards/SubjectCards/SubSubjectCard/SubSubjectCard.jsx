@@ -6,7 +6,7 @@ function SubSubjectCard(props){
     return (
     <div>
         <div className="SubSubject-card__Wrapper">
-                <div class="SubSubjectCard__image">
+                <div className="SubSubjectCard__image">
                 <img className="SubSubject-card__image" src={srcimg} alt="subjectImage" />
                 </div>
                 <div className="SubSubject-card__details">
