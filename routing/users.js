@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const express = require("express");
 const router = express.Router();
 const express = require("express");
 const bcrypt = require('bcrypt');
@@ -165,23 +166,36 @@ router.post('/createUser', [auth, admin, audit], (req, res) => {
 })
 
 
+function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
 
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
 
 router.post('/forgotPassword', (req, res) => {
     const { email } = req.body;
     if (validator.validate(email)) {
-        UserModel.find({ "userInfo.employeeEmail": email, active: true }).then(checkEmail => {
+        UserModel.find({ "userInfo.email": email, active: true }).then(checkEmail => {
             if (checkEmail.length > 0) {
                 const key = makeid(10)
 
                 var mailOptions = {
-                    from: 'servicetest468@gmail.com',
+                    from: 'lessonsassistanceservice@gmail.com',
                     to: email,
-                    subject: 'Reset Password',
-                    text: `You requested to reset your password. 
-Please copy the code below to continue the password reset process:  
+                    subject: 'שחזור סיסמה',
+                    text: `שלום,
+                     הקוד הזמני שלך הוא: ${key}
                     
-${key}`
+                    אין להשיב להודעה זו.
+                    
+                    בברכה,
+                    צוות שיעורי עזר.                    
+`
                 };
 
                 transporter.sendMail(mailOptions, function (err, info) {
@@ -201,15 +215,35 @@ ${key}`
                 res.send({ success: true, error: null, info: { key: key } })
 
             } else {
-                res.send({ success: false, error: "Email not found", info: null })
+                res.send({ success: false, error: "לא נמצא דואר אלקטרוני כזה במערכת.", info: null })
             }
         })
     } else {
-        res.send({ success: false, error: "Email not valid", info: null })
+        res.send({ success: false, error: "הדואר האלקטרוני אינו תקף", info: null })
     }
 })
 
 
+router.post('/checkValidKey', (req, res) => {
+    const { email, key } = req.body;
+    KeyModel.find({ userEmail: email, key: key }).then(docs => {
+        docs.map((item, index) => {
+            if (item.userEmail == email) {
+                if (item.key == key) {
+                    if ((Date.now() - item.keyTime) <= 1800000) {
+                        return (res.send({ success: true, error: null, info: null }))
+                    } else {
+                        res.send({ success: false, error: 'time expired', info: null })
+                    }
+                } else {
+                    res.send({ success: false, error: 'הקוד לא נכון', info: null })
+                }
+            } else {
+            }
+        })
+    })
+
+})
 
 
 
