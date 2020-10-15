@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const KeySchema = new mongoose.Schema({
-    employeeEmail:String,
+    userEmail:String,
     keyTime:Date,
     key:String
 })

@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
 const router = express.Router();
 const express = require("express");
+const bcrypt = require('bcrypt');
 
 const UserSchema = require('../schemas/UserSchema');
 const KeySchema = require('../schemas/KeySchema');
 //read
-const bcrypt = require('bcrypt');
+
 const jwt = require("jsonwebtoken");
 var nodemailer = require('nodemailer')
-
+var validator = require("email-validator");
 const UserModel = mongoose.model("UserModel", UserSchema);
 const KeyModel = mongoose.model("KeyModel", KeySchema);
 
+var secret = require("../index")
+const saltRounds = 10
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -24,13 +27,13 @@ var transporter = nodemailer.createTransport({
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
     if (validator.validate(email)) {
-        UserModel.find({ "userInfo.employeeEmail": email }).then(async checkEmail => {
+        UserModel.find({ "userInfo.email": email }).then(async checkEmail => {
             if (checkEmail.length > 0) {
                 const isMatch = await bcrypt.compare(password, checkEmail[0].userInfo.password)
                 if (isMatch) {
                     if (checkEmail[0].active == true) {
                         const token = await jwt.sign({
-                            name: checkEmail[0].userInfo.firstName,
+                            name: checkEmail[0].userPersonalInfo.firstName,
                             username: checkEmail[0].userInfo.email,
                             role: checkEmail[0].userInfo.role,
                         },
@@ -40,7 +43,7 @@ router.post('/login', (req, res) => {
                         res.cookie("loginToken", token, {
                             maxAge: 172800000,
                         });
-                        res.send({ success: true, error: null, info: { role: checkEmail[0].userInfo.employeeRole, id: checkEmail[0]._id } })
+                        res.send({ success: true, error: null, info: { role: checkEmail[0].userInfo.role, id: checkEmail[0]._id } })
                         res.end();
 
                     } else {
@@ -164,6 +167,47 @@ router.post('/createUser', [auth, admin, audit], (req, res) => {
 
 
 
+router.post('/forgotPassword', (req, res) => {
+    const { email } = req.body;
+    if (validator.validate(email)) {
+        UserModel.find({ "userInfo.employeeEmail": email, active: true }).then(checkEmail => {
+            if (checkEmail.length > 0) {
+                const key = makeid(10)
+
+                var mailOptions = {
+                    from: 'servicetest468@gmail.com',
+                    to: email,
+                    subject: 'Reset Password',
+                    text: `You requested to reset your password. 
+Please copy the code below to continue the password reset process:  
+                    
+${key}`
+                };
+
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if (err) {
+                        return (res.send({ success: false, error: err, info: null }))
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                KeyModel.insertMany(
+                    {
+                        employeeEmail: email,
+                        keyTime: Date.now(),
+                        key: key
+                    }
+                )
+                res.send({ success: true, error: null, info: { key: key } })
+
+            } else {
+                res.send({ success: false, error: "Email not found", info: null })
+            }
+        })
+    } else {
+        res.send({ success: false, error: "Email not valid", info: null })
+    }
+})
 
 
 
