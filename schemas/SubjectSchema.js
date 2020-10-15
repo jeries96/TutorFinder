@@ -7,7 +7,7 @@ const SubjectSchema = new mongoose.Schema({
         img:Image,
         education:String
     },
-    SubSubjects:[SubSubjects],
+    SubSubjects:SubSubjects,
 })
 
 

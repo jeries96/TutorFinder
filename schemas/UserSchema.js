@@ -18,11 +18,11 @@ const UserSchema = new mongoose.Schema({
     },
     userLifeActivity:{
       biography:String,
-      experiences:[ExperienceSchema],
-      awardsPhotos:[{info:String,img:Image}]
+      experiences:[],
+      awardsPhotos:[]
     },
     teaching:{
-      subSubjects:[SubSubjectSchema],
+      subSubjects:[],
       teachingPlace:[String]
     },
     ratings:{

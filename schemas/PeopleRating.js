@@ -11,7 +11,7 @@ const PeopleRating = new mongoose.Schema({
         rate:Number,
         description:String,
         subject:String,
-        img:[Image]
+        img:Image
     }
 })
 
