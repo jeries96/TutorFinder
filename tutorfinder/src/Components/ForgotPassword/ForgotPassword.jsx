@@ -3,6 +3,7 @@ import './ForgotPassword.css'
 import {Link ,useHistory} from "react-router-dom";
 
 let email='';
+const passwordMatch={password:null , repeatPassword:null}
 
 function ForgotPassword(){
     const history=useHistory()
@@ -15,7 +16,6 @@ function ForgotPassword(){
         event.preventDefault();
         let {currentEmail}=event.target.elements;
         email=currentEmail.value;
-        console.log(email)
         fetch('/api/users/forgotPassword', {
             method: "POST",
             body: JSON.stringify({email}),
@@ -25,8 +25,7 @@ function ForgotPassword(){
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
-                if(data.success==true) {
+                if(data.success===true) {
                     setError("")
                 setDisplay("codeAuth")
             }else {
@@ -49,8 +48,7 @@ function ForgotPassword(){
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
-                if(data.success==true) {
+                if(data.success===true) {
                     setError("")
                     setDisplay("newPassword")     
                 }
@@ -60,8 +58,27 @@ function ForgotPassword(){
             });
     }
 
+    function savePassword (event) {
+        let password=event.target.value
+        passwordMatch.password=password
+      }
+      function saveRepeatPassword (event) {
+       let repeatPassword=event.target.value
+       passwordMatch.repeatPassword=repeatPassword
+     }
+      function checkPassword(){
+         if(passwordMatch.password===passwordMatch.repeatPassword){
+           return true
+         }else { 
+           return false
+         }
+      }
+
     function HandleNewPassword (event) {
         event.preventDefault();
+        if(checkPassword()!==true){
+            alert("הסיסמאות לא זהים")
+        }else {
         let {password}=event.target.elements;
         password=password.value;
         console.log(password)
@@ -75,7 +92,7 @@ function ForgotPassword(){
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                if(data.success==true) {
+                if(data.success===true) {
                 history.push('/')
             }
                 else {
@@ -83,8 +100,8 @@ function ForgotPassword(){
                 }
             });
     }
-
-    
+    }
+  
 
     
     
@@ -92,7 +109,7 @@ function ForgotPassword(){
     return (
         
         <div dir="rtl" className="ForgotPassword__Wrapper"> 
-         { display == "emailAuth" && 
+         { display === "emailAuth" && 
            <form className="ForgotPasswordForm" onSubmit={HandleEmailAuth}>
 
             <h2 className="ForgotPassword__Title"> שחזור סיסמה </h2>
@@ -116,7 +133,7 @@ function ForgotPassword(){
 
     }
 
-    { display == "codeAuth" &&
+    { display === "codeAuth" &&
         <form className="ForgotPasswordForm" onSubmit={HandleCodeAuth}>
 
             <h2 className="ForgotPassword__Title"> שחזור סיסמה </h2>
@@ -139,20 +156,22 @@ function ForgotPassword(){
 
 </form> }
 
-{ display == "newPassword" &&
+{ display === "newPassword" &&
         <form className="ForgotPasswordForm" onSubmit={HandleNewPassword}>
 
             <h2 className="ForgotPassword__Title"> שחזור סיסמה </h2>
             <div className="container">
 
             <input 
+            onChange={savePassword}
             type="password" 
             id="ForgotPassword__textInput" 
             placeholder="סיסמה חדשה" 
             name="password" 
             required />
 
-            <input 
+            <input          
+            onChange={saveRepeatPassword}
             type="password" 
             id="ForgotPassword__textInput" 
             placeholder="סיסמה עוד פעם" 

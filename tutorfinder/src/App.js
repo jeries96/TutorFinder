@@ -12,7 +12,6 @@ import SignUp from './Components/SignUp/SignUp';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 
-import Testimonials from './Components/HomePage/Testimonials/Testimonials'
 import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';
 function App() {
   return (

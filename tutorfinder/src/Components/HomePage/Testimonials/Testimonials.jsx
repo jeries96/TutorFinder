@@ -10,7 +10,7 @@ function Testimonials(){
 
             <div className="star">
             <div className="Testimonials__icon">
-                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/star.png" />
+                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/star.png" alt="logo" />
             </div>
             <div className="Testimonials__title">
                 <h2> מורים מעולים </h2>
@@ -23,7 +23,7 @@ function Testimonials(){
 
             <div className="expert">
             <div className="Testimonials__icon">
-                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/personalized.png" />
+                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/personalized.png" alt="logo"/>
             </div>
             <div className="Testimonials__title">
                 <h2> גמישות </h2>
@@ -36,7 +36,7 @@ function Testimonials(){
 
             <div className="stam">
             <div className="Testimonials__icon">
-                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/guaranteed.png" />
+                <img src="https://prod-takelessons.netdna-ssl.com/images/public/landing/icon/guaranteed.png" alt="logo" />
             </div>
             <div className="Testimonials__title">
                 <h2> מוגן 100% </h2>
