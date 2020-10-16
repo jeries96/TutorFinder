@@ -203,7 +203,7 @@ router.post('/forgotPassword', (req, res) => {
                 });
                 KeyModel.insertMany(
                     {
-                        employeeEmail: email,
+                        userEmail: email,
                         keyTime: Date.now(),
                         key: key
                     }
@@ -222,7 +222,7 @@ router.post('/forgotPassword', (req, res) => {
 
 router.post('/checkValidKey', (req, res) => {
     const { email, key } = req.body;
-    KeyModel.find({ userEmail: email, key: key }).then(docs => {
+    KeyModel.find({ "userEmail": email, "key": key }).then(docs => {
         if(docs.length>0){
         docs.map((item, index) => {
                     if ((Date.now() - item.keyTime) <= 1800000) {

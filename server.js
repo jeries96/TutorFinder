@@ -47,8 +47,8 @@ const Data = [
   {
     SubSubjectInfo: {
       name: "מבני ניתונים",
-      basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-      img:String,
+      basicInfo: "String",
+      img:"https://s8.gifyu.com/images/data-structures.jpg",
       rating:4.3,
       startingPrice:15
   },
@@ -64,51 +64,90 @@ const Data = [
     startingPrice:30
 },
 parents:["electricalEngineering","managmentInformationSystem"],
-id:"dataStructure"
+id:"objectOrientedProgramming"
 },
 {
   SubSubjectInfo: {
-    name: "מבני ניתונים",
-    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-    img:String,
-    rating:4.3,
-    startingPrice:15
+    name: "חדוו'א",
+    basicInfo:"string",
+    img: "https://s8.gifyu.com/images/calculus1.jpg",
+    rating:3.3,
+    startingPrice:8
 },
 parents:["electricalEngineering","managmentInformationSystem"],
-id:"dataStructure"
+id:"calculus"
+},
+
+{
+  SubSubjectInfo: {
+    name: "ביג דאטא",
+    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+    img:"https://s8.gifyu.com/images/bidata.jpg" ,
+    rating:4.9,
+    startingPrice:90
+},
+parents:["managmentInformationSystem"],
+id:"bigData"
 },
 {
   SubSubjectInfo: {
-    name: "מבני ניתונים",
-    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-    img:String,
+    name: "סטטיסטיקה",
+    basicInfo: "String",
+    img:"https://s8.gifyu.com/images/statistics.jpg" ,
     rating:4.3,
-    startingPrice:15
+    startingPrice:34
 },
-parents:["electricalEngineering","managmentInformationSystem"],
-id:"dataStructure"
+parents:["electricalEngineering","managmentInformationSystem","nursing"],
+id:"statistics"
 },
 {
   SubSubjectInfo: {
-    name: "מבני ניתונים",
-    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-    img:String,
+    name: "אפיון ותכן",
+    basicInfo: "String",
+    img:"https://s8.gifyu.com/images/designPattern.png" ,
     rating:4.3,
     startingPrice:15
 },
-parents:["electricalEngineering","managmentInformationSystem"],
-id:"dataStructure"
+parents:["managmentInformationSystem"],
+id:"characterizationAndDesign"
+},
+
+
+
+
+
+{
+  SubSubjectInfo: {
+    name: "אפיון ותכן",
+    basicInfo: "String",
+    img:"https://s8.gifyu.com/images/designPattern.png" ,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["managmentInformationSystem"],
+id:"haracterizationAndDesign"
 },
 {
   SubSubjectInfo: {
-    name: "מבני ניתונים",
-    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-    img:String,
+    name: "אפיון ותכן",
+    basicInfo: "String",
+    img:"https://s8.gifyu.com/images/designPattern.png" ,
     rating:4.3,
     startingPrice:15
 },
-parents:["electricalEngineering","managmentInformationSystem"],
-id:"dataStructure"
+parents:["managmentInformationSystem"],
+id:"haracterizationAndDesign"
+},
+{
+  SubSubjectInfo: {
+    name: "אפיון ותכן",
+    basicInfo: "String",
+    img:"https://s8.gifyu.com/images/designPattern.png" ,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["managmentInformationSystem"],
+id:"haracterizationAndDesign"
 },
 ]
 
