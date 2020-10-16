@@ -55,7 +55,7 @@
   background-color:rgb(9, 76, 131);
   color: white;
   padding: 20px 26px;
-  margin: 2% 2%;
+  margin: 5% 5%;
   cursor: pointer;
   width: 70%;
   font-size: large;
@@ -85,6 +85,11 @@
   color: red;
 }
 
+#SignUp__checkPasswordInput{
+  position: relative;
+  bottom:40%;
+  right:30%;
+}
 
 
 
