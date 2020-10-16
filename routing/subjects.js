@@ -1,39 +1,67 @@
-// const mongoose = require('mongoose');
-// const router = express.Router();
-// const express = require("express");
+const mongoose = require('mongoose');
+const express = require("express");
+const router = express.Router();
 
 
 
 
-// const SubjectSchema = require('../schemas/SubjectSchema');
 
-// const SubjectModel = mongoose.model("subjectModel", SubjectSchema);
+const SubjectSchema = require('../schemas/SubjectSchema');
+const SubjectModel = mongoose.model("subjectModel", SubjectSchema);
 
-
-
-// router.post('/getSubjects', (req, res) => {
-//   const education = req.body;
-//   if (education.length() != null) {
-//     subjects = await SubjectModel.aggregate([
-//       {
-//         $match: {
-//           "SubjectInfo.education": education
-//         }
-//       },
-//       {
-//         $group: {
-//           _id: null,
-//           subSubject: { $addToSet: { "label": "$diffItem.updatedField.fieldName", "value": "$diffItem.updatedField.fieldName" } },
-//         },
-//       }
+const SubSubjectSchema = require('../schemas/SubSubjectSchema');
+const SubSubjectModel = mongoose.model("subSubjectModel", SubSubjectSchema);
 
 
-//     ])
-//   }
-//   else {
-//     subjects = await SubjectModel.aggregate([
-      
-//     ])
-//   }
-//   res.send(subjects)
-// })
+
+router.post('/getSubjects',async (req, res) => {
+  const arrayToSend=[];
+  const {education}=req.body;
+    subjects = await SubjectModel.aggregate([
+      // {
+      //   $match: {
+      //     "SubjectInfo.education": education
+      //   }
+      // },
+      {
+        $group: {
+          _id: null,
+          id: { $addToSet: {"id":"$id" , "subject": "$SubjectInfo.name" } },
+        },
+      }
+
+
+    ])
+    // subjects[0].id.map(async(subject,index)=> {
+    //     SubSubjectModel.find({ parents: subject }).then(subjects=>{
+    //       console.log(subjects)
+    //     })
+
+
+
+    // })
+   await Promise.all(subjects[0].id.map(async(subject,index)=> {
+       subjectsOfSubject = await SubSubjectModel.aggregate([
+         {
+             $match: {"parents": subject.id} 
+             
+           },
+           {
+            $group: {
+              _id: "$$ROOT",
+            },
+          }
+
+       ])
+       arrayToSend.push({subjectName:subject.subject,subsubjects:subjectsOfSubject})
+
+    }))
+  
+  res.send(arrayToSend)
+})
+
+
+
+
+
+module.exports = router;
