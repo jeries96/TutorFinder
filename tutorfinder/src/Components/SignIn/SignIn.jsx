@@ -7,21 +7,21 @@ function SignIn(){
 
     function HandleSignIn(event){
         event.preventDefault();
+        let {email,password}=event.target.elements
+        email=email.value;
+        password=password.value;
+        console.log(email,password)
 
-        const {email, password}=event.target.elements;
-        const userEmail=email.value;
-        const userPassword=password.value;
-
-        fetch('/api/users/signIn', {
+        fetch('/api/users/login', {
             method: "POST",
-            body: JSON.stringify({ userEmail, userPassword}),
+            body: JSON.stringify({email, password}),
             headers: {
                 "Content-Type": "application/json",
             },
         })
             .then((res) => res.json())
             .then((data) => {
-                
+                console.log(data)
                 /*if(data.success) {
                 history.push('/HomePage')
             }
