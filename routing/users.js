@@ -196,7 +196,6 @@ router.post('/forgotPassword', (req, res) => {
 
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
-                        console.log("here is the error")
                          console.log("there was an error sending the email : ", err)
                     } else {
                         console.log('Email sent: ' + info.response);
@@ -224,21 +223,41 @@ router.post('/forgotPassword', (req, res) => {
 router.post('/checkValidKey', (req, res) => {
     const { email, key } = req.body;
     KeyModel.find({ userEmail: email, key: key }).then(docs => {
+        if(docs.length>0){
         docs.map((item, index) => {
-            if (item.userEmail == email) {
-                if (item.key == key) {
                     if ((Date.now() - item.keyTime) <= 1800000) {
                         return (res.send({ success: true, error: null, info: null }))
                     } else {
-                        res.send({ success: false, error: 'time expired', info: null })
-                    }
-                } else {
-                    res.send({ success: false, error: 'הקוד לא נכון', info: null })
-                }
-            } else {
-            }
-        })
+                        res.send({ success: false, error: 'הקוד שהוזן אינו תקף.', info: null })
+                    }               
+        })}
+        else{
+            res.send({ success: false, error: 'הקוד לא נכון', info: null })
+        }
     })
+})
+
+router.put('/updatePassword', (req, res) => {
+    const { email, password } = req.body;
+    let regex = /[^A-Za-z0-9]/;
+    let containSepcChars = regex.test(password);
+    if (!containSepcChars) {
+    UserModel.findOne({ "userInfo.email": email }).then(async docs => {
+        if (docs) {
+            const salt = await bcrypt.genSalt(saltRounds)
+            const hashpassword = await bcrypt.hash(password, salt)
+            docs.userInfo.password = hashpassword
+            docs.save();
+            res.send({ success: true, error: null, info: null })
+
+        } else {
+            res.send({ success: false, error: "הדואר האלקטרוני אינו תקף", info: null })
+        }
+    })
+}
+else {
+        res.send({ success: false, error: "אסור להשתמש בתווים מיוחדים או רווחים בסיסמת המשתמש!", info: null })
+    }
 
 })
 

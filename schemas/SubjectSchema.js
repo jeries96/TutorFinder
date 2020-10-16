@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-const SubSubjects = require('./SubSubjects')
+
 const SubjectSchema = new mongoose.Schema({
+    id:String,
     SubjectInfo: {
         name: String,
         basicInfo: String,
         img:String,
         education:String
-    },
-    SubSubjects:SubSubjects,
+    }
 })
 
 

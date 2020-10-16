@@ -8,6 +8,7 @@ app.use(
     extended: true,
   })
 );
+
 app.use(express.static("public"));
 var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
 module.exports = secret;
@@ -22,8 +23,10 @@ mongoose.connect(url, {
 });
 
 
-
+const SubjectSchema = require("./schemas/SubjectSchema");
+const SubjectModel = mongoose.model("SubjectModel", SubjectSchema);
 const userRouter = require("./routing/users");
+
 app.use("/api/users", userRouter);
 
 
@@ -38,6 +41,82 @@ app.use("/api/users", userRouter);
 
 // const statistics = require("./routing/statistics");
 // app.use("/api/statistics", statistics);
+
+
+const Data = [
+  {
+    SubSubjectInfo: {
+      name: "מבני ניתונים",
+      basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+      img:String,
+      rating:4.3,
+      startingPrice:15
+  },
+  parents:["electricalEngineering","managmentInformationSystem"],
+  id:"dataStructure"
+},
+{
+  SubSubjectInfo: {
+    name: "תכנות מונחה עצמים",
+    basicInfo: "string",
+    img:"https://s8.gifyu.com/images/object-oriented-programming-oop.png",
+    rating:4.0,
+    startingPrice:30
+},
+parents:["electricalEngineering","managmentInformationSystem"],
+id:"dataStructure"
+},
+{
+  SubSubjectInfo: {
+    name: "מבני ניתונים",
+    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+    img:String,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["electricalEngineering","managmentInformationSystem"],
+id:"dataStructure"
+},
+{
+  SubSubjectInfo: {
+    name: "מבני ניתונים",
+    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+    img:String,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["electricalEngineering","managmentInformationSystem"],
+id:"dataStructure"
+},
+{
+  SubSubjectInfo: {
+    name: "מבני ניתונים",
+    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+    img:String,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["electricalEngineering","managmentInformationSystem"],
+id:"dataStructure"
+},
+{
+  SubSubjectInfo: {
+    name: "מבני ניתונים",
+    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+    img:String,
+    rating:4.3,
+    startingPrice:15
+},
+parents:["electricalEngineering","managmentInformationSystem"],
+id:"dataStructure"
+},
+]
+
+
+// SubjectModel.insertMany(Data).then(console.log("Adding Success.!"));
+
+
+
 
 
 const port = process.env.PORT || 4000; 

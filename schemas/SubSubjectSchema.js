@@ -7,7 +7,9 @@ const SubSubjectSchema = new mongoose.Schema({
         img:String,
         rating:Number,
         startingPrice:Number
-    }
+    },
+    parents:[],
+    id:String,
 })
 
 
