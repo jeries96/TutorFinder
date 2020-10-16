@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         location:String,
         education:String,
         phoneNumber:String,
-        personalPhoto:Image
+        personalPhoto:String
     },
     userLifeActivity:{
       biography:String,
