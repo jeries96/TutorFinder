@@ -2,19 +2,20 @@ import React , {useState} from 'react'
 import './ForgotPassword.css'
 import {Link ,useHistory} from "react-router-dom";
 
+let email='';
+
 function ForgotPassword(){
     const history=useHistory()
     
-    let currentEmail='';
     
     const [display,setDisplay]=useState("emailAuth");
     const[error,setError]=useState("")
     
     function HandleEmailAuth(event){
         event.preventDefault();
-        let {email}=event.target.elements;
-        email=email.value;
-        currentEmail=email.value;
+        let {currentEmail}=event.target.elements;
+        email=currentEmail.value;
+        console.log(email)
         fetch('/api/users/forgotPassword', {
             method: "POST",
             body: JSON.stringify({email}),
@@ -26,6 +27,7 @@ function ForgotPassword(){
             .then((data) => {
                 console.log(data)
                 if(data.success==true) {
+                    setError("")
                 setDisplay("codeAuth")
             }else {
                 setError(data.error)
@@ -37,7 +39,7 @@ function ForgotPassword(){
         event.preventDefault();
         let {key}=event.target.elements;
         key=key.value;
-        let email=currentEmail
+        console.log(email)
         fetch('/api/users/checkValidKey', {
             method: "POST",
             body: JSON.stringify({email,key}),
@@ -49,6 +51,7 @@ function ForgotPassword(){
             .then((data) => {
                 console.log(data)
                 if(data.success==true) {
+                    setError("")
                     setDisplay("newPassword")     
                 }
                 else {
@@ -59,11 +62,12 @@ function ForgotPassword(){
 
     function HandleNewPassword (event) {
         event.preventDefault();
-        let {code}=event.target.elements;
-        code=code.value;
+        let {password}=event.target.elements;
+        password=password.value;
+        
         fetch('/api/users/updatePassword ', {
-            method: "POST",
-            body: JSON.stringify({currentEmail,code}),
+            method: "PUT",
+            body: JSON.stringify({email,password}),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -99,7 +103,7 @@ function ForgotPassword(){
             type="email" 
             id="ForgotPassword__textInput" 
             placeholder="דואר אלקטרוני" 
-            name="email" 
+            name="currentEmail" 
             required />
             <h4 className="errorMsg">{error}</h4>
             <button className="ForgotPassword__button--submit" type="submit">שחזר</button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import './SignUp.css'
 import {Link} from 'react-router-dom';
 
@@ -15,8 +15,11 @@ const serverSignUp={firstName:null,
                     email:null,
                     password:null }
 
+const passwordMatch={password:null , repeatPassword:null}
 
 function SignUp (){
+    const [validatePassword,setValidatePassword] = useState("")
+    const [error,setError] = useState("")
     const collegeOptions = [
         { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
         { value: "ortBrauda", label: "מכללת אורט בראודה" },
@@ -56,12 +59,32 @@ function SignUp (){
                 ]},
       ];
 
-     
+     function savePassword (event) {
+       let password=event.target.value
+       passwordMatch.password=password
+       console.log(passwordMatch)
+     }
+     function saveRepeatPassword (event) {
+      let repeatPassword=event.target.value
+      passwordMatch.repeatPassword=repeatPassword
+      console.log(passwordMatch)
+    }
+     function checkPassword(){
+        if(passwordMatch.password===passwordMatch.repeatPassword){
+          setValidatePassword('תואם')
+          return true
+        }else {
+          setValidatePassword('לא תואם')
+          return false
+        }
+     }
 
       function HandleSignUp (event){
           event.preventDefault();
-          
-          const {userName,lastName,email,phone,area,education,password,repeatPassword}=event.target.elements;
+          if(checkPassword()!= true){
+            setError('שתי הסיסמאות חיבבים להיות זהים')
+          }else {
+          const {userName,lastName,email,phone,area,education,password}=event.target.elements;
           serverSignUp.firstName=userName.value;
           serverSignUp.lastName=lastName.value;
           serverSignUp.email=email.value;
@@ -88,6 +111,7 @@ function SignUp (){
             .then((res) => res.json())
             .then((data) => {console.log(data)});
     }
+  }
       
      
 
@@ -127,6 +151,7 @@ function SignUp (){
          <h4> סיסמה <b className="required">*</b> </h4>
        
          <input 
+         onChange={savePassword}
          type="password" 
          className="SignUpForm__passwordInput" 
          placeholder="סיסמה" 
@@ -135,14 +160,17 @@ function SignUp (){
          </div>
         
          <div className="SignUpForm__inputs">
-         <h4>  שוב סיסמה <b className="required">*</b> </h4>
+         <h4>  תאשר סיסמה <b className="required">*</b> </h4>
          
          <input 
+         onChange={saveRepeatPassword}
+         onKeyUp={checkPassword}
          type="password" 
          className="SignUpForm__passwordInput" 
          placeholder="סיסמה עוד פעם" 
          name="repeatPassword" 
          required />
+         <h5 id="SignUp__checkPasswordInput">{validatePassword}</h5>
          </div>
 
        </div>
@@ -170,7 +198,7 @@ function SignUp (){
 
         
          
-          
+          <h4>{error} </h4>
          <button className="SignUpForm__button--register" type="submit">הירשם </button>
               
          <Link to="/SignIn"><h3 id="SignUpForm__button--alreadyHaveAccount">יש לך חשבון קיים?</h3></Link> 
