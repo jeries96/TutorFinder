@@ -16,7 +16,6 @@ const serverSignUp={firstName:null,
                     password:null }
 
 
-
 function SignUp (){
     const collegeOptions = [
         { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
@@ -57,7 +56,7 @@ function SignUp (){
                 ]},
       ];
 
-    
+     
 
       function HandleSignUp (event){
           event.preventDefault();
@@ -119,18 +118,25 @@ function SignUp (){
         
          <div className="SignUpForm__inputs">
          <h4> מספר פלפון </h4>
-         <input type="tel"  className="SignUpForm__textInput" name="phone" maxlength={10} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="מספר פלאפון"  />
+         <input type="tel"  className="SignUpForm__textInput" name="phone" maxlength={10} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="מספר פלאפון"  />
          </div>
          </div>
 
          <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
          <h4> סיסמה <b className="required">*</b> </h4>
-         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה" name="password" required />
+       
+         <input 
+         type="password" 
+         className="SignUpForm__passwordInput" 
+         placeholder="סיסמה" 
+         name="password" 
+         required />
          </div>
         
          <div className="SignUpForm__inputs">
          <h4>  שוב סיסמה <b className="required">*</b> </h4>
+         
          <input 
          type="password" 
          className="SignUpForm__passwordInput" 
@@ -138,6 +144,7 @@ function SignUp (){
          name="repeatPassword" 
          required />
          </div>
+
        </div>
 
          <div className="SignUpForm__SelectorsInput">
