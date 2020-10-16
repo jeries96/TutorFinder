@@ -15,6 +15,8 @@ const serverSignUp={firstName:null,
                     email:null,
                     password:null }
 
+
+
 function SignUp (){
     const collegeOptions = [
         { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
@@ -54,6 +56,8 @@ function SignUp (){
             { label: " ראשון לציון והסביבה ", value: "value_4" },
                 ]},
       ];
+
+    
 
       function HandleSignUp (event){
           event.preventDefault();
@@ -127,7 +131,12 @@ function SignUp (){
         
          <div className="SignUpForm__inputs">
          <h4>  שוב סיסמה <b className="required">*</b> </h4>
-         <input type="password" className="SignUpForm__passwordInput" placeholder="סיסמה עוד פעם" name="repeatPassword" required />
+         <input 
+         type="password" 
+         className="SignUpForm__passwordInput" 
+         placeholder="סיסמה עוד פעם" 
+         name="repeatPassword" 
+         required />
          </div>
        </div>
 
