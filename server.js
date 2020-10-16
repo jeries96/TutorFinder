@@ -14,7 +14,7 @@ module.exports = secret;
 // app.use(cookies());
 
 
-const url = "mongodb+srv://nimer:N1N1N1N1@cluster0.tejcy.mongodb.net/server"
+const url = "mongodb+srv://admin:N1N1N1N1N1@lessonsassistance.6opps.mongodb.net/server"
 const mongoose = require("mongoose");
 mongoose.connect(url, {
   useNewUrlParser: true,

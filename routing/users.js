@@ -120,7 +120,7 @@ router.post('/createUser', (req, res) => {
                             }
                         })
 
-                    await UserModel.find({ active: true }).then(async users => {
+                    await UserModel.find({ 'userInfo.email': email }).then(async users => {
                         if (users.length > 0) {
 
                             for (let index = 0; index < users.length; index++) {
@@ -131,21 +131,21 @@ router.post('/createUser', (req, res) => {
                                 from: 'lessonsassistanceservice@gmail.com',
                                 to: email,
                                 subject: 'תודה שנרשמת לאתר שיעורי עזר!',
-                                text: `תודה על הרשמתך לאתר שיעורי עזר, 
-
-                          מהיום תוכל לרכוש שיעורי עזר במחירים ומורים הטובים ביותר. 
-                          ניתן להיכנס לחשבונך בכל עת:
-                          שם המשתמש שלך הוא:${email} 
+                                html:`<p dir="rtl">תודה על הרשמתך לאתר שיעורי עזר,</p>
+                                <p dir="rtl"> מהיום תוכל לרכוש שיעורי עזר במחירים הטובים ביותר.</p>
+                                <p dir="rtl"> ניתן להיכנס לחשבונך בכל עת</p>
+                                <p dir="rtl">  שם המשתמש שלך הוא :  ${email} .</p>
+    
+    
+                                <p dir="rtl"> בהצלחה,</p>
+                                <p dir="rtl">צוות שיעורי עזר.</p>`
+                    
                           
-                          
-                          
-                          בהצלחה 
-                          צוות שיעורי עזר. `
                             };
 
                             transporter.sendMail(mailOptions, function (err, info) {
                                 if (err) {
-                                    return (res.send({ success: false, error: err, info: null }))
+                                console.log( "there was an error sending email", err)
                                 } else {
                                     console.log('Email sent: ' + info.response);
                                 }
@@ -179,7 +179,7 @@ function makeid(length) {
 router.post('/forgotPassword', (req, res) => {
     const { email } = req.body;
     if (validator.validate(email)) {
-        UserModel.find({ "userInfo.email": email }).then(checkEmail => {
+        UserModel.find({ "userInfo.email": email }).then(checkEmail => {    
             if (checkEmail.length > 0) {
                 const key = makeid(10)
 
@@ -187,19 +187,17 @@ router.post('/forgotPassword', (req, res) => {
                     from: 'lessonsassistanceservice@gmail.com',
                     to: email,
                     subject: 'שחזור סיסמה',
-                    text: `שלום,
-                     הקוד הזמני שלך הוא: ${key}
-                    
-                    אין להשיב להודעה זו.
-                    
-                    בברכה,
-                    צוות שיעורי עזר.                    
-`
+                    html:`<p dir="rtl">שלום,</p>
+                                <p dir="rtl"> הקוד הזמני שלך הוא : ${key}</p>
+                                <p dir="rtl"> אין להשיב להודעה זו.</p>
+                                <p dir="rtl">בברכה,</p>
+                                <p dir="rtl">צוות שיעורי עזר.</p>`                 
                 };
 
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
-                        return (res.send({ success: false, error: err, info: null }))
+                        console.log("here is the error")
+                         console.log("there was an error sending the email : ", err)
                     } else {
                         console.log('Email sent: ' + info.response);
                     }
