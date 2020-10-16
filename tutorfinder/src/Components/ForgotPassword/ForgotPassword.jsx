@@ -4,16 +4,18 @@ import {Link ,useHistory} from "react-router-dom";
 
 function ForgotPassword(){
     const history=useHistory()
-
+    
+    let currentEmail='';
+    
     const [display,setDisplay]=useState("emailAuth");
-
+    const[error,setError]=useState("")
     
     function HandleEmailAuth(event){
         event.preventDefault();
         let {email}=event.target.elements;
         email=email.value;
-        setDisplay("codeAuth")
-        /*fetch('/api/users/forgotPassword', {
+        currentEmail=email.value;
+        fetch('/api/users/forgotPassword', {
             method: "POST",
             body: JSON.stringify({email}),
             headers: {
@@ -23,23 +25,22 @@ function ForgotPassword(){
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                /*if(data.success) {
-                history.push('/HomePage')
+                if(data.success==true) {
+                setDisplay("codeAuth")
+            }else {
+                setError(data.error)
             }
-                else {
-                    alert('wrong password / username')
-                }*/
-            //});
+            });
     }
 
     function HandleCodeAuth (event) {
         event.preventDefault();
-        let {code}=event.target.elements;
-        code=code.value;
-        setDisplay("newPassword")
-        /*fetch('/api/users/forgotPassword', {
+        let {key}=event.target.elements;
+        key=key.value;
+        let email=currentEmail
+        fetch('/api/users/checkValidKey', {
             method: "POST",
-            body: JSON.stringify({code}),
+            body: JSON.stringify({email,key}),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -47,22 +48,22 @@ function ForgotPassword(){
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                /*if(data.success) {
-                history.push('/HomePage')
-            }
+                if(data.success==true) {
+                    setDisplay("newPassword")     
+                }
                 else {
-                    alert('wrong password / username')
-                }*/
-            //});
+                    setError(data.error)
+                }
+            });
     }
 
     function HandleNewPassword (event) {
         event.preventDefault();
         let {code}=event.target.elements;
         code=code.value;
-        /*fetch('/api/users/forgotPassword', {
+        fetch('/api/users/updatePassword ', {
             method: "POST",
-            body: JSON.stringify({code}),
+            body: JSON.stringify({currentEmail,code}),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -70,13 +71,13 @@ function ForgotPassword(){
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                /*if(data.success) {
+                if(data.success==true) {
                 history.push('/HomePage')
             }
                 else {
-                    alert('wrong password / username')
-                }*/
-            //});
+                    setError(data.error)
+                }
+            });
     }
 
     
@@ -91,6 +92,7 @@ function ForgotPassword(){
            <form className="ForgotPasswordForm" onSubmit={HandleEmailAuth}>
 
             <h2 className="ForgotPassword__Title"> שחזור סיסמה </h2>
+            
             <div className="container">
 
             <input 
@@ -99,7 +101,7 @@ function ForgotPassword(){
             placeholder="דואר אלקטרוני" 
             name="email" 
             required />
-
+            <h4 className="errorMsg">{error}</h4>
             <button className="ForgotPassword__button--submit" type="submit">שחזר</button>
                  
             <Link to="/SignIn"><h3 id="ForgotPassword__button--alreadyHaveAccount">יש לך חשבון קיים?</h3></Link> 
@@ -109,6 +111,7 @@ function ForgotPassword(){
         </form>
 
     }
+
     { display == "codeAuth" &&
         <form className="ForgotPasswordForm" onSubmit={HandleCodeAuth}>
 
@@ -119,9 +122,10 @@ function ForgotPassword(){
             type="text" 
             id="ForgotPassword__textInput" 
             placeholder="אימות קוד" 
-            name="code" 
+            name="key" 
             required />
 
+            <h4 className="errorMsg">{error} </h4>
             <button className="ForgotPassword__button--submit" type="submit">תמשיך</button>
                   
                  
@@ -150,8 +154,8 @@ function ForgotPassword(){
             placeholder="סיסמה עוד פעם" 
             name="password" 
             required />
-
             
+            <h4 className="errorMsg">{error}</h4>
 
             <button className="ForgotPassword__button--submit" type="submit">שחזר</button>
                   
