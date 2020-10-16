@@ -81,20 +81,20 @@ function SignUp (){
 
       function HandleSignUp (event){
           event.preventDefault();
-          if(checkPassword()!= true){
+          if(checkPassword()!== true){
             setError('שתי הסיסמאות חיבבים להיות זהים')
           }else {
           const {userName,lastName,email,phone,area,education,password}=event.target.elements;
           serverSignUp.firstName=userName.value;
           serverSignUp.lastName=lastName.value;
           serverSignUp.email=email.value;
-          if(phone.value!=""){
+          if(phone.value!==""){
             serverSignUp.phoneNumber=phone.value;
           }
-          if(area.value!=""){
+          if(area.value!==""){
             serverSignUp.location=area.value;
           }
-          if(education.value!=""){
+          if(education.value!==""){
             serverSignUp.education=education.value;
           }
           serverSignUp.password=password.value;
