@@ -23,15 +23,15 @@ mongoose.connect(url, {
 });
 
 
-const SubjectSchema = require("./schemas/SubjectSchema");
-const SubjectModel = mongoose.model("SubjectModel", SubjectSchema);
+const SubSubjectSchema = require("./schemas/SubSubjectSchema");
+const SubSubjectModel = mongoose.model("SubSubjectModel", SubSubjectSchema);
 const userRouter = require("./routing/users");
 
 app.use("/api/users", userRouter);
 
 
-// const subjectsRouter = require("./routing/subjects");
-// app.use("/api/subjects", subjectsRouter);
+const subjectsRouter = require("./routing/subjects");
+app.use("/api/subjects", subjectsRouter);
 
 // const mainProfileRouter = require("./routing/analytics");
 // app.use("/api/analytics", mainProfileRouter);
@@ -111,48 +111,43 @@ id:"statistics"
 parents:["managmentInformationSystem"],
 id:"characterizationAndDesign"
 },
-
-
-
-
-
 {
   SubSubjectInfo: {
-    name: "אפיון ותכן",
+    name: "תכן לוגי",
     basicInfo: "String",
-    img:"https://s8.gifyu.com/images/designPattern.png" ,
-    rating:4.3,
-    startingPrice:15
+    img:"https://s8.gifyu.com/images/logidesign.png" ,
+    rating:2.3,
+    startingPrice:50
 },
-parents:["managmentInformationSystem"],
+parents:["electricalEngineering"],
 id:"Logic Design"
 },
 {
   SubSubjectInfo: {
-    name: "אפיון ותכן",
+    name: "הגנה ברשתות",
     basicInfo: "String",
-    img:"https://s8.gifyu.com/images/designPattern.png" ,
+    img:"https://s8.gifyu.com/images/Enterprise-Network-Protection.png" ,
     rating:4.3,
-    startingPrice:15
+    startingPrice:70
 },
-parents:["managmentInformationSystem"],
-id:"haracterizationAndDesign"
+parents:["electricalEngineering"],
+id:"Network protection"
 },
 {
   SubSubjectInfo: {
-    name: "אפיון ותכן",
+    name: "מערכות הפעלה",
     basicInfo: "String",
-    img:"https://s8.gifyu.com/images/designPattern.png" ,
-    rating:4.3,
-    startingPrice:15
+    img:"https://s8.gifyu.com/images/operationSystems.png",
+    rating:3.8,
+    startingPrice:32
 },
-parents:["managmentInformationSystem"],
-id:"haracterizationAndDesign"
+parents:["electricalEngineering"],
+id:"operatingSystems"
 },
 ]
 
 
-// SubjectModel.insertMany(Data).then(console.log("Adding Success.!"));
+// SubSubjectModel.insertMany(Data).then(console.log("Adding Success.!"));
 
 
 
