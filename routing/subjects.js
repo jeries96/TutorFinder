@@ -7,12 +7,15 @@ const router = express.Router();
 
 
 const SubjectSchema = require('../schemas/SubjectSchema');
-
 const SubjectModel = mongoose.model("subjectModel", SubjectSchema);
+
+const SubSubjectSchema = require('../schemas/SubSubjectSchema');
+const SubSubjectModel = mongoose.model("subSubjectModel", SubSubjectSchema);
 
 
 
 router.post('/getSubjects',async (req, res) => {
+  const arrayToSend=[];
   const {education}=req.body;
     subjects = await SubjectModel.aggregate([
       // {
@@ -29,7 +32,32 @@ router.post('/getSubjects',async (req, res) => {
 
 
     ])
-  res.send(subjects)
+    // subjects[0].id.map(async(subject,index)=> {
+    //     SubSubjectModel.find({ parents: subject }).then(subjects=>{
+    //       console.log(subjects)
+    //     })
+
+
+
+    // })
+   await Promise.all(subjects[0].id.map(async(subject,index)=> {
+       subjectsOfSubject = await SubSubjectModel.aggregate([
+         {
+             $match: {"parents": subject.id} 
+             
+           },
+           {
+            $group: {
+              _id: "$$ROOT",
+            },
+          }
+
+       ])
+       arrayToSend.push({subjectName:subject.subject,subsubjects:subjectsOfSubject})
+
+    }))
+  
+  res.send(arrayToSend)
 })
 
 
