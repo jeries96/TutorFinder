@@ -64,7 +64,7 @@ function ForgotPassword(){
         event.preventDefault();
         let {password}=event.target.elements;
         password=password.value;
-        
+        console.log(password)
         fetch('/api/users/updatePassword ', {
             method: "PUT",
             body: JSON.stringify({email,password}),
@@ -76,7 +76,7 @@ function ForgotPassword(){
             .then((data) => {
                 console.log(data)
                 if(data.success==true) {
-                history.push('/HomePage')
+                history.push('/')
             }
                 else {
                     setError(data.error)
@@ -156,7 +156,7 @@ function ForgotPassword(){
             type="password" 
             id="ForgotPassword__textInput" 
             placeholder="סיסמה עוד פעם" 
-            name="password" 
+            name="repeatPassword" 
             required />
             
             <h4 className="errorMsg">{error}</h4>

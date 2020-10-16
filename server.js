@@ -125,7 +125,7 @@ id:"characterizationAndDesign"
     startingPrice:15
 },
 parents:["managmentInformationSystem"],
-id:"haracterizationAndDesign"
+id:"Logic Design"
 },
 {
   SubSubjectInfo: {

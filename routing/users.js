@@ -31,7 +31,7 @@ router.post('/login', (req, res) => {
             if (checkEmail.length > 0) {
                 const isMatch = await bcrypt.compare(password, checkEmail[0].userInfo.password)
                 if (isMatch) {
-                    if (checkEmail[0].active == true) {
+                    if (checkEmail[0].userActivity.active == true) {
                         const token = await jwt.sign({
                             name: checkEmail[0].userPersonalInfo.firstName,
                             username: checkEmail[0].userInfo.email,
