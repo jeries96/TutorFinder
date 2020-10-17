@@ -6,27 +6,7 @@ const subSubject="";
 const teachingPlaces=[];
 
 function MiniProfileCard(props) {
-  const [teachers,setTeachers]=useState([]);
-  useEffect(() => {
-    fetch('/api/matchingTeachers/getTeachers', {
-        method: 'POST',
-        body: JSON.stringify({ teachingPlaces,subSubject }),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
-          if(data[0]._id===true){
-            setTeachers(data[0].teachers)
-          }
-          else{
-          console.log(data.message)
-          }
-        })
-
-}, [])
-
+  const teachers = props
 
   return (
 
