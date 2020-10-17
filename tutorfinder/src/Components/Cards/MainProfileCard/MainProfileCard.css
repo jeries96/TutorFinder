@@ -1,9 +1,19 @@
+.MainProfileCard__container{
+  display:grid;
+  grid-template-columns: 20vw 60vw 20vw;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  " . mainProfile ."
+}
+
 .MainProfileCard__Wrapper{
   background: #fff;
-  flex: 1;
-  margin-bottom: 50px;
   padding: 22px 30px 32px 30px;
   width: 100%;
+  text-align: center;
+  margin: 2%;
+  grid-area: mainProfile;
+  box-shadow: 2px 2px 2px 2px rgb(212, 205, 205);
 
 }
 .MainProfileCard__Header{
@@ -11,10 +21,7 @@
   display: flex;
   width:100%;
 }
-.MainProfileCard__Header__ProfilePicture_holder{
-  padding-left: 10%;
-  
-}
+
 .MainProfileCard__Header__ProfilePicture{
 border-radius: 50%;
 display: block;
@@ -25,7 +32,7 @@ width: 40%;
 
 .MainProfileCard__Header__ProfileInfo_holder{
 padding-left: 38px;
-text-align: right;
+text-align: center;
 }
 
 .MainProfileCard__Header__ProfileInfo_Name{
@@ -91,22 +98,23 @@ border-right: 1px solid #eaeaea;
     margin-inline-end: 0px;
 }
 
-@media only screen and (max-width: 400px) {
-  /* For tablets: */
-  .MainProfileCard__Wrapper{width: 340px;}
-  .MainProfileCard__Header__ProfilePicture{width: 30%;}
-}
-@media only screen and (max-width: 600px) {
-  /* For tablets: */
-  .MainProfileCard__Wrapper{width: 400px;}
-  .MainProfileCard__Header__ProfilePicture
-  {width: 70%;}
-}
-@media only screen and (min-width: 768px) {
-  .MainProfileCard__Header__ProfilePicture
-  {width: 50%;}
-  /* For desktop: */
-  .MainProfileCard__Wrapper{width: 700px;}
+
+
+@media only screen and (max-width: 768px) {
+  .MainProfileCard__container{
+    grid-template-columns: 0vw 100vw 0vw;
+  }
+  
+  .MainProfileCard__Wrapper{
+    width: fit-content;
+    margin:0;
+  }
+  .MainProfileCard__Header__TeachingLocation_holder{
+        padding-right: 22px;
+    }
+    .MainProfileCard__Header__ProfilePicture{
+      width: 90%;
+      }
   
 }
 
