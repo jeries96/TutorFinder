@@ -5,8 +5,10 @@ import './MiniProfileCard.css'
 
 function MiniProfileCard(props) {
   const teachers = props
+  
   return (
       <div>
+        
        {teachers.teachers.length>0 && teachers.teachers.map((teacher,index)=>{
          return( <div key={index} dir="rtl" className="MiniProfileCard__Wrapper" >
       <div className="MiniProfileCard__Header__ProfilePicture_holder" >
