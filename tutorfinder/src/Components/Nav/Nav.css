@@ -25,6 +25,7 @@
     font-weight: bold;
     font-size: 20px;
     font-style: oblique;
+    letter-spacing: 3px;
     
   }
   
@@ -41,6 +42,9 @@
     
 }
 
+@media only screen and (max-width: 1024px) {
+  #navigation__logo , #navigation__signIn { margin-top: 2.5%;}
+}
 
 
 

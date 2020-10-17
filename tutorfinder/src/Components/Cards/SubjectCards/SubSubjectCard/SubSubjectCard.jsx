@@ -6,7 +6,7 @@ function SubSubjectCard(props){
     return (
     <div>
         <div className="SubSubject-card__Wrapper">
-                <div class="SubSubjectCard__image">
+                <div className="SubSubjectCard__image">
                 <img className="SubSubject-card__image" src={srcimg} alt="subjectImage" />
                 </div>
                 <div className="SubSubject-card__details">
@@ -16,7 +16,7 @@ function SubSubjectCard(props){
                          <h3>({rating})</h3>
                 </div>
 
-                <p className="SubSubject-card__price"> {price}</p> 
+                <p className="SubSubject-card__price"> {price}&#8362;</p>
                 </div>   
         </div>
         

@@ -1,0 +1,72 @@
+.Testimonials__container {
+
+    display:grid;
+    background-color: rgb(231, 231, 231);
+
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+
+    grid-template-areas: 
+    " .  title  . "
+    " star expert stam "
+    ;
+    
+}
+
+.Testimonials__title { 
+    color:rgb(9, 76, 131);  
+}
+.star {
+    grid-area: star;
+    width: 90%;
+    margin-bottom: 10%;
+    margin-top:10%;
+    text-align: center;
+}
+
+.expert {
+    grid-area: expert;
+    width: 90%;
+    margin-bottom: 10%;
+    margin-top:10%;
+    text-align: center;
+
+}
+.stam {
+    grid-area: stam;
+    width: 90%;
+    margin-bottom: 10%;
+    margin-top:10%;
+    text-align: center;
+
+}
+
+.title {
+    margin-top: 10%;
+    text-align: center;    
+    grid-area: title;
+    font-size: 28px;
+    color: rgb(9, 76, 131);
+}
+
+
+/* For mobile phones And Tablets : */
+@media only screen and (max-width: 1024px) {
+        
+    .Testimonials__container {
+         grid-template-columns: 10vw 80vw 10vw;
+         grid-template-areas: 
+         "  . title . "
+         ". star . "
+         ". expert . "
+         ". stam ."
+         ;
+     
+        }
+        .title {
+            
+            margin-left: 5%;
+            margin-right: 0;
+        }
+        
+  }

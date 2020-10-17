@@ -1,18 +1,6 @@
-.App {
-  text-align: center;
-  min-height: 100vh;
-  background-color: whitesmoke;
-  
+body {
+  background-color:whitesmoke;
 }
 
-.footer{
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: rgb(34, 32, 32);
-  color: white;
-  font-weight: bold;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
+
+

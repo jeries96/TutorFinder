@@ -1,0 +1,26 @@
+.SubjectCard__Wrapper{
+    width:100%;
+    
+}
+.SubjectCard__Title{
+    text-align: right;
+    border-bottom: 1px solid black;
+    width:fit-content;
+    margin-top:2%;
+    margin-right:8%;
+    font-style: oblique;
+    font-size:23px;
+    font-weight: bolder;
+}
+.SubjectCard__WrapperTitle > h2 { 
+    text-align: center;
+    margin-top:5%;
+    color: rgb(9, 76, 131);
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.rec.rec-arrow {
+    background-color: whitesmoke;
+    box-shadow: none;
+}
