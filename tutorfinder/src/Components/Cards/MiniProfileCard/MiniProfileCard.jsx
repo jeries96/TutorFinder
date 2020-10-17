@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Filters from '../../Utilities/Filters/Filters'
 import './MiniProfileCard.css'
-const subSubject="";
-const teachingPlaces=[];
+
 
 function MiniProfileCard(props) {
   const teachers = props
@@ -11,7 +9,7 @@ function MiniProfileCard(props) {
   return (
 
     <div>
-      <div className="MiniProfileCard__Filters"><Filters /> </div>
+      
       
     <div dir="rtl" className="MiniProfileCard__Wrapper" >
        

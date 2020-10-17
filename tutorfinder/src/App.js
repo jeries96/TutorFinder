@@ -14,6 +14,7 @@ import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 import Nav from './Components/Nav/Nav' 
 import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';
+import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
 function App() {
   return (
     <HashRouter>
@@ -24,7 +25,7 @@ function App() {
       <Route path="/SignIn" component={SignIn} />
       <Route path="/SignUp" component={SignUp} />
       <Route path="/forgotPassword" component={ForgotPassword} />
-      <Route path="/teachers" component={MiniProfileCard} />
+      <Route path="/teachers" component={MatchingTeachers} />
       <Route path="/profile" component={MainProfileCard} />
       </Switch> 
     </div>

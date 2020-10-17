@@ -21,15 +21,15 @@ function Filters(props) {
     return (<div className="Filters-Container__wrapper">
                     <div className="Filter__wrapper">
                       <p> מקום</p>
-                    <Select options={lessonAreaOptions} className="filter__option"/>
+                    <Select options={lessonAreaOptions} className="filter__option" placeholder="אזור"/>
                     </div>
                     <div className="Filter__wrapper">
                       <p> מין</p>
-                    <Select options={teacherGenderOptions} className="filter__option"/>
+                    <Select options={teacherGenderOptions} className="filter__option" placeholder="מין"/>
                     </div>
                     <div className="Filter__wrapper">
-                      <p> :סנן לפי </p>
-                    <Select options={sortOptions} className="filter__option"/>
+                      <p> סנן לפי: </p>
+                    <Select options={sortOptions} className="filter__option" placeholder="סנן"/>
                     </div>
             </div>
             )
