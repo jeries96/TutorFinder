@@ -45,62 +45,62 @@ app.use("/api/matchingTeachers", matchingTeachersRouter);
 // app.use("/api/statistics", statistics);
 
 
-const Data = [
-  {
-    SubSubjectInfo: {
-      name: "אפידמיולוגיה",
-      basicInfo: "String",
-      img:"https://s8.gifyu.com/images/epidemiology.png",
-      rating:4.3,
-      startingPrice:15
-  },
-  parents:["nursing"],
-  id:"epidemiology"
-},
-{
-  SubSubjectInfo: {
-    name: "פרמקולוגיה",
-    basicInfo: "string",
-    img:"https://s8.gifyu.com/images/pharma.png",
-    rating:4.0,
-    startingPrice:30
-},
-parents:["nursing"],
-id:"pharmacology"
-},
-{
-  SubSubjectInfo: {
-    name: "מיקרוביולוגיה",
-    basicInfo:"string",
-    img: "https://s8.gifyu.com/images/microbiology.png",
-    rating:3.3,
-    startingPrice:8
-},
-parents:["nursing"],
-id:"microbiology"
-},
+// const Data = [
+//   {
+//     SubSubjectInfo: {
+//       name: "אפידמיולוגיה",
+//       basicInfo: "String",
+//       img:"https://s8.gifyu.com/images/epidemiology.png",
+//       rating:4.3,
+//       startingPrice:15
+//   },
+//   parents:["nursing"],
+//   id:"epidemiology"
+// },
+// {
+//   SubSubjectInfo: {
+//     name: "פרמקולוגיה",
+//     basicInfo: "string",
+//     img:"https://s8.gifyu.com/images/pharma.png",
+//     rating:4.0,
+//     startingPrice:30
+// },
+// parents:["nursing"],
+// id:"pharmacology"
+// },
+// {
+//   SubSubjectInfo: {
+//     name: "מיקרוביולוגיה",
+//     basicInfo:"string",
+//     img: "https://s8.gifyu.com/images/microbiology.png",
+//     rating:3.3,
+//     startingPrice:8
+// },
+// parents:["nursing"],
+// id:"microbiology"
+// },
 
-{
-  SubSubjectInfo: {
-    name: "אנטומיה",
-    basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
-    img:"https://s8.gifyu.com/images/anatomy.png" ,
-    rating:4.9,
-    startingPrice:90
-},
-parents:["nursing"],
-id:"anatomy"
-},
-{
-  SubSubjectInfo: {
-    name: "סיעוד המבוגר הכירורגי",
-    basicInfo: "String",
-    img:"https://s8.gifyu.com/images/The-surgical-adult.png" ,
-    rating:4.3,
-    startingPrice:34
-},
-parents:["nursing"],
-id:"surgicalAdult"}
+// {
+//   SubSubjectInfo: {
+//     name: "אנטומיה",
+//     basicInfo: "https://s8.gifyu.com/images/data-structures.jpg",
+//     img:"https://s8.gifyu.com/images/anatomy.png" ,
+//     rating:4.9,
+//     startingPrice:90
+// },
+// parents:["nursing"],
+// id:"anatomy"
+// },
+// {
+//   SubSubjectInfo: {
+//     name: "סיעוד המבוגר הכירורגי",
+//     basicInfo: "String",
+//     img:"https://s8.gifyu.com/images/The-surgical-adult.png" ,
+//     rating:4.3,
+//     startingPrice:34
+// },
+// parents:["nursing"],
+// id:"surgicalAdult"}
 // },
 // {
 //   SubSubjectInfo: {
@@ -146,47 +146,47 @@ id:"surgicalAdult"}
 // parents:["electricalEngineering"],
 // id:"operatingSystems"
 // },
-]
+// ]
 // SubSubjectModel.insertMany(Data).then(console.log("Adding Success.!"));
 
 
-const teachers=[{
-  userInfo: {
-      email: "randomgirl12@gmail.com",
-      role: "teacher",
-      password: "123"
-  },
-  userPersonalInfo:{
-      firstName: "נתאשא",
-      lastName: "ראי",
-      location:null,
-      education:null,
-      phoneNumber:null,
-      personalPhoto:"https://s8.gifyu.com/images/oldwoman1.jpg"
-  },
-  userLifeActivity:{
-    biography:`מחנכת אחיות מסורה וידענית עם יותר מ -66 שנות שירות בתחום הבריאות והחינוך העל-תיכוני. היסטוריה ארוכה של ניסיון כאחות מוסמכת במסגרת בית החולים. רישום מוכח של תוצאות כמדריך פוסט-תיכון העובד עם מועמדים לאחות. מחויבות למסירת רקע הדרכה ותיאוריה יעיל ולסיוע בפיתוח חוויות קליניות טובות יותר עבור התלמידים. התמקדה בהכנת כל מועמד לאחות להיות ספק שירותי בריאות יעיל לעתיד.`,
-    experiences:[],
-    awardsPhotos:[]
-  },
-  teaching:{
-    subSubjects:["surgicalAdult","microbiology","pharmacology","epidemiology"],
-    teachingPlaces:["באינטרנט","בית הסטודנט","בית המורה"]
-  },
-  ratings:{
-    overallRate:1.2,
-    peopleRating:[]
-  },
-  userActivity:{
-    active:true,
-    accountCreation:new Date(),
-    lastLogIn:new Date(),
-  }
-}
+// const teachers=[{
+//   userInfo: {
+//       email: "randomgirl12@gmail.com",
+//       role: "teacher",
+//       password: "123"
+//   },
+//   userPersonalInfo:{
+//       firstName: "נתאשא",
+//       lastName: "ראי",
+//       location:null,
+//       education:null,
+//       phoneNumber:null,
+//       personalPhoto:"https://s8.gifyu.com/images/oldwoman1.jpg"
+//   },
+//   userLifeActivity:{
+//     biography:`מחנכת אחיות מסורה וידענית עם יותר מ -66 שנות שירות בתחום הבריאות והחינוך העל-תיכוני. היסטוריה ארוכה של ניסיון כאחות מוסמכת במסגרת בית החולים. רישום מוכח של תוצאות כמדריך פוסט-תיכון העובד עם מועמדים לאחות. מחויבות למסירת רקע הדרכה ותיאוריה יעיל ולסיוע בפיתוח חוויות קליניות טובות יותר עבור התלמידים. התמקדה בהכנת כל מועמד לאחות להיות ספק שירותי בריאות יעיל לעתיד.`,
+//     experiences:[],
+//     awardsPhotos:[]
+//   },
+//   teaching:{
+//     subSubjects:["surgicalAdult","microbiology","pharmacology","epidemiology"],
+//     teachingPlaces:["באינטרנט","בית הסטודנט","בית המורה"]
+//   },
+//   ratings:{
+//     overallRate:1.2,
+//     peopleRating:[]
+//   },
+//   userActivity:{
+//     active:true,
+//     accountCreation:new Date(),
+//     lastLogIn:new Date(),
+//   }
+// }
 
-]
+// ]
 
-UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
+//UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
 
 
 

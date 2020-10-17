@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Filters from '../../Components/Utilities/Filters/Filters'
 import MiniProfileCard from '../../Components/Cards/MiniProfileCard/MiniProfileCard'
 
@@ -10,7 +9,6 @@ function MatchingTeachers(props) {
   // console.log(props.location.aboutProps.name)
   // .name;
   const subSubject=props.location.aboutProps
-  console.log(subSubject)
   const teachingPlaces=props;
   const [teachers,setTeachers]=useState([]);
   useEffect(() => {
