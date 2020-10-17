@@ -4,8 +4,8 @@
   
   
   width: 100%; */
+ 
   margin-top: 20px;
-  
   background: #fff;
   padding: 22px 30px 32px 30px;
   display: grid;
@@ -21,6 +21,7 @@
   box-shadow: 5px 5px 5px 5px lightgray;
   transition: 0.5s;
 }
+
 /* .MiniProfileCard__Header{
   align-items: flex-start;
   display: flex;

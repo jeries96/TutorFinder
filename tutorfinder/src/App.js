@@ -13,7 +13,6 @@ import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 //components
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 import Nav from './Components/Nav/Nav' 
-import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';
 import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
 function App() {
   return (

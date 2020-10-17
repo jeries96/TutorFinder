@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './SubjectCard.css'
 // For image slider 
 import Carousel from 'react-elastic-carousel';
@@ -28,8 +28,8 @@ function SubjectCard(props) {
             {subjectsData.subjectsData.length > 0 && subjectsData.subjectsData.map((subject, index) => {
 
                 return (<div>
-                    {subject.subsubjects.length != 0 && <h3 className="SubjectCard__Title"> {subject.subjectName}</h3>}
-                    {subject.subsubjects.length != 0 &&
+                    {subject.subsubjects.length !== 0 && <h3 className="SubjectCard__Title"> {subject.subjectName}</h3>}
+                    {subject.subsubjects.length !==0 &&
                         <Carousel className="cardsSlides" breakPoints={breakPoints}  >
 
                             {subject.subsubjects.map((subSubject, index) => {
