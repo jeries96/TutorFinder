@@ -20,17 +20,17 @@ function MiniProfileCard(props) {
         <h6 className="MiniProfileCard__Header__TeachingLocation_Title">מיקומי הוראה:
             </h6>
         <div className="MiniProfileCard__Header__TeachingLocation_locations">
-        {/* {teacher.teaching.teachingPlaces.length>0 && teacher.teaching.teachingPlaces.map((place,index)=>{
+        {teacher.teaching.teachingPlaces.length>0 && teacher.teaching.teachingPlaces.map((place,index)=>{
         return(<div key={index} className="MiniProfileCard__Header__TeachingLocation_location">{place}</div>)
-        }) } */}
+        }) }
         </div>
       </div>
       <Link to="profile" className="MiniProfileCard__Button">
         ראה פרופיל מלא
         </Link>
-        <div className="MiniProfileCard__Bio">
+        <p className="MiniProfileCard__Bio">
         {teacher.userLifeActivity.biography}
-        </div>
+        </p>
       </div> )})}
       </div>
 

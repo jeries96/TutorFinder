@@ -13,7 +13,7 @@
   grid-template-rows: 55% 30% 15%;
   grid-template-areas: 
   "ProfilePicture  ProfileInfo TeachingPlaces"
-  "bio bio bio"
+  "bio bio ."
   ". . Button";
 }
 .MiniProfileCard__Wrapper:hover{
@@ -86,6 +86,13 @@
 .MiniProfileCard__Bio{
   grid-area: bio;
   margin-top: 1%;
+  overflow: hidden; 
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-overflow: ellipsis;
 }
 
 

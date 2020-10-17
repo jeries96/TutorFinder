@@ -28,7 +28,7 @@ const subSubject=req.body;
 teachers= await userModel.aggregate([
   {
     $match: {
-        "userInfo.role": "student"
+        "userInfo.role": "teacher"
     }
 },
 {
