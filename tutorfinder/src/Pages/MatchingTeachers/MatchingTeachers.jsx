@@ -7,8 +7,10 @@ import './MatchingTeachers.css'
 
 
 function MatchingTeachers(props) {
-  console.log(props.location.aboutProps)
-  const subSubject=props;
+  // console.log(props.location.aboutProps.name)
+  // .name;
+  const subSubject=props.location.aboutProps
+  console.log(subSubject)
   const teachingPlaces=props;
   const [teachers,setTeachers]=useState([]);
   useEffect(() => {
@@ -18,7 +20,7 @@ function MatchingTeachers(props) {
         headers: {
             "Content-Type": "application/json"
         }
-    })
+    })  
         .then(res => res.json())
         .then(data => {
           if(data[0]._id===true){
@@ -30,7 +32,6 @@ function MatchingTeachers(props) {
         })
 
 }, [subSubject,teachingPlaces])
-
 
 return (
   <div dir="rtl" className="matchingTeachers__wrapper">

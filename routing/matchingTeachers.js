@@ -13,8 +13,8 @@ const userModel = mongoose.model("UserModel", UserSchema);
 
 router.post('/getTeachers', async (req, res) => {
 const teachingPlaces=req.body;
-const subSubject=req.body;
-
+let subSubject=req.body;
+subSubject=subSubject.subSubject.name
 // if(teachingPlaces.length!=0){
  
 //     let placesArray = []
@@ -27,10 +27,9 @@ const subSubject=req.body;
 
 teachers= await userModel.aggregate([
   {
-    $match: {
-        "userInfo.role": "teacher"
+    $match:{"teaching.subSubjects":subSubject,"userInfo.role":"teacher"}
     }
-},
+  ,
 {
   $group: {
       _id:null,
