@@ -209,7 +209,7 @@ const teachers=[{
     awardsPhotos:[]
   },
   teaching:{
-    subSubjects:[],
+    subSubjects:["statistics"],
     teachingPlaces:["באינטרנט","בית הסטודנט","בית המורה"]
   },
   ratings:{
@@ -225,7 +225,7 @@ const teachers=[{
 
 ]
 
-// UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
+ //UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
 
 
 

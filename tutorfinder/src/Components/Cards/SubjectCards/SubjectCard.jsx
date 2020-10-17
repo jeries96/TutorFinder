@@ -6,7 +6,7 @@ import Carousel from 'react-elastic-carousel';
 import SubSubjectCard from '../SubjectCards/SubSubjectCard/SubSubjectCard'
 import { Link } from 'react-router-dom';
 
-export const dataContext=createContext();
+
 function SubjectCard(props) {
     const subjectsData=props
     const breakPoints = [
@@ -27,14 +27,14 @@ function SubjectCard(props) {
             </div>
             {subjectsData.subjectsData.length > 0 && subjectsData.subjectsData.map((subject, index) => {
 
-                return (<div>
+                return (<div key={index}>
                     {subject.subsubjects.length !== 0 && <h3 className="SubjectCard__Title"> {subject.subjectName}</h3>}
                     {subject.subsubjects.length !==0 &&
                         <Carousel className="cardsSlides" breakPoints={breakPoints}  >
 
                             {subject.subsubjects.map((subSubject, index) => {
                                 return (
-                                    <Link dir="rtl" to={{pathname:"/teachers",
+                                    <Link key={index} dir="rtl" to={{pathname:"/teachers",
                                                          aboutProps:{name:subSubject._id.id} }}>
                                         <SubSubjectCard
                                             key={subSubject._id.id}

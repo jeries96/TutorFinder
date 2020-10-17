@@ -26,7 +26,7 @@ function MiniProfileCard(props) {
         </div>
       </div>
 
-        <Link to="profile" class="MiniProfileCard__Button" to={{pathname:"/profile",
+        <Link to="profile" className="MiniProfileCard__Button" to={{pathname:"/profile",
                                                             aboutProps:{name:'geriesmazzawi@gmail.com'} }}>
         ראה פרופיל מלא
         </Link>
