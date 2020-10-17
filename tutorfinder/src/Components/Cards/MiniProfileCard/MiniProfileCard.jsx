@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import './MiniProfileCard.css'
-
 import Filters from '../../Utilities/Filters/Filters'
+import './MiniProfileCard.css'
+const subSubject="";
+const teachingPlaces=[];
+
 function MiniProfileCard(props) {
-
-
+  const teachers = props
 
   return (
 

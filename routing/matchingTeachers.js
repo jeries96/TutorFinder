@@ -1,38 +1,59 @@
-// const mongoose = require('mongoose');
-// const router = express.Router();
-// const express = require("express");
-// const UserSchema = require('../schemas/UserSchema');
+const mongoose = require('mongoose');
+const express = require("express");
+const router = express.Router();
+
+const UserSchema = require('../schemas/UserSchema');
 
 
 
-// const userModel = mongoose.model("UserModel", UserSchema);
+const userModel = mongoose.model("UserModel", UserSchema);
 
 
 
 
-// router.post('/getTeachers', (req, res) => {
-// const teachingPlaces=req.body;
-// const subSubject=req.body;
+router.post('/getTeachers', async (req, res) => {
+const teachingPlaces=req.body;
+const subSubject=req.body;
 
-// if(teachingPlaces.length()!=0){
+// if(teachingPlaces.length!=0){
  
 //     let placesArray = []
-//     functionalTest.map((place, index) => {
+//     teachingPlaces.map((place, index) => {
 //       placesArray.push({ "teaching.teachingPlace": place })
 //     })
 //     filtersArray.push({ "$or": placesArray })
 
 // }
 
+teachers= await userModel.aggregate([
+  {
+    $match: {
+        "userInfo.role": "teacher"
+    }
+},
+{
+  $group: {
+      _id:null,
+       teachers:{$push: "$$ROOT"} ,
+  },
+}
+])
+if(teachers.length>0){
+  teachers[0]._id=true; 
+  teachers[0].teachers.map((eachuser)=>{
+  eachuser.userInfo.password=null;
+})
+}else{
+  teachers={_id:false,message:"אין מורים שמלמדים הנושה הזה"}
+}
+res.send(teachers)
+})
 
 
 
-// })
 
 
 
 
 
-
-
-
+module.exports = router;
