@@ -7,6 +7,7 @@ import './MatchingTeachers.css'
 
 
 function MatchingTeachers(props) {
+  console.log(props.location.aboutProps)
   const subSubject=props;
   const teachingPlaces=props;
   const [teachers,setTeachers]=useState([]);
