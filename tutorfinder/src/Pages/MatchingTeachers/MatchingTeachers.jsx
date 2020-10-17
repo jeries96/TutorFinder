@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Filters from '../../Utilities/Filters/Filters'
-
+import Filters from '../../Components/Utilities/Filters/Filters'
 import MiniProfileCard from '../../Components/Cards/MiniProfileCard/MiniProfileCard'
 
 import './MatchingTeachers.css'
@@ -21,6 +20,7 @@ function MatchingTeachers(props) {
     })
         .then(res => res.json())
         .then(data => {
+          console.log(data)
           if(data[0]._id===true){
             setTeachers(data[0].teachers)
           }
@@ -33,8 +33,11 @@ function MatchingTeachers(props) {
 
 
 return (
-  <div>
+  <div dir="rtl" className="matchingTeachers__wrapper">
+    <div className="matchingTeachers__Filters"> <Filters /> </div>
+    <div className="matchingTeachers__miniProfileCard">
     <MiniProfileCard teachers={teachers} />
+    </div>
   </div>
 )
 

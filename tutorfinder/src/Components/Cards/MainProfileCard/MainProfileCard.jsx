@@ -20,7 +20,8 @@ function MainProfileCard(props) {
   }
 
   return (
-    <div dir="rtl" className="MainProfileCard__Wrapper">
+    <div dir="rtl" className="MainProfileCard__container">
+    <div className="MainProfileCard__Wrapper">
       <div className="MainProfileCard__Header">   
         <div className="MainProfileCard__Header__ProfilePicture_holder" >
           <img className="MainProfileCard__Header__ProfilePicture" src="https://prod-takelessons.netdna-ssl.com/document/profile_241617_pi_f8356e0e08cf2c1767580cedc0ab7f9e8ee156e4.jpg.webp?v=1599093909" alt="profilepicture" /></div>
@@ -55,7 +56,7 @@ function MainProfileCard(props) {
     {display==="picVids" && <div> this is picVids</div> }
     
     </div>
-    
+    </div>
   );
 }
 
