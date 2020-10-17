@@ -14,9 +14,9 @@ const SubSubjectModel = mongoose.model("subSubjectModel", SubSubjectSchema);
 
 
 
-router.post('/getSubjects',async (req, res) => {
+router.get('/getSubjects',async (req, res) => {
   const arrayToSend=[];
-  const {education}=req.body;
+  // const {education}=req.body;
     subjects = await SubjectModel.aggregate([
       // {
       //   $match: {

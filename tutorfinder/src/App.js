@@ -6,10 +6,10 @@ import {Switch , Route ,HashRouter} from 'react-router-dom';
 
 //components
 import Nav from './Components/Nav/Nav' 
-import HomePage from './Components/HomePage/HomePage'
-import SignIn from './Components/SignIn/SignIn'
-import SignUp from './Components/SignUp/SignUp';
-import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import HomePage from './Pages/HomePage/HomePage'
+import SignIn from './Pages/SignIn/SignIn'
+import SignUp from './Pages/SignUp/SignUp';
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 
 import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';

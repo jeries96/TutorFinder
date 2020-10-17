@@ -36,8 +36,8 @@ app.use("/api/subjects", subjectsRouter);
 // const mainProfileRouter = require("./routing/analytics");
 // app.use("/api/analytics", mainProfileRouter);
 
-// const matchingTeachersRouter = require("./routing/bellaRouting");
-// app.use("/api/PostBellaData", matchingTeachersRouter);
+const matchingTeachersRouter = require("./routing/matchingTeachers");
+app.use("/api/matchingTeachers", matchingTeachersRouter);
 
 // const statistics = require("./routing/statistics");
 // app.use("/api/statistics", statistics);

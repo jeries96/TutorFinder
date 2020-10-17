@@ -6,27 +6,8 @@ import Carousel from 'react-elastic-carousel';
 import SubSubjectCard from '../SubjectCards/SubSubjectCard/SubSubjectCard'
 import { Link } from 'react-router-dom';
 
-const education = { educationPlace: 'emekYezrel' }
 function SubjectCard(props) {
-    const [subjectsData, setSubjectsData] = useState([])
-
-    useEffect(() => {
-        fetch('/api/subjects/getSubjects', {
-            method: 'POST',
-            body: JSON.stringify({ education }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setSubjectsData(data)
-
-            })
-
-    }, [])
-
+    const subjectsData=props
     const breakPoints = [
         { width: 1, itemsToShow: 1, showArrows: false },
         { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows: false },
@@ -44,7 +25,7 @@ function SubjectCard(props) {
             <div className="SubjectCard__WrapperTitle">
                 <h2> צברו כישורים, תיהנו, ובנו לכם ידע טוב יותר</h2>
             </div>
-            {subjectsData.length > 0 && subjectsData.map((subject, index) => {
+            {subjectsData.subjectsData.length > 0 && subjectsData.subjectsData.map((subject, index) => {
 
                 return (<div>
                     {subject.subsubjects.length != 0 && <h3 className="SubjectCard__Title"> {subject.subjectName}</h3>}

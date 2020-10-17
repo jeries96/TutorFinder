@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import './MiniProfileCard.css'
-
 import Filters from '../../Utilities/Filters/Filters'
-function MiniProfileCard(props) {
+import './MiniProfileCard.css'
+const subSubject="";
+const teachingPlaces=[];
 
+function MiniProfileCard(props) {
+  const [teachers,setTeachers]=useState([]);
+  useEffect(() => {
+    fetch('/api/matchingTeachers/getTeachers', {
+        method: 'POST',
+        body: JSON.stringify({ teachingPlaces,subSubject }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+          if(data[0]._id===true){
+            setTeachers(data[0].teachers)
+          }
+          else{
+          console.log(data.message)
+          }
+        })
+
+}, [])
 
 
   return (
