@@ -2,18 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MiniProfileCard.css'
 
-
+import RatingStar from '../../Utilities/Rating/RatingStar'
 function MiniProfileCard(props) {
   const teachers = props
+  
   return (
       <div>
+        
        {teachers.teachers.length>0 && teachers.teachers.map((teacher,index)=>{
          return( <div key={index} dir="rtl" className="MiniProfileCard__Wrapper" >
       <div className="MiniProfileCard__Header__ProfilePicture_holder" >
         <img className="MiniProfileCard__Header__ProfilePicture" src={teacher.userPersonalInfo.personalPhoto} alt="profilepicture" /></div>
       <div className="MiniProfileCard__Header__ProfileInfo_holder" >
         <h2 className="MiniProfileCard__Header__ProfileInfo_Name" >{teacher.userPersonalInfo.firstName} {teacher.userPersonalInfo.lastName} </h2>
-        <div>{teacher.ratings.overallRate}</div>
+        <div><RatingStar value={4}/></div>
         <div>באינטרנט</div>
       </div>
       <div className="MiniProfileCard__Header__TeachingLocation_holder">
@@ -26,7 +28,7 @@ function MiniProfileCard(props) {
         </div>
       </div>
 
-        <Link to="profile" className="MiniProfileCard__Button" to={{pathname:"/profile",
+        <Link  className="MiniProfileCard__Button" to={{pathname:"/profile",
                                                             aboutProps:{name:'geriesmazzawi@gmail.com'} }}>
         ראה פרופיל מלא
         </Link>

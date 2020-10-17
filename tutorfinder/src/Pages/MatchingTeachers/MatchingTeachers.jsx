@@ -23,12 +23,15 @@ function MatchingTeachers(props) {
     })  
         .then(res => res.json())
         .then(data => {
-          if(data[0]._id===true){
+          if(data.length>0){
+            if(data[0]._id===true){
             setTeachers(data[0].teachers)
           }
-          else{
-          console.log(data.message)
+        }else{
+            alert(data.message)
           }
+          
+          
         })
 
 }, [subSubject,teachingPlaces])
