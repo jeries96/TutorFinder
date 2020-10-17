@@ -5,7 +5,7 @@ import './MainProfileCard.css'
 
 function MainProfileCard(props) {
 
-
+  console.log(props.location.aboutProps)
   const [display,setDisplay]=useState("bio");
   const handleNavigationOptions=(option)=>{
   if(option.target.id==="ratings"){

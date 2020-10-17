@@ -15,6 +15,7 @@ import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard'
 import Nav from './Components/Nav/Nav' 
 import MiniProfileCard from './Components/Cards/MiniProfileCard/MiniProfileCard';
 import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
+import SubjectCard from './Components/Cards/SubjectCards/SubjectCard';
 function App() {
   return (
     <HashRouter>
