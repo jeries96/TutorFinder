@@ -108,7 +108,10 @@ function SignUp (){
             .then((res) => res.json())
             .then((data) => {if(data.success){
               history.push('/SignIn')
-            }});
+            }
+          else{
+            alert(data.error)
+          }});
     }
   }
       
