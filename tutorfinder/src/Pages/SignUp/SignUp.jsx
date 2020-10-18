@@ -62,12 +62,10 @@ function SignUp (){
      function savePassword (event) {
        let password=event.target.value
        passwordMatch.password=password
-       console.log(passwordMatch)
      }
      function saveRepeatPassword (event) {
       let repeatPassword=event.target.value
       passwordMatch.repeatPassword=repeatPassword
-      console.log(passwordMatch)
     }
      function checkPassword(){
         if(passwordMatch.password===passwordMatch.repeatPassword){
@@ -99,7 +97,6 @@ function SignUp (){
           }
           serverSignUp.password=password.value;
           
-        console.log(serverSignUp)
           
           fetch('/api/users/createUser', {
             method: "POST",
@@ -109,7 +106,9 @@ function SignUp (){
             },
         })
             .then((res) => res.json())
-            .then((data) => {console.log(data)});
+            .then((data) => {if(data.success){
+              history.push('/SignIn')
+            }});
     }
   }
       
