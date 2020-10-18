@@ -1,8 +1,7 @@
-import React ,{useState, Route } from 'react';
+import React ,{useState} from 'react';
 import './SignUp.css'
-import {Link} from 'react-router-dom';
+import {Link, useHistory } from 'react-router-dom';
 
-import SignIn from '../SignIn/SignIn'
 // Components : 
 import Select from 'react-select';
 
@@ -18,6 +17,7 @@ const serverSignUp={firstName:null,
 const passwordMatch={password:null , repeatPassword:null}
 
 function SignUp (){
+  const history=useHistory()
     const [validatePassword,setValidatePassword] = useState("")
     const [error,setError] = useState("")
     const collegeOptions = [
@@ -107,9 +107,7 @@ function SignUp (){
         })
             .then((res) => res.json())
             .then((data) => {if(data.success){
-              return(
-                             
-            <Route path='/SignIn' component={SignIn} />)
+              history.push('/SignIn')
             }});
     }
   }
