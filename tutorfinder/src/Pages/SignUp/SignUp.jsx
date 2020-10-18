@@ -1,8 +1,8 @@
-import React ,{useState} from 'react';
+import React ,{useState, Route } from 'react';
 import './SignUp.css'
 import {Link} from 'react-router-dom';
 
-
+import SignIn from '../SignIn/SignIn'
 // Components : 
 import Select from 'react-select';
 
@@ -107,7 +107,9 @@ function SignUp (){
         })
             .then((res) => res.json())
             .then((data) => {if(data.success){
-              history.push('/SignIn')
+              return(
+                             
+            <Route path='/SignIn' component={SignIn} />)
             }});
     }
   }
