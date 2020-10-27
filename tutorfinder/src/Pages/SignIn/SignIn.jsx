@@ -22,7 +22,9 @@ function SignIn(){
             .then((res) => res.json())
             .then((data) => {
                 if(data.success) {
+                    
                 history.push('/')
+
             }
                 else {
                     alert('wrong password / username')
