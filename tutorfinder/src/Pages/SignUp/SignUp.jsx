@@ -1,7 +1,6 @@
 import React ,{useState} from 'react';
 import './SignUp.css'
-import {Link} from 'react-router-dom';
-
+import {Link, useHistory } from 'react-router-dom';
 
 // Components : 
 import Select from 'react-select';
@@ -18,6 +17,7 @@ const serverSignUp={firstName:null,
 const passwordMatch={password:null , repeatPassword:null}
 
 function SignUp (){
+  const history=useHistory()
     const [validatePassword,setValidatePassword] = useState("")
     const [error,setError] = useState("")
     const collegeOptions = [
@@ -62,12 +62,10 @@ function SignUp (){
      function savePassword (event) {
        let password=event.target.value
        passwordMatch.password=password
-       console.log(passwordMatch)
      }
      function saveRepeatPassword (event) {
       let repeatPassword=event.target.value
       passwordMatch.repeatPassword=repeatPassword
-      console.log(passwordMatch)
     }
      function checkPassword(){
         if(passwordMatch.password===passwordMatch.repeatPassword){
@@ -99,7 +97,6 @@ function SignUp (){
           }
           serverSignUp.password=password.value;
           
-        console.log(serverSignUp)
           
           fetch('/api/users/createUser', {
             method: "POST",
@@ -109,7 +106,12 @@ function SignUp (){
             },
         })
             .then((res) => res.json())
-            .then((data) => {console.log(data)});
+            .then((data) => {if(data.success){
+              history.push('/SignIn')
+            }
+          else{
+            alert(data.error)
+          }});
     }
   }
       

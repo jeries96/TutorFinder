@@ -32,8 +32,10 @@
 .MiniProfileCard__Header__ProfilePicture{
   border-radius: 50%;
   display: block;
-  height: 100%;
-  width: 50%;
+  /* height: 100%;
+  width: 50%; */
+  height: 100px;
+  width: 100px;
 }
 .MiniProfileCard__Header__ProfileInfo_holder{
   grid-area: ProfileInfo;
@@ -76,7 +78,7 @@
   overflow: hidden; 
     -webkit-box-orient: vertical;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow-wrap: break-word;
     word-break: break-word;
     text-overflow: ellipsis;
@@ -159,6 +161,7 @@
   }
   .MiniProfileCard__Bio{
     margin-top:5% ;
+    -webkit-line-clamp: 2;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -206,6 +209,10 @@
   .MiniProfileCard__Button{
     margin-top:10% ;
     right:0;
+  }
+  .MiniProfileCard__Bio{
+    margin-top:5% ;
+    -webkit-line-clamp: 1;
   }
   }
 /* .MiniProfileCard__Header__ProfilePicture_holder{

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = require('../schemas/UserSchema');
 const KeySchema = require('../schemas/KeySchema');

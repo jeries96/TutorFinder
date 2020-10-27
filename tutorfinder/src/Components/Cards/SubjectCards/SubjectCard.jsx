@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 function SubjectCard(props) {
     const subjectsData=props
     const breakPoints = [
-        { width: 1, itemsToShow: 1, showArrows: false },
-        { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows: false },
+        { width: 1, itemsToShow: 1, showArrows: true },
+        { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows: true },
         { width: 650, itemsToShow: 2.5, showArrows: true },
         { width: 1150, itemsToShow: 4, itemsToScroll: 2, enableMouseSwipe: false },
         { width: 1450, itemsToShow: 5, enableMouseSwipe: false },
