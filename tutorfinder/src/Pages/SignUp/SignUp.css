@@ -25,7 +25,7 @@
   
 }
 .SignUpForm__personalInput{
-  display: flex;
+ /* display: flex;*/
   margin: 5px;
   justify-content: space-around;
 }
@@ -36,9 +36,9 @@
   justify-content: space-around;
 }
 .SignUpForm__textInput, .SignUpForm__passwordInput {
-  width: 100%;
-  padding: 8px 16px;
-  margin: 5% 5%;
+  width: 70%;
+  padding: 20px 24px;
+  margin: 2% 2%;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -79,7 +79,7 @@
 
  .SignUpForm__inputs > h4{
   text-align: right;
-  margin-right:13%;
+  margin-right:15%;
 }
 .required {
   color: red;

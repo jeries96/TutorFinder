@@ -5,12 +5,7 @@ import {Link, useHistory } from 'react-router-dom';
 // Components : 
 import Select from 'react-select';
 
-const serverSignUp={firstName:null, 
-                    lastName:null, 
-                    location:null, 
-                    education:null, 
-                    phoneNumber:null, 
-                    personalPhoto:null, 
+const serverSignUp={firstName:null,  
                     email:null,
                     password:null }
 
@@ -82,19 +77,19 @@ function SignUp (){
           if(checkPassword()!== true){
             setError('שתי הסיסמאות חיבבים להיות זהים')
           }else {
-          const {userName,lastName,email,phone,area,education,password}=event.target.elements;
+          const {userName,email,password}=event.target.elements;
           serverSignUp.firstName=userName.value;
-          serverSignUp.lastName=lastName.value;
+         // serverSignUp.lastName=lastName.value;
           serverSignUp.email=email.value;
-          if(phone.value!==""){
-            serverSignUp.phoneNumber=phone.value;
-          }
-          if(area.value!==""){
-            serverSignUp.location=area.value;
-          }
-          if(education.value!==""){
-            serverSignUp.education=education.value;
-          }
+          // if(phone.value!==""){
+          //   serverSignUp.phoneNumber=phone.value;
+          // }
+          // if(area.value!==""){
+          //   serverSignUp.location=area.value;
+          // }
+          // if(education.value!==""){
+          //   serverSignUp.education=education.value;
+          // }
           serverSignUp.password=password.value;
           
           
@@ -130,10 +125,10 @@ function SignUp (){
          <input type="text" className="SignUpForm__textInput" placeholder="שם פרטי" name="userName" required />
          </div>
          
-         <div className="SignUpForm__inputs">
+         {/* <div className="SignUpForm__inputs">
          <h4> שם משפחה <b className="required">*</b></h4>
          <input type="text" className="SignUpForm__textInput" placeholder="שם משפחה" name="lastName" required />
-         </div>
+         </div> */}
          </div>
          
          <div className="SignUpForm__personalInput">
@@ -142,10 +137,10 @@ function SignUp (){
          <input type="email" className="SignUpForm__textInput" placeholder="דואר אלקטרוני" name="email" required />
          </div>
         
-         <div className="SignUpForm__inputs">
+         {/* <div className="SignUpForm__inputs">
          <h4> מספר פלפון </h4>
          <input type="tel"  className="SignUpForm__textInput" name="phone" maxlength={10} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="מספר פלאפון"  />
-         </div>
+         </div> */}
          </div>
 
          <div className="SignUpForm__personalInput">
@@ -177,7 +172,7 @@ function SignUp (){
 
        </div>
 
-         <div className="SignUpForm__SelectorsInput">
+         {/* <div className="SignUpForm__SelectorsInput">
          <div className="SignUpForm__inputs">
           <h4> אזור מגורים </h4>
          <Select 
@@ -196,7 +191,7 @@ function SignUp (){
          name="education" />
         </div>
         
-        </div>
+        </div> */}
 
         
          
