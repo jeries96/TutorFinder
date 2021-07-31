@@ -21,12 +21,12 @@ function App() {
     <div className="App"> 
       <Nav/>
       <Switch> 
-      <Route path="/" exact component={HomePage} />
-      <Route path="/SignIn" component={SignIn} />
-      <Route path="/SignUp" component={SignUp} />
-      <Route path="/forgotPassword" component={ForgotPassword} />
-      <Route path="/teachers" component={MatchingTeachers} />
-      <Route path="/profile" component={MainProfileCard} />
+         <Route path="/" exact component={HomePage} />
+         <Route path="/SignIn" component={SignIn} />
+         <Route path="/SignUp" component={SignUp} />
+         <Route path="/forgotPassword" component={ForgotPassword} />
+         <Route path="/teachers" component={MatchingTeachers} />
+         <Route path="/profile" component={MainProfileCard} />
       </Switch> 
     </div>
     </HashRouter>
