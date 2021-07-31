@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
-
-const UserSchema = require('../schemas/UserSchema');
-const KeySchema = require('../schemas/KeySchema');
-//read
-
+const bcrypt = require('bcryptjs');
+var secret = require("../server")
 const jwt = require("jsonwebtoken");
 var nodemailer = require('nodemailer')
 var validator = require("email-validator");
+
+
+const UserSchema = require('../schemas/UserSchema');
+const KeySchema = require('../schemas/KeySchema');
+const { getMaxListeners } = require('../schemas/UserSchema');
 const UserModel = mongoose.model("UserModel", UserSchema);
 const KeyModel = mongoose.model("KeyModel", KeySchema);
 
-var secret = require("../server")
+
 const saltRounds = 10
 
 var transporter = nodemailer.createTransport({
@@ -41,7 +42,7 @@ router.post('/login', (req, res) => {
                         );
 
                         res.cookie("loginToken", token, {
-                            maxAge: 172800000,
+                            maxAge: 1800000
                         });
                         res.send({ success: true, error: null, info: { role: checkEmail[0].userInfo.role, id: checkEmail[0]._id } })
                         res.end();
@@ -68,8 +69,8 @@ router.post('/login', (req, res) => {
 
 
 router.post('/createUser', (req, res) => {
-    const {serverSignUp} = req.body;
-    const { firstName, lastName, location, education, phoneNumber, personalPhoto, email, password }=serverSignUp;
+    const { serverSignUp } = req.body;
+    const { firstName, email, password } = serverSignUp;
     let regex = /[^A-Za-z0-9]/;
     let containSepcChars = regex.test(password);
 
@@ -91,27 +92,14 @@ router.post('/createUser', (req, res) => {
                                 role: "student",
                                 password: hashpassword
                             },
-                            
+
                             userPersonalInfo: {
                                 firstName: firstName,
-                                lastName: lastName,
-                                location: location,
-                                education: education,
-                                phoneNumber: phoneNumber,
-                                personalPhoto: personalPhoto,
-                            },
-                            userLifeActivity: {
-                                biography: null,
-                                experiences: null,
-                                awardsPhotos: null,
-                            },
-                            teaching: {
-                                subSubjects: null,
-                                teachingPlace: null,
-                            },
-                            ratings: {
-                                overallRate: 0,
-                                peopleRating: null,
+                                lastName: null,
+                                location: null,
+                                education: null,
+                                phoneNumber: null,
+                                personalPhoto: null,
                             },
                             userActivity: {
                                 active: true,
@@ -124,14 +112,19 @@ router.post('/createUser', (req, res) => {
                         if (users.length > 0) {
 
                             for (let index = 0; index < users.length; index++) {
-                                table.push({ email: users[index].userInfo.employeeEmail, name: users[index].userInfo.employeeName, role: users[index].userInfo.employeeRole, id: users[index]._id, active: users[index].active })
+                                table.push({
+                                    email: users[index].userInfo.email,
+                                    name: users[index].userPersonalInfo.firstName,
+                                    role: users[index].userInfo.role,
+                                    active: users[index].userActivity.active
+                                })
                             }
 
                             var mailOptions = {
                                 from: 'lessonsassistanceservice@gmail.com',
                                 to: email,
                                 subject: 'תודה שנרשמת לאתר שיעורי עזר!',
-                                html:`<p dir="rtl">תודה על הרשמתך לאתר שיעורי עזר,</p>
+                                html: `<p dir="rtl">תודה${firstName}  על הרשמתך לאתר שיעורי עזר,</p>
                                 <p dir="rtl"> מהיום תוכל לרכוש שיעורי עזר במחירים הטובים ביותר.</p>
                                 <p dir="rtl"> ניתן להיכנס לחשבונך בכל עת</p>
                                 <p dir="rtl">  שם המשתמש שלך הוא :  ${email} .</p>
@@ -139,13 +132,13 @@ router.post('/createUser', (req, res) => {
     
                                 <p dir="rtl"> בהצלחה,</p>
                                 <p dir="rtl">צוות שיעורי עזר.</p>`
-                    
-                          
+
+
                             };
 
                             transporter.sendMail(mailOptions, function (err, info) {
                                 if (err) {
-                                console.log( "there was an error sending email", err)
+                                    console.log("there was an error sending email", err)
                                 } else {
                                     console.log('Email sent: ' + info.response);
                                 }
@@ -179,7 +172,7 @@ function makeid(length) {
 router.post('/forgotPassword', (req, res) => {
     const { email } = req.body;
     if (validator.validate(email)) {
-        UserModel.find({ "userInfo.email": email }).then(checkEmail => {    
+        UserModel.find({ "userInfo.email": email }).then(checkEmail => {
             if (checkEmail.length > 0) {
                 const key = makeid(10)
 
@@ -187,16 +180,16 @@ router.post('/forgotPassword', (req, res) => {
                     from: 'lessonsassistanceservice@gmail.com',
                     to: email,
                     subject: 'שחזור סיסמה',
-                    html:`<p dir="rtl">שלום,</p>
+                    html: `<p dir="rtl">שלום,</p>
                                 <p dir="rtl"> הקוד הזמני שלך הוא : ${key}</p>
                                 <p dir="rtl"> אין להשיב להודעה זו.</p>
                                 <p dir="rtl">בברכה,</p>
-                                <p dir="rtl">צוות שיעורי עזר.</p>`                 
+                                <p dir="rtl">צוות שיעורי עזר.</p>`
                 };
 
                 transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
-                         console.log("there was an error sending the email : ", err)
+                        console.log("there was an error sending the email : ", err)
                     } else {
                         console.log('Email sent: ' + info.response);
                     }
@@ -223,15 +216,16 @@ router.post('/forgotPassword', (req, res) => {
 router.post('/checkValidKey', (req, res) => {
     const { email, key } = req.body;
     KeyModel.find({ "userEmail": email, "key": key }).then(docs => {
-        if(docs.length>0){
-        docs.map((item, index) => {
-                    if ((Date.now() - item.keyTime) <= 1800000) {
-                        return (res.send({ success: true, error: null, info: null }))
-                    } else {
-                        res.send({ success: false, error: 'הקוד שהוזן אינו תקף.', info: null })
-                    }               
-        })}
-        else{
+        if (docs.length > 0) {
+            docs.map((item, index) => {
+                if ((Date.now() - item.keyTime) <= 1800000) {
+                    return (res.send({ success: true, error: null, info: null }))
+                } else {
+                    res.send({ success: false, error: 'הקוד שהוזן אינו תקף.', info: null })
+                }
+            })
+        }
+        else {
             res.send({ success: false, error: 'הקוד לא נכון', info: null })
         }
     })
@@ -242,26 +236,90 @@ router.put('/updatePassword', (req, res) => {
     let regex = /[^A-Za-z0-9]/;
     let containSepcChars = regex.test(password);
     if (!containSepcChars) {
-    UserModel.findOne({ "userInfo.email": email }).then(async docs => {
-        if (docs) {
-            const salt = await bcrypt.genSalt(saltRounds)
-            const hashpassword = await bcrypt.hash(password, salt)
-            docs.userInfo.password = hashpassword
-            docs.save();
-            res.send({ success: true, error: null, info: null })
+        UserModel.findOne({ "userInfo.email": email }).then(async docs => {
+            if (docs) {
+                const salt = await bcrypt.genSalt(saltRounds)
+                const hashpassword = await bcrypt.hash(password, salt)
+                docs.userInfo.password = hashpassword
+                docs.save();
+                res.send({ success: true, error: null, info: null })
 
-        } else {
-            res.send({ success: false, error: "הדואר האלקטרוני אינו תקף", info: null })
-        }
-    })
-}
-else {
+            } else {
+                res.send({ success: false, error: "הדואר האלקטרוני אינו תקף", info: null })
+            }
+        })
+    }
+    else {
         res.send({ success: false, error: "אסור להשתמש בתווים מיוחדים או רווחים בסיסמת המשתמש!", info: null })
     }
 
 })
 
 
+
+router.put('/updateProfileInfo', (req, res) => {
+    const { serverProfileUpdate } = req.body;
+    const { email, lastName,location,education,phoneNumber,personalPhoto } = serverProfileUpdate;
+    UserModel.findOne({ "userInfo.email": email }).then(async docs => {
+        if (docs) {
+            docs.userPersonalInfo.lastName = lastName;
+            docs.userPersonalInfo.location = location;
+            docs.userPersonalInfo.education = education;
+            docs.userPersonalInfo.phoneNumber = phoneNumber;
+            docs.userPersonalInfo.personalPhoto = personalPhoto;
+            docs.save();
+            res.send({ success: true, error: null, info: null })
+
+        } else {
+            res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
+        }
+    })
+})
+
+router.put('/becomeATeacher', (req, res) => {
+    const {email,shortInfo,education,teachingPlaces,subSubjects} = req.body;
+    UserModel.findOne({ "userInfo.email": email }).then(async docs => {
+        if (docs) {
+            var mailOptions = {
+                from: 'lessonsassistanceservice@gmail.com',
+                to: email,
+                subject: 'בקשה להיות מורה באתר שיעורי עזר!',
+                html: `<p dir="rtl">הבקשה שלך התקבלה</p>
+                <p dir="rtl"> הצוות שלנו יחזור לך התשובה בזמן הקרוב</p>
+
+                <p dir="rtl"> בהצלחה,</p>
+                <p dir="rtl">צוות שיעורי עזר.</p>`
+            };
+            transporter.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                    console.log("there was an error sending the email : ", err)
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+            var mailOptions = {
+                from: 'lessonsassistanceservice@gmail.com',
+                to: "nemrsh1@gmail.com",
+                subject: `בקשה של ${email} להיות מורה`,
+                html: `<p dir="rtl">education:${education}</p>
+                <p dir="rtl"> shortInfo: ${shortInfo}</p>
+
+                <p dir="rtl"> teachingPlaces: ${teachingPlaces}</p>
+                <p dir="rtl">subSubjects: ${subSubjects}</p>`
+            };
+            transporter.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                    console.log("there was an error sending the email : ", err)
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+           res.send({success: true, error:null, info:"בקשתך נשלחה לצוות שלנו!" })
+        } else {
+            res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
+        }
+    })
+})
 
 
 

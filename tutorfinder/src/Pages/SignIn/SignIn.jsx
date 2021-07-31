@@ -23,7 +23,9 @@ function SignIn(){
             .then((data) => {
                 console.log(data)
                 if(data.success) {
+                    
                 history.push('/')
+
             }
                 else {
                     alert('wrong password / username')
