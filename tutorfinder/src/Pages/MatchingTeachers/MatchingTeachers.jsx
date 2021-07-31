@@ -36,7 +36,7 @@ function MatchingTeachers(props) {
 
 return (
   <div dir="rtl" className="matchingTeachers__wrapper">
-    {/* <div className="matchingTeachers__Filters"> <Filters /> </div> */}
+    <div className="matchingTeachers__Filters"> <Filters /> </div>
     <div className="matchingTeachers__miniProfileCard">
     <MiniProfileCard teachers={teachers} />
     </div>
