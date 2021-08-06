@@ -9,10 +9,13 @@
     grid-template-columns: 20vw 60vw 20vw ;
     grid-template-rows: auto;
     grid-template-areas: 
+    ". . ."
     " . cards ."
     " Testimonials Testimonials Testimonials ";
 
 }
+
+
 
 .cardsSlides{
     grid-area: cards ;

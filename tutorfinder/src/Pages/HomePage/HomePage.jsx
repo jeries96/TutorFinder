@@ -6,7 +6,10 @@ import SubjectCards from '../../Components/Cards/SubjectCards/SubjectCard'
 import Testimonials from '../HomePage/Testimonials/Testimonials'
 import { useState,useEffect } from 'react';
 import MainPageProfile from './MainPageProfile';
+
+
 function HomePage (){
+
 const [subjectCardsToDisplay,setSubjectCardsToDisplay]=useState([])
     useEffect(() => {
         fetch('/api/subjects/getSubjects')
@@ -17,7 +20,10 @@ const [subjectCardsToDisplay,setSubjectCardsToDisplay]=useState([])
     }, [])
     return (
     <div dir="rtl" className="HomePage__subject">
-        <div>{MainPageProfile}</div>
+        <div className='HomePage__MainImage'>
+            <MainPageProfile />
+        </div>
+
         <div className ="cardsSlides">
         {subjectCardsToDisplay.length>0 && <SubjectCards subjectsData={subjectCardsToDisplay}/>}    
         </div>
