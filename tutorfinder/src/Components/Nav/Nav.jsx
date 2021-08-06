@@ -33,7 +33,7 @@ const handleLogOut =()=>{
                 </Link>}
                 {isLoggedIn && <li  onClick={handleLogOut} id="navigation__signIn"> התנתק  </li>}
                 <Link to="/">
-                <li > <img id="navigation__logo" src="https://s8.gifyu.com/images/MooreemLogo.jpg" alt="MooreemLogo.png"/> </li>
+                <li > <h1 className='title-logo'> Moreem</h1> </li>
                 </Link>
 
                

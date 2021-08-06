@@ -1,3 +1,12 @@
+
+:root {
+    --light-green : #177135;
+    --dark-green : #105226;
+    --text-green : #167134;
+    --border-green : #b8c6bc;
+  }
+
+
 .Testimonials__container {
 
     display:grid;
@@ -14,7 +23,7 @@
 }
 
 .Testimonials__title { 
-    color:rgb(9, 76, 131);  
+    color: var(--light-green);
 }
 .star {
     grid-area: star;
@@ -46,7 +55,7 @@
     text-align: center;    
     grid-area: title;
     font-size: 28px;
-    color: rgb(9, 76, 131);
+    color: var(--text-green);
 }
 
 

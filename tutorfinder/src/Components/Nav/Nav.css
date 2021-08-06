@@ -1,3 +1,10 @@
+:root {
+  --light-green : #177135;
+  --dark-green : #105226;
+  --text-green : #167134;
+  --border-green : #b8c6bc;
+}
+
 * {
     margin: 0;
 }
@@ -5,7 +12,7 @@
     margin: 0;
     width: 100vw;
     height: 8vh;
-    background-color: rgb(9, 76, 131);
+    background-color: var(--dark-green);
     box-shadow: 3px 3px 3px grey;
 }
 .navigation__menu {
@@ -31,17 +38,27 @@
     margin-right:10%;
     
   }
+
+  .title-logo{
+    font-weight: bold;
+    margin-top: 1.2%;
+    margin-right:5%;
+    float: right;
+    color: white;   
+    font-size: 18px;
+  }
   
 #navigation__signIn {
     font-weight: bold;
-    margin-top: 1.5%;
-    margin-left:5%;
+    margin-top: 2%;
+    margin-left:8%;
     float: left;
     color: white;
     cursor: pointer;
     padding:5px;
     border: 1px solid white;
     border-radius: 5px;
+    transform: translate(-50%,-50%);
     
 }
 

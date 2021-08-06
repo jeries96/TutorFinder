@@ -1,3 +1,9 @@
+:root {
+  --light-green : #177135;
+  --dark-green : #105226;
+  --text-green : #167134;
+  --border-green : #b8c6bc;
+}
 
 .SignInForm__Wrapper {
     position: absolute;
@@ -36,7 +42,7 @@
 
 
 .SignInForm__button--submit {
-  background-color:rgb(9, 76, 131);
+  background-color: var(--dark-green);
   color: white;
   padding: 20px 26px;
   margin: 5% 5%;
@@ -44,7 +50,7 @@
   width: 70%;
   font-size: large;
   border-radius: 15px;
-  border: 1px solid rgb(9, 76, 131);
+  border: 1px solid var(--dark-green);
 
 }
 
@@ -54,21 +60,21 @@
 
 #SignInForm__button--signUp{
   border: none;
-  color: rgb(9, 76, 131);
+  color: var(--text-green);
 }
 #SignInForm__button--signUp:hover{
   border: none;
-  color: rgb(9, 76, 131);
+  color: var(--text-green);
   
 }
 
 #SignInForm__button--forgotPassword{
   border: none;
-  color: rgb(9, 76, 131);
+  color: var(--text-green);
 }
 #SignInForm__button--forgotPassword:hover{
   border: none;
-  color: rgb(9, 76, 131);
+  color: var(--text-green);
   
 }
 @media only screen and (max-width: 1024px) {

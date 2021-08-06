@@ -1,3 +1,10 @@
+ :root {
+  --light-green : #177135;
+  --dark-green : #105226;
+  --text-green : #167134;
+  --border-green : #b8c6bc;
+}
+
  body {
    background-color:whitesmoke;
  }
@@ -52,7 +59,7 @@
   font-size: large;
 }
 .SignUpForm__button--register {
-  background-color:rgb(9, 76, 131);
+  background-color:var(--light-green);
   color: white;
   padding: 20px 26px;
   margin: 5% 5%;
@@ -60,7 +67,7 @@
   width: 70%;
   font-size: large;
   border-radius: 15px;
-  border: 1px solid rgb(9, 76, 131);
+  border: 1px solid var(--light-green);
 }
 
 .SignUpForm__button--register:hover {
@@ -73,7 +80,7 @@
 }
 #SignUpForm__button--alreadyHaveAccount:hover{
   border: none;
-  color: rgb(9, 76, 131);
+  color: var(--light-green);
   
 }
 
