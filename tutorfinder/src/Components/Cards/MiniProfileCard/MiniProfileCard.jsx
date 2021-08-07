@@ -6,9 +6,14 @@ import RatingStar from '../../Utilities/Rating/RatingStar'
 function MiniProfileCard(props) {
   const teachers = props
   
+
   return (
       <div>
-        
+        <div id='GOBACK__Button'>
+          <Link to='/'>
+          לחזור 
+          </Link>
+        </div>
        {teachers.teachers.length>0 && teachers.teachers.map((teacher,index)=>{
          return( <div key={index} dir="rtl" className="MiniProfileCard__Wrapper" >
       <div className="MiniProfileCard__Header__ProfilePicture_holder" >
