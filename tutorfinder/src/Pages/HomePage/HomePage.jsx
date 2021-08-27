@@ -6,6 +6,7 @@ import SubjectCards from '../../Components/Cards/SubjectCards/SubjectCard'
 import Testimonials from '../HomePage/Testimonials/Testimonials'
 import { useState,useEffect } from 'react';
 import MainPageProfile from './MainPageProfile';
+import Schedule from '../../Components/Utilities/Schedule/Schedule';
 
 
 function HomePage (){
@@ -23,7 +24,7 @@ const [subjectCardsToDisplay,setSubjectCardsToDisplay]=useState([])
         <div className='HomePage__MainImage'>
             <MainPageProfile />
         </div>
-
+        
         <div className ="cardsSlides">
         {subjectCardsToDisplay.length>0 && <SubjectCards subjectsData={subjectCardsToDisplay}/>}    
         </div>

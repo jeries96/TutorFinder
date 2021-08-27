@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import {Link} from "react-router-dom";
+import leftArrow from '../../../utils/left-arrow.png'
 
 import './MainProfileCard.css'
 import RatingStar from '../../Utilities/Rating/RatingStar'
@@ -41,12 +43,20 @@ function MainProfileCard(props) {
           {teacher.teaching.teachingPlaces.length>0 && teacher.teaching.teachingPlaces.map((place,index)=>{
         return(<div key={index} className="MainProfileCard__Header__TeachingLocation_location">{place}</div>)
         }) }
-
-            
-          </div>
+        </div>
+          
+        <Link to="/calendar">
+        <button id='make-appoitment'> הזמנת שיעור</button> 
+        </Link>
+          
         </div>
 
       </div>
+      <div id='GOBACK__Button'>
+          <Link to='/teachers'>
+          <img id='backarrowImage' src={leftArrow} />
+          </Link>
+        </div>
     
     <ul className="MainProfileCard__Navigator">
     <li onClick={handleNavigationOptions} id="bio" className="MainProfileCard__Navigator__option">ביוגרפיה</li>
@@ -56,8 +66,8 @@ function MainProfileCard(props) {
     {display==="bio" && <div> <h3>על נסטיה רורו</h3><p className="MainProfileCard__Bio">{teacher.userLifeActivity.biography}</p> </div>}
     {display==="ratings" && <div> אין כרגע</div> }
     {display==="picVids" && <div> אין כרגע</div> }
-    
     </div>}
+    
     </div>
   );
 }

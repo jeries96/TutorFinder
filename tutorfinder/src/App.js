@@ -14,6 +14,7 @@ import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 import Nav from './Components/Nav/Nav' 
 import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
+import Schedule from './Components/Utilities/Schedule/Schedule';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
          <Route path="/forgotPassword" component={ForgotPassword} />
          <Route path="/teachers" component={MatchingTeachers} />
          <Route path="/profile" component={MainProfileCard} />
+         <Route path="/calendar" component={Schedule} />
       </Switch> 
     </div>
     </HashRouter>

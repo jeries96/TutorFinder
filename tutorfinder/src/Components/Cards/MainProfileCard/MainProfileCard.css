@@ -107,8 +107,25 @@ border-right: 1px solid #eaeaea;
     margin-inline-end: 0px;
 }
 
+#make-appoitment{
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 12px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: var(--light-green); 
+  color: white; 
+  border: 2px solid var(--border-green);
+  border-radius: 10px;
+  }
 
-
+#make-appoitment:hover{
+  background-color: whitesmoke;
+  color: var(--text-green);
+}
 @media only screen and (max-width: 768px) {
   .MainProfileCard__container{
     grid-template-columns: 0vw 100vw 0vw;

@@ -121,17 +121,14 @@
   position: absolute;
   left: 8%;
   top: 15%;
-  width: 20px;
-  height: 20px;
 }
-#GOBACK__Button a {
-  text-decoration: none;
-  color: white;
-  background-color: var(--light-green);
-  padding: 10px;
-  border: 1px solid var(--light-green);
-  border-radius: 50%;
-}
+
+/* #GOBACK__Button img {
+  width: 50px;
+  height: 50px;
+
+} */
+
 @media only screen and (max-width: 780px) {
   .MiniProfileCard__Wrapper{
     display: grid;

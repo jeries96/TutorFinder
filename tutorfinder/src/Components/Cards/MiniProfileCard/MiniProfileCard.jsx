@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MiniProfileCard.css'
+import leftArrow from '../../../utils/left-arrow.png'
 
 import RatingStar from '../../Utilities/Rating/RatingStar'
 function MiniProfileCard(props) {
@@ -11,7 +12,7 @@ function MiniProfileCard(props) {
       <div>
         <div id='GOBACK__Button'>
           <Link to='/'>
-          לחזור 
+          <img id='backarrowImage' src={leftArrow} />
           </Link>
         </div>
        {teachers.teachers.length>0 && teachers.teachers.map((teacher,index)=>{
