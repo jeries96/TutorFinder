@@ -21,7 +21,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'lessonsassistanceservice@gmail.com',
-        pass: 'Azsx3180'
+        pass: 'Azsx31800'
     }
 });
 
@@ -124,7 +124,7 @@ router.post('/createUser', (req, res) => {
                                 from: 'lessonsassistanceservice@gmail.com',
                                 to: email,
                                 subject: 'תודה שנרשמת לאתר שיעורי עזר!',
-                                html: `<p dir="rtl">תודה${firstName}  על הרשמתך לאתר שיעורי עזר,</p>
+                                html: `<p dir="rtl">תודה ${firstName}  על הרשמתך לאתר שיעורי עזר,</p>
                                 <p dir="rtl"> מהיום תוכל לרכוש שיעורי עזר במחירים הטובים ביותר.</p>
                                 <p dir="rtl"> ניתן להיכנס לחשבונך בכל עת</p>
                                 <p dir="rtl">  שם המשתמש שלך הוא :  ${email} .</p>
