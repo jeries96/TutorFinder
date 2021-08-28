@@ -22,9 +22,9 @@ function SignIn(){
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                if(data.success) {
-                    
+                if(data.success) {    
                 history.push('/')
+                window.location.reload(false)
 
             }
                 else {
