@@ -1,0 +1,15 @@
+#My_Profile_Container{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 100%;
+    grid-template-areas: 
+    ". profile edit";
+}
+
+#My_Profile_Body{
+    grid-area: profile;
+}
+
+#My_Profile_Edit{
+    grid-area: edit;
+}
