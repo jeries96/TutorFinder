@@ -11,7 +11,7 @@
 .navigation  {
     margin: 0;
     width: 100vw;
-    /* height: 8vh; */
+    height: 6vh;
     background-color: var(--dark-green);
     box-shadow: 3px 3px 3px grey;
 }
@@ -41,38 +41,27 @@
 
   .title-logo{
     font-weight: bold;
-    margin-top: 1.2%;
+    margin-top: 1%;
     margin-right:5%;
     float: right;
     color: white;   
     font-size: 18px;
   }
   
-#navigation__signIn {
+.navigation_user_status {
     font-weight: bold;
-    margin-top: 2%;
+    margin-top: 1.5%;
     margin-left:8%;
     float: left;
     color: white;
     cursor: pointer;
     padding:5px;
-    border: 1px solid white;
     border-radius: 5px;
     transform: translate(-50%,-50%);
+    list-style: none;
     
 }
 
-#navigation__signOut{
-  font-weight: bold;
-  margin-top: 2%;
-  margin-left:8%;
-  float: left;
-  color: white;
-  cursor: pointer;
-  padding:5px;
-  transform: translate(-50%,-50%);
-  width: 10%;
-}
 
 @media only screen and (max-width: 1024px) {
   #navigation__logo , #navigation__signIn { margin-top:5%;}

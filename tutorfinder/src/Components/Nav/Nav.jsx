@@ -7,70 +7,52 @@ import Cookies from "js-cookie";
 import 'semantic-ui-css/semantic.min.css'
 import Menu from '../Utilities/menu'
 
+
 import { Dropdown } from "semantic-ui-react";
 
-const friendOptions = [
-  {
-    key: "Jenny Hess",
-    text: "Jenny Hess",
-    value: "Jenny Hess",
-    image: {
-      avatar: true,
-      src: "https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
-    }
-  },
-  {
-    key: "edit ",
-    text: "Edit Profile",
-    value: "EDIT"
-  },
-  {
-    key: "Log Out ",
-    text: "LOGOUT",
-    value: "LOGOUT"
-  }
-];
-
-
 function Nav() {
+  var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
+  const jwt = require("jsonwebtoken");
+  const [userName, setUserName] = useState("invalid")
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  useEffect(() => {
+    let token = Cookies.get('loginToken');
 
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    useEffect(() => {
-        let token = Cookies.get('loginToken');
-        if (token != undefined) {
-            setIsLoggedIn(true)
-        }
-    }, [isLoggedIn])
-
-
-
-    const handleLogOut = () => {
-        Cookies.remove("loginToken")
-        setIsLoggedIn(false)
+    if (token != undefined) {
+            const decodedToken = jwt.verify(token, secret);
+      setUserName(decodedToken.name)
+      setIsLoggedIn(true)
     }
-    return (
-        <div dir="rtl">
-            <div className="navigation">
-                <ul className="navigation__menu">
-                    {isLoggedIn === false &&
-                        <Link to="/SignIn">
-                            <li id="navigation__signIn"> התחבר  </li>
-                        </Link>}
-                        
-                        {isLoggedIn && 
-                        <li id="navigation__signOut">
-                          <Menu />
+  }, [isLoggedIn])
+
+
+
+  const handleLogOut = () => {
+    Cookies.remove("loginToken")
+    setIsLoggedIn(false)
+  }
+  return (
+    <div dir="rtl">
+      <div className="navigation">
+      {isLoggedIn && 
+                        <li className="navigation_user_status">
+                          <Menu user={userName}/>
                         </li>
                         }
+        <ul className="navigation__menu">
+          {isLoggedIn === false &&
+            <Link to="/SignIn">
+              <li className="navigation_user_status"> התחבר  </li>
+            </Link>}
 
-                    <Link to="/">
-                        <li className='title-logo'> Moreem </li>
-                    </Link>
-                </ul>
-            </div>
-        </div>
-    );
+
+          <Link to="/">
+            <li className='title-logo'> מורים </li>
+          </Link>
+        </ul>
+      </div>
+    </div>
+  );
 
 }
 

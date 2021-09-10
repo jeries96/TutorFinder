@@ -10,6 +10,7 @@ import HomePage from './Pages/HomePage/HomePage'
 import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp';
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
+import EditProfilePage from './Pages/EditProfile/EditProfilePage';
 //components
 import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard';
 import Nav from './Components/Nav/Nav' 
@@ -29,6 +30,7 @@ function App() {
          <Route path="/teachers" component={MatchingTeachers} />
          <Route path="/profile" component={MainProfileCard} />
          <Route path="/calendar" component={Schedule} />
+         {/* <Route path="/editProfile" component={EditProfilePage}/> */}
       </Switch> 
     </div>
     </HashRouter>

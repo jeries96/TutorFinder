@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
                 if (isMatch) {
                     if (checkEmail[0].userActivity.active == true) {
                         const token = await jwt.sign({
-                            name: checkEmail[0].userPersonalInfo.firstName,
+                            name: checkEmail[0].userPersonalInfo.firstName + " " +  checkEmail[0].userPersonalInfo.lastName  ,
                             username: checkEmail[0].userInfo.email,
                             role: checkEmail[0].userInfo.role,
                         },
