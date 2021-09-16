@@ -45,7 +45,7 @@ function MainProfileCard(props) {
         }) }
         </div>
           
-        <Link to="/calendar">
+        <Link to={{pathname:"/calendar", aboutProps:{teacher} } }>
         <button id='make-appoitment'> הזמנת שיעור</button> 
         </Link>
           

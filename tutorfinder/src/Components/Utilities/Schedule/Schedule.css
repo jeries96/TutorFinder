@@ -1,5 +1,11 @@
 #GOBACK__Button_LOCATOR {
     position: absolute;
-    top: 90%;
+    top: 70%;
     left: 5%;
+}
+
+.dateTimePicker {
+    position: relative;
+    margin-top: 5vh;
+    min-height: 90vh;
 }
