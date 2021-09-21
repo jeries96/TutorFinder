@@ -3,41 +3,43 @@ const express = require("express");
 const router = express.Router();
 
 const ScheduleSchema = require('../schemas/ScheduleSchema');
-
-
-
 const scheduleModel = mongoose.model("SchemaModel", ScheduleSchema);
 
 
 
-router.get('/getScheduleTableTeacher',async (req, res) => {
-    const arrayToSend = []
+router.post('/getScheduleTableTeacher',async (req, res) => {
+    const {email} = req.body
+    console.log(email)
     schedules = await scheduleModel.aggregate([
+      {
+        $match: {"teacher":email}
+    },
         {
           $group: {
             _id: null,
-            id: { $addToSet: {"teacher":"$teacher"} },
+            availableTime: { $push: "$time" },
           },
+          
         }
       ])
-
-    res.send(arrayToSend)
+    console.log(schedules)
+    res.send({success: true, data: schedules})
 
 })
 
 
 router.get('/getScheduleTableStudent',async (req, res) => {
-    const arrayToSend = []
-    schedules = await scheduleModel.aggregate([
+    const {email} = req
+    const schedules = await scheduleModel.aggregate([
         {
           $group: {
             _id: null,
-            id: { $addToSet: {"student":"$student"} },
+            availableTime: { $addToSet: {"student":email} },
           },
         }
       ])
 
-    res.send(arrayToSend)
+    res.send({success: true,data: schedules})
 
 })
 

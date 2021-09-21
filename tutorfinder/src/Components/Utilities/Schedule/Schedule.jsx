@@ -12,23 +12,27 @@ function Schedule() {
     const [availableTeacherTime, setAvailableTeacherTime] = useState([]);
    
     useEffect(() => {
-            const loginToken =  Cookies.get('loginToken')
-            console.log(loginToken)
-            const decodedToken = jwt.verify(loginToken, secret);
-            const email = decodedToken.email
+            // const loginToken =  Cookies.get('loginToken')
+            // console.log(loginToken)
+            // const decodedToken = jwt.verify(loginToken, secret);
+            // const email = decodedToken.email
+            const email = "nemrsh1@gmail.com"
 
-        fetch('/api/matchingTeachers/getTeachersAvailableTime', {
+        fetch('/api/schedule/getScheduleTableTeacher', {
             method: 'POST',
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({email}),
             headers: {
                 "Content-Type": "application/json"
             }
         })  
             .then(res => res.json())
             .then(data => {
+                console.log(data)
+                console.log(data.data[0].availableTime)
+                console.log(data.data[0].availableTime[0])
               if(data.length>0){
                 if(data[0]._id===true){
-                    setAvailableTeacherTime(data[0].availableTime)
+                    setAvailableTeacherTime(data.data[0].availableTime)
               }
             }else{
                 alert(data.message)
