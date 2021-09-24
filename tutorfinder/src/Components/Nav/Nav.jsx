@@ -8,8 +8,6 @@ import 'semantic-ui-css/semantic.min.css'
 import Menu from '../Utilities/menu'
 
 
-import { Dropdown } from "semantic-ui-react";
-
 function Nav() {
   var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
   const jwt = require("jsonwebtoken");
@@ -33,24 +31,28 @@ function Nav() {
   }
   return (
     <div dir="rtl">
-      <div className="navigation">
-      {isLoggedIn && 
-                        <li className="navigation_user_status">
-                          <Menu user={userName}/>
-                        </li>
-                        }
-        <ul className="navigation__menu">
-          {isLoggedIn === false &&
-            <Link to="/SignIn">
-              <li className="navigation_user_status"> התחבר  </li>
-            </Link>}
+      <header id="header" className="fixed-top">
+    <div className="container d-flex align-items-center">
+      
+    <Link to='/'>
+      <h1 className="logo me-auto"><a href="index.html">Mentor</a></h1>
+     </Link>
+      <a href="index.html" className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid"/></a>
+      {
+        isLoggedIn && 
+        <li className="get-started-btn">
+        <Menu user={userName}/>
+        </li>
+      }
+      {
+        isLoggedIn === false &&
+      <Link to='/SignIn'>
+      <a className="get-started-btn">Sign In</a>
+      </Link>
+}
 
-
-          <Link to="/">
-            <li className='title-logo'> מורים </li>
-          </Link>
-        </ul>
-      </div>
+    </div>
+  </header>
     </div>
   );
 
