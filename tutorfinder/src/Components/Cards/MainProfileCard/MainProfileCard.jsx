@@ -7,8 +7,10 @@ import './MainProfileCard.css'
 import RatingStar from '../../Utilities/Rating/RatingStar'
 function MainProfileCard(props) {
   let teacher=false;
+  let subSubject = ""
   if(props.location.aboutProps){
      teacher=props.location.aboutProps.teacher
+     subSubject = props.location.aboutProps.subSubject
   }
   
   const [display,setDisplay]=useState("bio");
@@ -45,7 +47,7 @@ function MainProfileCard(props) {
         }) }
         </div>
           
-        <Link to={{pathname:"/calendar", aboutProps:{teacher} } }>
+        <Link to={{pathname:"/calendar", aboutProps:{teacher: teacher, subSubject:subSubject} } }>
         <button id='make-appoitment'> הזמנת שיעור</button> 
         </Link>
           
@@ -53,7 +55,7 @@ function MainProfileCard(props) {
 
       </div>
       <div id='GOBACK__Button'>
-          <Link to='/teachers'>
+          <Link to={{pathname:"/teachers", aboutProps:{name: subSubject.name}}}>
           <img id='backarrowImage' src={leftArrow} />
           </Link>
         </div>

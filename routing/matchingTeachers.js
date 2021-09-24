@@ -12,7 +12,6 @@ const userModel = mongoose.model("UserModel", UserSchema);
 
 
 router.post('/getTeachers', async (req, res) => {
-const teachingPlaces=req.body;
 let subSubject=req.body;
 subSubject=subSubject.subSubject.name
 // if(teachingPlaces.length!=0){

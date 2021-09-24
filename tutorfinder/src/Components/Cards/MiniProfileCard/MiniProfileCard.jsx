@@ -6,7 +6,7 @@ import leftArrow from '../../../utils/left-arrow.png'
 import RatingStar from '../../Utilities/Rating/RatingStar'
 function MiniProfileCard(props) {
   const teachers = props
-  
+  const {subSubject} = props  
 
   return (
       <div>
@@ -35,7 +35,7 @@ function MiniProfileCard(props) {
       </div>
 
         <Link  className="MiniProfileCard__Button" to={{pathname:"/profile",
-                                                            aboutProps:{teacher} }}>
+                                                            aboutProps:{teacher: teacher, subSubject: subSubject} }}>
         ראה פרופיל מלא
         </Link>
         <p className="MiniProfileCard__Bio">

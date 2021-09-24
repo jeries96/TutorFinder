@@ -6,15 +6,13 @@ import './MatchingTeachers.css'
 
 
 function MatchingTeachers(props) {
-  // console.log(props.location.aboutProps.name)
-  // .name;
-  const subSubject=props.location.aboutProps
-  const teachingPlaces=props;
+  let subSubject=props.location.aboutProps
   const [teachers,setTeachers]=useState([]);
+
   useEffect(() => {
     fetch('/api/matchingTeachers/getTeachers', {
         method: 'POST',
-        body: JSON.stringify({ teachingPlaces,subSubject }),
+        body: JSON.stringify({subSubject }),
         headers: {
             "Content-Type": "application/json"
         }
@@ -32,12 +30,13 @@ function MatchingTeachers(props) {
           
         })
 
-}, [subSubject,teachingPlaces])
+}, [subSubject])
+
 
 return (
   <div dir="rtl" className="matchingTeachers__wrapper">
     <div className="matchingTeachers__miniProfileCard">
-    <MiniProfileCard teachers={teachers} />
+    <MiniProfileCard teachers={teachers} subSubject={subSubject} />
     </div>
   </div>
 )
