@@ -18,30 +18,30 @@ function MainPageProfile() {
   }, [isLoggedIn])
 
 
-    return(
-         <div dir="rtl" className="HomePage__Profile">
-         {/* <div className = "image">
+  return (
+    <div dir="rtl" className="HomePage__Profile">
+      {/* <div className = "image">
              <img id='image' src={image} />
         </div> */}
-        <section id="hero" className="d-flex justify-content-center align-items-center">
-         <div className="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-        <h1>צברו כישורים, תיהנו, ובנו לכם ידע טוב יותר</h1>
-        <h2>להתחברות או להרשמה, תלחצו על הכפתורים  למטה </h2>
-        
-        
-          { 
-          isLoggedIn === false && 
+      <section id="hero" className="d-flex justify-content-center align-items-center">
+        <div className="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+          <h1>צברו כישורים, תיהנו, ובנו לכם ידע טוב יותר</h1>
+          <h2>להתחברות או להרשמה, תלחצו על הכפתורים  למטה </h2>
+
+
+          {
+            isLoggedIn === false &&
             <div>
-            <Link to='/SignIn'>  <a href="courses.html" className="btn-get-started">התחבר </a> </Link>
-            <Link to='/SignUp'>  <a href="courses.html" className="btn-get-started-right-side">הירשם </a> </Link>
+              <Link to='/SignIn'>  <a href="courses.html" className="btn-get-started">התחבר </a> </Link>
+              <Link to='/SignUp'>  <a href="courses.html" className="btn-get-started-right-side">הירשם </a> </Link>
             </div>
           }
 
         </div>
-        
-  </section>
-</div>
-);
+
+      </section>
+    </div>
+  );
 
 }
 

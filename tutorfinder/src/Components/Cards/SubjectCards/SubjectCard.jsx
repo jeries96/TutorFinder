@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 function SubjectCard(props) {
-    const subjectsData=props
+    const subjectsData = props
     const breakPoints = [
         { width: 1, itemsToShow: 1, showArrows: false },
         { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows: false },
@@ -18,7 +18,7 @@ function SubjectCard(props) {
         { width: 1750, itemsToShow: 6, enableMouseSwipe: false },
     ]
 
-    
+
 
     return (
         <div className="SubjectCard__Wrapper">
@@ -29,18 +29,20 @@ function SubjectCard(props) {
 
                 return (<div key={index}>
                     {subject.subsubjects.length !== 0 && <h3 className="SubjectCard__Title"> {subject.subjectName}</h3>}
-                    {subject.subsubjects.length !==0 &&
+                    {subject.subsubjects.length !== 0 &&
                         <Carousel className="cardsSlides" breakPoints={breakPoints}  >
 
                             {subject.subsubjects.map((subSubject, index) => {
                                 return (
-                                    <Link key={index} dir="rtl" to={{pathname:"/teachers",
-                                                         aboutProps:{name:subSubject._id.id} }}>
+                                    <Link key={index} dir="rtl" to={{
+                                        pathname: "/teachers",
+                                        aboutProps: { name: subSubject._id.id }
+                                    }}>
                                         <SubSubjectCard
                                             key={subSubject._id.id}
                                             subjectName={subSubject._id.SubSubjectInfo.name}
-                                            srcimg={subSubject._id.SubSubjectInfo.img}/>
-                                            </Link>
+                                            srcimg={subSubject._id.SubSubjectInfo.img} />
+                                    </Link>
 
 
                                 )

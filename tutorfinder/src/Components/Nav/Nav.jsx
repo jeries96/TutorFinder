@@ -17,7 +17,7 @@ function Nav() {
     let token = Cookies.get('loginToken');
 
     if (token != undefined) {
-            const decodedToken = jwt.verify(token, secret);
+      const decodedToken = jwt.verify(token, secret);
       setUserName(decodedToken.name)
       setIsLoggedIn(true)
     }
@@ -32,27 +32,27 @@ function Nav() {
   return (
     <div dir="rtl">
       <header id="header" className="fixed-top">
-    <div className="container d-flex align-items-center">
-      
-    <Link to='/'>
-      <h1 className="logo me-auto"><a href="index.html">Mentor</a></h1>
-     </Link>
-      <a href="index.html" className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid"/></a>
-      {
-        isLoggedIn && 
-        <li className="get-started-btn">
-        <Menu user={userName}/>
-        </li>
-      }
-      {
-        isLoggedIn === false &&
-      <Link to='/SignIn'>
-      <a className="get-started-btn">התחבר</a>
-      </Link>
-}
+        <div className="container d-flex align-items-center">
 
-    </div>
-  </header>
+          <Link to='/'>
+            <h1 className="logo me-auto"><a href="index.html">Mentor</a></h1>
+          </Link>
+          <a href="index.html" className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid" /></a>
+          {
+            isLoggedIn &&
+            <li className="get-started-btn">
+              <Menu user={userName} />
+            </li>
+          }
+          {
+            isLoggedIn === false &&
+            <Link to='/SignIn'>
+              <a className="get-started-btn">התחבר</a>
+            </Link>
+          }
+
+        </div>
+      </header>
     </div>
   );
 
