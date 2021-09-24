@@ -12,9 +12,9 @@ function SubjectCard(props) {
     const breakPoints = [
         { width: 1, itemsToShow: 1, showArrows: false },
         { width: 450, itemsToShow: 1, itemsToScroll: 2, showArrows: false },
-        { width: 650, itemsToShow: 2.5, showArrows: true },
-        { width: 1150, itemsToShow: 4, itemsToScroll: 2, enableMouseSwipe: false },
-        { width: 1450, itemsToShow: 5, enableMouseSwipe: false },
+        { width: 650, itemsToShow: 3, showArrows: true },
+        { width: 1150, itemsToShow: 3.5, itemsToScroll: 2, enableMouseSwipe: false },
+        { width: 1450, itemsToShow: 4.5, enableMouseSwipe: false },
         { width: 1750, itemsToShow: 6, enableMouseSwipe: false },
     ]
 
@@ -23,7 +23,7 @@ function SubjectCard(props) {
     return (
         <div className="SubjectCard__Wrapper">
             <div className="SubjectCard__WrapperTitle">
-                <h2> צברו כישורים, תיהנו, ובנו לכם ידע טוב יותר</h2>
+                <h2> </h2>
             </div>
             {subjectsData.subjectsData.length > 0 && subjectsData.subjectsData.map((subject, index) => {
 
@@ -39,9 +39,8 @@ function SubjectCard(props) {
                                         <SubSubjectCard
                                             key={subSubject._id.id}
                                             subjectName={subSubject._id.SubSubjectInfo.name}
-                                            srcimg={subSubject._id.SubSubjectInfo.img}
-                                            price={subSubject._id.SubSubjectInfo.startingPrice}
-                                            rating={subSubject._id.SubSubjectInfo.rating} /></Link>
+                                            srcimg={subSubject._id.SubSubjectInfo.img}/>
+                                            </Link>
 
 
                                 )

@@ -10,7 +10,7 @@
 .Testimonials__container {
 
     display:grid;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(209, 209, 209);
 
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: auto;

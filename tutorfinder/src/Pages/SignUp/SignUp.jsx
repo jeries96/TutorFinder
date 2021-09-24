@@ -7,6 +7,7 @@ import {Link, useHistory} from 'react-router-dom';
 import Select from 'react-select';
 
 const serverSignUp={firstName:null,  
+                    lastName:null,
                     email:null,
                     password:null }
 
@@ -79,10 +80,11 @@ function SignUp (){
           if(checkPassword()!== true){
             setError('שתי הסיסמאות חיבבים להיות זהים')
           }else {
-          const {userName,email,password}=event.target.elements;
+          const {userName,lastName,email,password}=event.target.elements;
           serverSignUp.firstName=userName.value;
-         // serverSignUp.lastName=lastName.value;
+          serverSignUp.lastName=lastName.value;
           serverSignUp.email=email.value;
+
           // if(phone.value!==""){
           //   serverSignUp.phoneNumber=phone.value;
           // }
@@ -118,6 +120,10 @@ function SignUp (){
 
     return (
         <div dir="rtl" className="SignUpForm__Wrapper">
+       
+        <div className="wrapper fadeInDown">
+          <div id="formContent">
+
         <form className="SignUpForm" onSubmit={HandleSignUp}>
 
          <h2 className="SignUpForm__Title">הרשמה  </h2>
@@ -125,19 +131,16 @@ function SignUp (){
         
          <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
-         <h4> שם פרטי <b className="required">*</b></h4>
          <input type="text" className="SignUpForm__textInput" placeholder="שם פרטי" name="userName" required />
          </div>
          
-         {/* <div className="SignUpForm__inputs">
-         <h4> שם משפחה <b className="required">*</b></h4>
+          <div className="SignUpForm__inputs">
          <input type="text" className="SignUpForm__textInput" placeholder="שם משפחה" name="lastName" required />
-         </div> */}
+         </div> 
          </div>
          
          <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
-         <h4> דואר אלקטרוני <b className="required">*</b></h4>
          <input type="email" className="SignUpForm__textInput" placeholder="דואר אלקטרוני" name="email" required />
          </div>
         
@@ -149,7 +152,6 @@ function SignUp (){
 
          <div className="SignUpForm__personalInput">
          <div className="SignUpForm__inputs">
-         <h4> סיסמה <b className="required">*</b> </h4>
        
          <input 
          onChange={savePassword}
@@ -161,48 +163,25 @@ function SignUp (){
          </div>
         
          <div className="SignUpForm__inputs">
-         <h4>  תאשר סיסמה <b className="required">*</b> </h4>
          
          <input 
          onChange={saveRepeatPassword}
          onKeyUp={checkPassword}
          type="password" 
          className="SignUpForm__passwordInput" 
-         placeholder="סיסמה עוד פעם" 
+         placeholder="תאשר סיסמה" 
          name="repeatPassword" 
          required />
          <h5 id="SignUp__checkPasswordInput">{validatePassword}</h5>
          </div>
 
        </div>
-
-         {/* <div className="SignUpForm__SelectorsInput">
-         <div className="SignUpForm__inputs">
-          <h4> אזור מגורים </h4>
-         <Select 
-         className="SignUpForm__collegeOptions"
-         options={areaLocationOptions}
-         placeholder="אזור מגורים"
-         name="area" />
-        </div>
-
-        <div className="SignUpForm__inputs">
-        <h4> מקום לימודים </h4>
-         <Select 
-         className="SignUpForm__collegeOptions"
-         options={collegeOptions}
-         placeholder="תבחר באיזה מכללה"
-         name="education" />
-        </div>
-        
-        </div> */}
-
         
          
           <h4>{error} </h4>
          <button className="SignUpForm__button--register" type="submit">הירשם </button>
               
-         <Link to="/SignIn"><h3 id="SignUpForm__button--alreadyHaveAccount">יש לך חשבון קיים?</h3></Link> 
+         <Link to="/SignIn"><h3 className="underlineHover">יש לך חשבון קיים?</h3></Link> 
                
          </div>
 
@@ -210,6 +189,8 @@ function SignUp (){
 
      </form>
 
+     </div>
+     </div>
      </div>
 
     );

@@ -23,38 +23,63 @@
 
 .SignInForm__Title {
   margin: 10px;
-  padding:10px;
+  padding:20px;
   border-radius: 5px;
   font-size: 2rem;
   
 }
 
 #SignInForm__textInput, #SignInForm__passwordInput {
-  width: 70%;
-  padding: 20px 26px;
-  margin: 2% 2%;
+  background-color: #e6e3e3;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: large;
+  font-size: 16px;
+  margin: 5px;
+  margin-bottom: 30px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+#SignInForm__textInput, #SignInForm__passwordInput {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
 }
 
-
+#SignInForm__textInput, #SignInForm__passwordInput {
+  color: black;
+}
 
 .SignInForm__button--submit {
-  background-color: var(--dark-green);
+  background-color: steelblue;
+  border: none;
   color: white;
-  padding: 20px 26px;
-  margin: 5% 5%;
-  cursor: pointer;
-  width: 70%;
-  font-size: large;
-  border-radius: 15px;
-  border: 1px solid var(--dark-green);
+  width: 85%;
+  padding: 16px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 16px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
 }
 
 .SignInForm__button--submit:hover {
+  background-color: steelblue;
   opacity: 0.8;
 }
 
@@ -77,6 +102,84 @@
   color: var(--text-green);
   
 }
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
 @media only screen and (max-width: 1024px) {
   .SignInForm__Wrapper { width:100%}
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+#formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }

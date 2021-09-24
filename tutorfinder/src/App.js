@@ -16,6 +16,8 @@ import MainProfileCard from './Components/Cards/MainProfileCard/MainProfileCard'
 import Nav from './Components/Nav/Nav' 
 import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
 import Schedule from './Components/Utilities/Schedule/Schedule';
+import Footer from './Components/Footer/Footer';
+import EditProfile from './Pages/EditProfile/EditProfilePage';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
          <Route path="/teachers" component={MatchingTeachers} />
          <Route path="/profile" component={MainProfileCard} />
          <Route path="/calendar" component={Schedule} />
+         <Route path="/editprofile" component={EditProfilePage} />
+         <Route path="/footer" component={Footer} /> 
          {/* <Route path="/editProfile" component={EditProfilePage}/> */}
       </Switch> 
     </div>

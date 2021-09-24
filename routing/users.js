@@ -70,7 +70,7 @@ router.post('/login', (req, res) => {
 
 router.post('/createUser', (req, res) => {
     const { serverSignUp } = req.body;
-    const { firstName, email, password } = serverSignUp;
+    const { firstName, lastName, email, password } = serverSignUp;
     let regex = /[^A-Za-z0-9]/;
     let containSepcChars = regex.test(password);
 
@@ -95,7 +95,7 @@ router.post('/createUser', (req, res) => {
 
                             userPersonalInfo: {
                                 firstName: firstName,
-                                lastName: null,
+                                lastName: lastName,
                                 location: null,
                                 education: null,
                                 phoneNumber: null,

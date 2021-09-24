@@ -4,6 +4,7 @@
   --text-green : #167134;
   --border-green : #b8c6bc;
 }
+
 .MiniProfileCard__Wrapper{
   /* 
   flex: 1;
@@ -11,7 +12,9 @@
   
   width: 100%; */
   margin-top: 20px;
-  background: #fff;
+  background: rgb(248, 248, 248);
+  box-shadow: 3px 2px 3px 2px rgb(204, 204, 204);
+  border-radius:8px ;
   padding: 22px 30px 32px 30px;
   display: grid;
   grid-template-columns: 25% 37.5% 37.5% ;
@@ -112,9 +115,14 @@
     /* text-overflow: ellipsis; */
     transition: background-color 0.2s, opacity 0.2s;
     white-space: nowrap;
-    background-color: var(--light-green);
+    background-color: steelblue;
     color: white;
     right: 50%;
+}
+
+.MiniProfileCard__Button:hover{
+  color: white;
+  transition: background-color 0.4s, opacity 0.4s;
 }
 
 #GOBACK__Button {

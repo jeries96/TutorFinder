@@ -14,9 +14,10 @@ function MainPageProfile() {
         </div> */}
         <section id="hero" className="d-flex justify-content-center align-items-center">
          <div className="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-        <h1>Learning Today , Leading Tomorrow</h1>
-        <h2>We are team of talented designers making websites with Bootstrap</h2>
-        <Link to='/SignIn'>  <a href="courses.html" className="btn-get-started">SIGN IN </a> </Link>
+        <h1>צברו כישורים, תיהנו, ובנו לכם ידע טוב יותר</h1>
+        <h2>להתחברות או להרשמה, תלחצו על הכפתורים  למטה </h2>
+        <Link to='/SignIn'>  <a href="courses.html" className="btn-get-started">התחבר </a> </Link>
+        <Link to='/SignUp'>  <a href="courses.html" className="btn-get-started-right-side">הירשם </a> </Link>
         </div>
   </section>
 </div>

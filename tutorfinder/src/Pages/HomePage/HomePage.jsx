@@ -7,6 +7,7 @@ import Testimonials from '../HomePage/Testimonials/Testimonials'
 import { useState,useEffect } from 'react';
 import MainPageProfile from './MainPageProfile';
 import Schedule from '../../Components/Utilities/Schedule/Schedule';
+import Footer from '../../Components/Footer/Footer';
 
 
 function HomePage (){
@@ -29,7 +30,7 @@ const [subjectCardsToDisplay,setSubjectCardsToDisplay]=useState([])
         {subjectCardsToDisplay.length>0 && <SubjectCards subjectsData={subjectCardsToDisplay}/>}    
         </div>
         <div className ="HomePage__Testimonials">
-        <Testimonials/>
+        <Footer />
         </div>
     </div>
     )   ;

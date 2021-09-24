@@ -47,7 +47,7 @@ function Nav() {
       {
         isLoggedIn === false &&
       <Link to='/SignIn'>
-      <a className="get-started-btn">Sign In</a>
+      <a className="get-started-btn">התחבר</a>
       </Link>
 }
 

@@ -109,6 +109,8 @@ function ForgotPassword(){
     return (
         
         <div dir="rtl" className="ForgotPassword__Wrapper"> 
+        <div className="wrapper fadeInDown">
+          <div id="formContent">
          { display === "emailAuth" && 
            <form className="ForgotPasswordForm" onSubmit={HandleEmailAuth}>
 
@@ -190,7 +192,8 @@ function ForgotPassword(){
 </form> }
 
 
-
+        </div>
+        </div>
         </div>
     )
 }

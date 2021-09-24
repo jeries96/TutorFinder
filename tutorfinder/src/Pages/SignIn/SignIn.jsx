@@ -37,7 +37,7 @@ function SignIn(){
     
     return (
         <div dir="rtl" className="SignInForm__Wrapper">   
-           <form className="SignInForm" onSubmit={HandleSignIn}>
+           {/* <form className="SignInForm" onSubmit={HandleSignIn}>
 
             <h2 className="SignInForm__Title">ברוך הבא</h2>
             <div className="container">
@@ -57,9 +57,30 @@ function SignIn(){
 
             
 
+        </form> */}
+        <div className="wrapper fadeInDown">
+          <div id="formContent">
+        
+        <h2 className="active"> ברוך הבא </h2>
+        
+        <form className="SignInForm" onSubmit={HandleSignIn}>
+        <input type="email" id="SignInForm__textInput" className="fadeIn second" name="email" placeholder="דואר אלקטרוני" required/>
+       
+        <input type="password" id="SignInForm__passwordInput" className="fadeIn third" name="password" placeholder="סיסמה" required/>
+        <button type="submit" className="SignInForm__button--submit" value="Log In"> התחבר </button>
         </form>
 
+        
+        <div id="formFooter">
+        <Link to="/forgotPassword"><b className="underlineHover">שכחתי סיסמה</b></Link> 
+        <h3 className="underlineHover">עדיין לא נרשמת?<Link to="/SignUp"> <b  className="underlineHover">להרשמה</b></Link> </h3>
         </div>
+
+    </div>
+        </div>
+        </div>
+
+        
     )
 }
 

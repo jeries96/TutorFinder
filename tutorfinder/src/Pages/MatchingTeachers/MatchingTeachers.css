@@ -5,16 +5,20 @@
     --border-green : #b8c6bc;
   }
 .matchingTeachers__wrapper {
+      
     display: grid;
     grid-template-columns: 20vw 60vw 20vw;
     grid-template-rows:  auto;
     grid-template-areas:
-    " . filters . "
+    " . . . "
     " . miniProfile .";
 }
 
 .matchingTeachers__miniProfileCard{
     grid-area: miniProfile;
+    margin-bottom: 5%;
+    margin-top: 2%;
+    
     
 }
 

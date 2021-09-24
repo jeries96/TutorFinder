@@ -4,9 +4,13 @@
   --text-green : #167134;
   --border-green : #b8c6bc;
 }
+
 .HomePage__subject {
+  background-color: #ffffff;
+  background-image: linear-gradient(180deg, #ffffff 20%, #d3d3d391 40%);
+
     display:grid;
-    grid-template-columns: 20vw 60vw 20vw ;
+    grid-template-columns: 10vw 80vw 10vw ;
     grid-template-rows: auto;
     grid-template-areas: 
     ". . ."

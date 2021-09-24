@@ -13,10 +13,10 @@ function SubSubjectCard(props){
                 
                 <div id="SubSubject-card__name">  
                          <h3 id="SubSubject-card__name--visible">{subjectName} </h3>
-                         <h3>({rating})</h3>
+                        
                 </div>
 
-                <p className="SubSubject-card__price"> {price}&#8362;</p>
+              
                 </div>   
         </div>
         

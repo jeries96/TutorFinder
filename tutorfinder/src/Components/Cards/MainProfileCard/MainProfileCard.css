@@ -5,6 +5,7 @@
   --border-green : #b8c6bc;
 }
 .MainProfileCard__container{
+    
   display:grid;
   grid-template-columns: 20vw 60vw 20vw;
   grid-template-rows: auto;
@@ -14,6 +15,7 @@
 
 .MainProfileCard__Wrapper{
   background: #fff;
+  border-radius: 10px;
   padding: 22px 30px 32px 30px;
   width: 100%;
   text-align: center;
@@ -116,15 +118,15 @@ border-right: 1px solid #eaeaea;
   margin: 12px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color: var(--light-green); 
+  background-color: steelblue; 
   color: white; 
-  border: 2px solid var(--border-green);
+  border: 2px solid steelblue;
   border-radius: 10px;
   }
 
 #make-appoitment:hover{
   background-color: whitesmoke;
-  color: var(--text-green);
+  color: steelblue;
 }
 @media only screen and (max-width: 768px) {
   .MainProfileCard__container{

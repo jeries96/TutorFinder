@@ -63,7 +63,7 @@ function MainProfileCard(props) {
     <li onClick={handleNavigationOptions} id="ratings" className="MainProfileCard__Navigator__option">חוות דעת</li>
     <li onClick={handleNavigationOptions} id="picVids" className="MainProfileCard__Navigator__option">תמונות וסרטונים</li>
     </ul>
-    {display==="bio" && <div> <h3>על נסטיה רורו</h3><p className="MainProfileCard__Bio">{teacher.userLifeActivity.biography}</p> </div>}
+    {display==="bio" && <div> <h3>{teacher.userPersonalInfo.firstName} {teacher.userPersonalInfo.lastName} </h3><p className="MainProfileCard__Bio">{teacher.userLifeActivity.biography}</p> </div>}
     {display==="ratings" && <div> אין כרגע</div> }
     {display==="picVids" && <div> אין כרגע</div> }
     </div>}

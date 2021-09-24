@@ -14,6 +14,9 @@ const handleLogOut = () => {
   Cookies.remove("loginToken")
   window.location.reload(false)
 }
+const handleEditProfile = () => {
+  history.push("/editprofile")
+}
   // useEffect(() => {
   //   const loginToken =  Cookies.get('loginToken')
   //   console.log(loginToken)
@@ -27,12 +30,13 @@ const handleLogOut = () => {
       },
       {
         key: "edit ",
-        text: "Edit Profile",
+        text: "עריכת פרופיל",
         value: "EDIT", 
+        onClick: handleEditProfile 
       },
       {
         key: "Log Out ",
-        text: "LOGOUT",
+        text: "התנתק",
         value: "LOGOUT",
         onClick: handleLogOut  
       }
