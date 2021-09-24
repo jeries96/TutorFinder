@@ -28,6 +28,8 @@ const SubSubjectModel = mongoose.model("SubSubjectModel", SubSubjectSchema);
 const UserSchema = require("./schemas/UserSchema");
 const UserModel = mongoose.model("UserModel", UserSchema);
 const userRouter = require("./routing/users");
+const ScheduleSchema = require('./schemas/ScheduleSchema');
+const scheduleModel = mongoose.model("SchemaModel", ScheduleSchema);
 
 app.use("/api/users", userRouter);
 
@@ -41,8 +43,8 @@ app.use("/api/subjects", subjectsRouter);
 const matchingTeachersRouter = require("./routing/matchingTeachers");
 app.use("/api/matchingTeachers", matchingTeachersRouter);
 
-// const statistics = require("./routing/statistics");
-// app.use("/api/statistics", statistics);
+const scheduleRouter = require("./routing/schedule");
+app.use("/api/schedule", scheduleRouter);
 
 
 // const Data = [
@@ -186,8 +188,16 @@ app.use("/api/matchingTeachers", matchingTeachersRouter);
 
 // ]
 
+const times=[{
+    teacher:"nemrsh1@gmail.com",
+    student:"nemrsh2@Gmail.com",
+    time: new Date('Sep 17, 2021  24:00:00')
+}
+]
+
 //UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
 
+scheduleModel.insertMany(times).then(console.log("Adding Success.!"));
 
 
 
