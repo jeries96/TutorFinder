@@ -12,6 +12,7 @@ const Menu = (props) => {
 const {user} =props
 const handleLogOut = () => {
   Cookies.remove("loginToken")
+  history.push('/')
   window.location.reload(false)
 }
 const handleEditProfile = () => {
