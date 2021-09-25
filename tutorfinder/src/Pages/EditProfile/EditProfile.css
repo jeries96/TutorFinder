@@ -1,4 +1,6 @@
-
+.editprofile__Title{
+  color: steelblue;
+}
   .editprofile__textInput, .editprofile__passwordInput {
     background-color: #e6e3e3;
     border: none;

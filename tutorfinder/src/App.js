@@ -18,6 +18,8 @@ import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
 import Schedule from './Components/Utilities/Schedule/Schedule';
 import Footer from './Components/Footer/Footer';
 import EditProfile from './Pages/EditProfile/EditProfilePage';
+import Table from './Components/Table/Table'
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
          <Route path="/profile" component={MainProfileCard} />
          <Route path="/calendar" component={Schedule} />
          <Route path="/editprofile" component={EditProfilePage} />
+         <Route path="/dashboard" component={Dashboard} />
          <Route path="/footer" component={Footer} /> 
          {/* <Route path="/editProfile" component={EditProfilePage}/> */}
       </Switch> 
