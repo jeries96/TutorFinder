@@ -3,11 +3,11 @@ const UserSchema = require('./UserSchema');
 
 const ExperienceSchema = new mongoose.Schema({
   ExperienceInfo: {
-        user:UserSchema,
-        subject:String,
-        description:String,
-        img:String
-    }
+    user: UserSchema,
+    subject: String,
+    description: String,
+    img: String
+  }
 })
 
 

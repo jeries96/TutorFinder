@@ -4,12 +4,12 @@ const SubSubjectSchema = new mongoose.Schema({
     SubSubjectInfo: {
         name: String,
         basicInfo: String,
-        img:String,
-        rating:Number,
-        startingPrice:Number
+        img: String,
+        rating: Number,
+        startingPrice: Number
     },
-    parents:[],
-    id:String,
+    parents: [],
+    id: String,
 })
 
 

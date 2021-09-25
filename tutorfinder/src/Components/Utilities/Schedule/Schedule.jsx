@@ -9,23 +9,28 @@ import Cookies from "js-cookie";
 function Schedule(props) {
     var secret = 'abcdefghujklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%^&*()_+';
     const jwt = require("jsonwebtoken");
+
+
     const [availableTeacherTime, setAvailableTeacherTime] = useState([]);
     let teacher = false;
     let subSubject = ""
+    let teacherEmail = ""
+    let studentEmail = ""
+    let teacherName = ""
     if (props.location.aboutProps) {
         teacher = props.location.aboutProps.teacher
+        teacherEmail = teacher.userInfo.email
+        teacherName = teacher.userPersonalInfo.firstName
         subSubject = props.location.aboutProps.subSubject
     }
     useEffect(() => {
-        // const loginToken =  Cookies.get('loginToken')
-        // console.log(loginToken)
-        // const decodedToken = jwt.verify(loginToken, secret);
-        // const email = decodedToken.email
-        const email = "nemrsh1@gmail.com"
+        const loginToken = Cookies.get('loginToken')
+        const decodedToken = jwt.verify(loginToken, secret);
+        studentEmail = decodedToken.username
 
         fetch('/api/schedule/getScheduleTableTeacher', {
             method: 'POST',
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ teacherEmail }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -47,7 +52,9 @@ function Schedule(props) {
         new Date('Sep 16, 2021  19:00:00'),
     ]
 
+    const [isScheduling, setIsScheduling] = useState(false);
     const [isScheduled, setIsScheduled] = useState(false);
+    const [scheduleErr, setScheduleErr] = useState('');
 
     function timeSlotValidator(slotTime) {
         let isValid = true
@@ -65,16 +72,40 @@ function Schedule(props) {
 
 
     const handleScheduled = date => {
-        console.log(date)
-        setIsScheduled(true);
+        setIsScheduling(true);
+        setScheduleErr('');
+
+        fetch('/api/schedule/requestLessonTime', {
+            method: 'POST',
+            body: JSON.stringify({ studentEmail, teacherEmail, date, teacherName }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.success === true) {
+                    setIsScheduling(false);
+                    setIsScheduled(true)
+                }
+                else{
+                    setScheduleErr("!בעית תקשורת אנא נסה שוב מאוחר יותר");
+                }
+            })
     }
     return (
         <div className="dateTimePicker">
             <DayTimePicker
                 timeSlotSizeMinutes={60}
+                isLoading={isScheduling}
                 isDone={isScheduled}
                 timeSlotValidator={timeSlotValidator}
                 onConfirm={handleScheduled}
+                confirmText="הזמנת שיעור"
+                loadingText="..שולח בקשה להזמנת שיעור"
+                doneText="!הזמנתך התקבלה בהצלחה"
+                err={scheduleErr}
             />
 
             <div id="GOBACK__Button_LOCATOR">

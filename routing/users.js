@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
                 if (isMatch) {
                     if (checkEmail[0].userActivity.active == true) {
                         const token = await jwt.sign({
-                            name: checkEmail[0].userPersonalInfo.firstName + " " +  checkEmail[0].userPersonalInfo.lastName  ,
+                            name: checkEmail[0].userPersonalInfo.firstName + " " + checkEmail[0].userPersonalInfo.lastName,
                             username: checkEmail[0].userInfo.email,
                             role: checkEmail[0].userInfo.role,
                         },
@@ -259,7 +259,7 @@ router.put('/updatePassword', (req, res) => {
 
 router.put('/updateProfileInfo', (req, res) => {
     const { serverProfileUpdate } = req.body;
-    const { email, lastName,location,education,phoneNumber,personalPhoto } = serverProfileUpdate;
+    const { email, lastName, location, education, phoneNumber, personalPhoto } = serverProfileUpdate;
     UserModel.findOne({ "userInfo.email": email }).then(async docs => {
         if (docs) {
             docs.userPersonalInfo.lastName = lastName;
@@ -277,7 +277,7 @@ router.put('/updateProfileInfo', (req, res) => {
 })
 
 router.put('/becomeATeacher', (req, res) => {
-    const {email,shortInfo,education,teachingPlaces,subSubjects} = req.body;
+    const { email, shortInfo, education, teachingPlaces, subSubjects } = req.body;
     UserModel.findOne({ "userInfo.email": email }).then(async docs => {
         if (docs) {
             var mailOptions = {
@@ -314,7 +314,7 @@ router.put('/becomeATeacher', (req, res) => {
                     console.log('Email sent: ' + info.response);
                 }
             });
-           res.send({success: true, error:null, info:"בקשתך נשלחה לצוות שלנו!" })
+            res.send({ success: true, error: null, info: "בקשתך נשלחה לצוות שלנו!" })
         } else {
             res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
         }

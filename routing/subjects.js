@@ -14,49 +14,49 @@ const SubSubjectModel = mongoose.model("subSubjectModel", SubSubjectSchema);
 
 
 
-router.get('/getSubjects',async (req, res) => {
-  const arrayToSend=[];
+router.get('/getSubjects', async (req, res) => {
+  const arrayToSend = [];
   // const {education}=req.body;
-    subjects = await SubjectModel.aggregate([
-      // {
-      //   $match: {
-      //     "SubjectInfo.education": education
-      //   }
-      // },
+  subjects = await SubjectModel.aggregate([
+    // {
+    //   $match: {
+    //     "SubjectInfo.education": education
+    //   }
+    // },
+    {
+      $group: {
+        _id: null,
+        id: { $addToSet: { "id": "$id", "subject": "$SubjectInfo.name" } },
+      },
+    }
+
+
+  ])
+  // subjects[0].id.map(async(subject,index)=> {
+  //     SubSubjectModel.find({ parents: subject }).then(subjects=>{
+  //       console.log(subjects)
+  //     })
+
+
+
+  // })
+  await Promise.all(subjects[0].id.map(async (subject, index) => {
+    subjectsOfSubject = await SubSubjectModel.aggregate([
+      {
+        $match: { "parents": subject.id }
+
+      },
       {
         $group: {
-          _id: null,
-          id: { $addToSet: {"id":"$id" , "subject": "$SubjectInfo.name" } },
+          _id: "$$ROOT",
         },
       }
 
-
     ])
-    // subjects[0].id.map(async(subject,index)=> {
-    //     SubSubjectModel.find({ parents: subject }).then(subjects=>{
-    //       console.log(subjects)
-    //     })
+    arrayToSend.push({ subjectName: subject.subject, subsubjects: subjectsOfSubject })
 
+  }))
 
-
-    // })
-   await Promise.all(subjects[0].id.map(async(subject,index)=> {
-       subjectsOfSubject = await SubSubjectModel.aggregate([
-         {
-             $match: {"parents": subject.id} 
-             
-           },
-           {
-            $group: {
-              _id: "$$ROOT",
-            },
-          }
-
-       ])
-       arrayToSend.push({subjectName:subject.subject,subsubjects:subjectsOfSubject})
-
-    }))
-  
   res.send(arrayToSend)
 })
 
