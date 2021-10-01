@@ -61,7 +61,7 @@ function SignIn() {
             <div className="wrapper fadeInDown">
                 <div id="formContent">
 
-                    <h2 className="active"> ברוך הבא </h2>
+                    <h2 className="active" id='titleSIGNIN'> ברוך הבא </h2>
 
                     <form className="SignInForm" onSubmit={HandleSignIn}>
                         <input type="email" id="SignInForm__textInput" className="fadeIn second" name="email" placeholder="דואר אלקטרוני" required />

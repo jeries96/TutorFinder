@@ -1,0 +1,15 @@
+.dashboard-wrapper {
+    display: grid;
+    grid-template-columns: 20vw 60vw 20vw;
+    grid-template-rows:  auto;
+    grid-template-areas:
+    " . dashboardtable . "
+    " . dashboardcards .";
+}
+
+.dashboard-cards {
+    grid-area: dashboardcards;
+}
+.dashboard-table {
+    grid-area: dashboardtable;
+}

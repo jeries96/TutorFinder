@@ -18,6 +18,9 @@ const Menu = (props) => {
   const handleEditProfile = () => {
     history.push("/editprofile")
   }
+  const handleDashboard= () => {
+    history.push("/dashboard")
+  }
   // useEffect(() => {
   //   const loginToken =  Cookies.get('loginToken')
   //   console.log(loginToken)
@@ -34,6 +37,12 @@ const Menu = (props) => {
       text: "עריכת פרופיל",
       value: "EDIT",
       onClick: handleEditProfile
+    },
+    {
+      key: "dashboard ",
+      text: "אזור אישי",
+      value: "Dashboard",
+      onClick: handleDashboard
     },
     {
       key: "Log Out ",
