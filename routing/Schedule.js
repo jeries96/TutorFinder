@@ -6,6 +6,9 @@ var nodemailer = require('nodemailer')
 const PendingScheduleSchema = require('../schemas/PendingScheduleSchema')
 const PendingScheduleModel = mongoose.model("PendingScheduleModel", PendingScheduleSchema)
 
+const ExistingScheduleSchema = require('../schemas/ExistingScheduleSchema')
+const ExistingScheduleModel = mongoose.model("ExistingScheduleModel", ExistingScheduleSchema)
+
 const ScheduleSchema = require('../schemas/ScheduleSchema');
 const scheduleModel = mongoose.model("SchemaModel", ScheduleSchema);
 
@@ -60,6 +63,7 @@ router.post('/requestLessonTime', async (req, res) => {
   const schedules = await PendingScheduleModel.insertMany(
     {
       teacher: teacherEmail,
+      teacherName: teacherName,
       student: studentEmail,
       time: date,
       requestTime: new Date(),
@@ -96,6 +100,57 @@ router.post('/requestLessonTime', async (req, res) => {
 
 
 
+router.post('/getPendingLessons', async (req, res) => {
+  const teacherEmail  = req.body
+  console.log(teacherEmail.teacherEmail)
+  // time: { $gte: new Date() },
+  const pendingLessons = await PendingScheduleModel.aggregate([
+    {
+      $match: { "teacher": teacherEmail.teacherEmail}
+    },
+    {
+      $group: {
+        _id: null,
+        pendingLessonsList: { $addToSet: "$$ROOT" },
+      },
+    }
+  ])
+
+  if(pendingLessons.length > 0 ){
+    res.send({ success: true, data: pendingLessons })
+  }
+  else {
+    res.send({success: false})
+  }
+ 
+
+})
+
+
+router.post('/getExistingLessons', async (req, res) => {
+  const teacherEmail  = req.body
+  console.log(teacherEmail.teacherEmail)
+  const existingLessons = await ExistingScheduleModel.aggregate([
+    {
+      $match: { "teacher": teacherEmail.teacherEmail }
+    },
+    {
+      $group: {
+        _id: null,
+        existingLessonsList: { $addToSet: "$$ROOT" },
+      },
+    }
+  ])
+
+  if(existingLessons.length > 0 ){
+    res.send({ success: true, data: existingLessons })
+  }
+  else {
+    res.send({success: false})
+  }
+ 
+
+})
 
 
 module.exports = router;

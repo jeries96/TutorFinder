@@ -8,6 +8,47 @@ import { Link, useHistory } from 'react-router-dom';
 
 
 const Menu = (props) => {
+  let pendingLessons = []
+  let existingLessons = []
+
+  const teacherEmail = "nemrsh11@gmail.com"
+
+  useEffect(() => {
+    fetch('/api/schedule/getPendingLessons', {
+      method: 'POST',
+      body: JSON.stringify({ teacherEmail }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.success){
+        if (data.data.length > 0) {
+          console.log( data.data[0].pendingLessonsList)
+          pendingLessons = data.data[0].pendingLessonsList
+        }
+      }
+      })
+
+      fetch('/api/schedule/getExistingLessons', {
+        method: 'POST',
+        body: JSON.stringify({ teacherEmail }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if(data.success){
+          if (data.data.length > 0) {
+            existingLessons = data.data[0].existingLessonsList
+            console.log(existingLessons)
+          }
+        }
+        })
+        })
+
   const history = useHistory()
   const { user } = props
   const handleLogOut = () => {
@@ -18,8 +59,12 @@ const Menu = (props) => {
   const handleEditProfile = () => {
     history.push("/editprofile")
   }
-  const handleDashboard= () => {
-    history.push("/dashboard")
+  const handleDashboard = () => {
+    history.push
+    ({
+      pathname: "/dashboard",
+      state: { pendingLessons: pendingLessons, existingLessons: existingLessons }
+    })
   }
   // useEffect(() => {
   //   const loginToken =  Cookies.get('loginToken')

@@ -8,45 +8,20 @@ import './DashboardCards.css'
 
 
 const DashboardCards = (props) => {
+    const { pending, upComing } = props
     return (
         <div>
             <div class="main-section">
                 <div className="dashbord">
                     <div className="icon-section">
-                        <small>Classes</small>
-                        <p>11</p>
-                    </div>
-                    <div className="detail-section">
-                        <p>
-                            last month
-                        </p>
+                        <small>שיעורים שלי</small>
+                        <p>{upComing}</p>
                     </div>
                 </div>
                 <div className="dashbord dashbord-green">
                     <div className="icon-section">
-                        <small>Account</small>
-                        <p>7</p>
-                    </div>
-                    <div className="detail-section">
-                        <p>HEEEY</p>
-                    </div>
-                </div>
-                <div class="dashbord dashbord-red">
-                    <div class="icon-section">
-                        <small>Account</small>
-                        <p>$ 256</p>
-                    </div>
-                    <div class="detail-section">
-                        <a href="#">More Info </a>
-                    </div>
-                </div>
-                <div class="dashbord dashbord-orange">
-                    <div class="icon-section">
-                        <small>Alert</small>
-                        <p>9 New</p>
-                    </div>
-                    <div class="detail-section">
-                        <a href="#">More Info </a>
+                        <small>שיעורים מחכים לאישור</small>
+                        <p>{pending}</p>
                     </div>
                 </div>
             </div>

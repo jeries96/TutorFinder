@@ -190,15 +190,17 @@ app.use("/api/schedule", scheduleRouter);
 // ]
 
 const times=[{
-    teacher:"nemrsh1@gmail.com",
+    teacherName: "yousef",
+    teacher:"nemrsh11@gmail.com",
     student:"nemrsh2@Gmail.com",
-    time: new Date('Sep 17, 2021  24:00:00')
+    time: new Date('october 17, 2021  22:00:00')
 }
 ]
-
+const ExistingScheduleSchema = require('./schemas/ExistingScheduleSchema')
+const ExistingScheduleModel = mongoose.model("ExistingScheduleModel", ExistingScheduleSchema)
 //UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
 
-scheduleModel.insertMany(times).then(console.log("Adding Success.!"));
+ExistingScheduleModel.insertMany(times).then(console.log("Adding Success.!"));
 
 
 

@@ -1,15 +1,13 @@
-.dashboard-wrapper {
-    display: grid;
-    grid-template-columns: 20vw 60vw 20vw;
-    grid-template-rows:  auto;
-    grid-template-areas:
-    " . dashboardtable . "
-    " . dashboardcards .";
-}
 
-.dashboard-cards {
-    grid-area: dashboardcards;
-}
-.dashboard-table {
-    grid-area: dashboardtable;
+
+.Table__Title{
+    text-align: right;
+    border-bottom: 3px solid steelblue;
+    width:fit-content;
+    margin-top:2%;
+    margin-right:8%;
+    font-style: oblique;
+    font-size:23px;
+    font-weight: bolder;
+    font-family: 'Rubik', sans-serif;
 }

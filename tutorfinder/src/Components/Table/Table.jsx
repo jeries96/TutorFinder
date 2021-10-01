@@ -11,79 +11,75 @@ import Footer from "../Footer/Footer";
 
 
 const Table = (props) => {
+    const { status, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending } = props
 
-    let [data, setData] = useState([]);
-
-    useEffect(() => {
-        setData([
-            { studentName: 'nimer', date: '15/06/1997', teacherName: "yousef", teacherEmail: "yy", status: false },
-            { studentName: 'js', date: '15/06/1997', teacherName: "yousef", teacherEmail: "yy", status: false },
-            { studentName: 'a', date: '15/06/1997', teacherName: "yousef", teacherEmail: "yy", status: false },
-            { studentName: 'sssss', date: '15/06/1997', teacherName: "yousef", teacherEmail: "yy", status: false }
-        ]
-        )
-    }, [])
 
     function handleApprove(value, index) {
-
         let newArray = []
-
         for (let i = 0; i < data.length; i++) {
             if (i !== index) {
                 newArray.push(data[i])
             }
-
+            else {
+                existingLessons.push(data[i])
+            }
         }
-
-        setData(newArray)
+        setPendingLessons(newArray)
+        setExistingLessons(existingLessons)
+        setUpComing(upComing + 1)
+        setPending(pending - 1)
     }
 
-    function handleDeny() {
-        console.log('Deny')
-
+    function handleDeny(value, index) {
+        let newArray = []
+        console.log(data[index])
+        for (let i = 0; i < data.length; i++) {
+            if (i !== index) {
+                newArray.push(data[i])
+            }
+        }
+        setPendingLessons(newArray)
+        setPending(pending - 1)
     }
+
     return (
-            <div class="table-wrapper">
-                <table dir='rtl' class="fl-table">
+        <div class="table-wrapper">
+            <table dir='rtl' class="fl-table">
 
-                    <thead>
+                <thead>
 
-                        <tr className='fl-table-header'>
-                            <th>תאריך</th>
-                            <th>שם הסטודנט</th>
-                            <th>שם המורה</th>
-                            <th>אימייל המורה</th>
-                            <th>סטטוס</th>
-                        </tr>
+                    <tr className='fl-table-header'>
+                        <th>תאריך</th>
+                        <th>שם המורה</th>
+                        <th>שם הסטודנט</th>
+                        <th>אימייל המורה</th>
+                        {status &&
+                            <th>סטטוס</th>}
+                    </tr>
 
-                    </thead>
+                </thead>
 
-                    <tbody>
-                        {
-                            data.map((value, index) => {
-                                return (
-                                    <tr>
-                                        <td>{value.date}</td>
-                                        <td>{value.studentName}</td>
-                                        <td>{value.teacherName}</td>
-                                        <td>{value.teacherEmail}</td>
+                <tbody>
+                    {data.length > 0 &&
+                        data.map((value, index) => {
+                            return (
+                                <tr>
+                                    <td>{value.time}</td>
+                                    <td>{value.teacherName}</td>
+                                    <td>{value.student}</td>
+                                    <td>{value.teacher}</td>
+                                    {status &&
                                         <td>
                                             <button onClick={() => handleApprove(value, index)}><img src={tick} /> </button>
-                                            <button onClick={handleDeny}><img src={clear} /></button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-
-
-
-                </table>
-
-
-
-            </div>
+                                            <button onClick={() => handleDeny(value, index)}><img src={clear} /></button>
+                                        </td>}
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
     );
 
 }
