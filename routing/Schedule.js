@@ -66,11 +66,12 @@ router.post('/requestLessonTime', async (req, res) => {
       teacherName: teacherName,
       student: studentEmail,
       time: date,
+      pending: true,
       requestTime: new Date(),
     },
 
   )
-  
+
   var mailOptions = {
     from: 'lessonsassistanceservice@gmail.com',
     to: studentEmail,
@@ -88,11 +89,11 @@ router.post('/requestLessonTime', async (req, res) => {
 
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
-      res.send({ success: false});
+      res.send({ success: false });
       console.log("there was an error sending email", err)
     } else {
       console.log('Email sent: ' + info.response);
-      res.send({ success: true});
+      res.send({ success: true });
     }
   });
 
@@ -101,12 +102,11 @@ router.post('/requestLessonTime', async (req, res) => {
 
 
 router.post('/getPendingLessons', async (req, res) => {
-  const teacherEmail  = req.body
+  const teacherEmail = req.body
   console.log(teacherEmail.teacherEmail)
-  // time: { $gte: new Date() },
   const pendingLessons = await PendingScheduleModel.aggregate([
     {
-      $match: { "teacher": teacherEmail.teacherEmail}
+      $match: { "teacher": teacherEmail.teacherEmail, "pending": true, time: { $gte: new Date() } }
     },
     {
       $group: {
@@ -116,23 +116,23 @@ router.post('/getPendingLessons', async (req, res) => {
     }
   ])
 
-  if(pendingLessons.length > 0 ){
+  if (pendingLessons.length > 0) {
     res.send({ success: true, data: pendingLessons })
   }
   else {
-    res.send({success: false})
+    res.send({ success: false })
   }
- 
+
 
 })
 
 
 router.post('/getExistingLessons', async (req, res) => {
-  const teacherEmail  = req.body
+  const teacherEmail = req.body
   console.log(teacherEmail.teacherEmail)
   const existingLessons = await ExistingScheduleModel.aggregate([
     {
-      $match: { "teacher": teacherEmail.teacherEmail }
+      $match: { "teacher": teacherEmail.teacherEmail, time: { $gte: new Date() } }
     },
     {
       $group: {
@@ -142,13 +142,67 @@ router.post('/getExistingLessons', async (req, res) => {
     }
   ])
 
-  if(existingLessons.length > 0 ){
+  if (existingLessons.length > 0) {
     res.send({ success: true, data: existingLessons })
   }
   else {
-    res.send({success: false})
+    res.send({ success: false })
   }
- 
+
+
+})
+
+
+
+router.post('/updatePendingFalse', async (req, res) => {
+  let updateDataBase = req.body
+  updateDataBase = updateDataBase.updateDataBase
+  console.log(updateDataBase.updateDataBase)
+  PendingScheduleModel.findOne({ "_id": updateDataBase._id }).then(async docs => {
+    if (docs) {
+      docs.pending = false;
+      docs.save();
+      res.send({ success: true, error: null, info: null })
+    } else {
+      res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
+    }
+  })
+})
+
+router.post('/addToExistingLesson', async (req, res) => {
+  let updateDataBase = req.body
+  updateDataBase = updateDataBase.updateDataBase
+  console.log(updateDataBase)
+
+
+  const newExistingLesson = [{
+    teacherName: updateDataBase.teacherName,
+    teacher: updateDataBase.teacher,
+    student: updateDataBase.student,
+    time: updateDataBase.time
+  }]
+
+  var mailOptions = {
+    from: 'lessonsassistanceservice@gmail.com',
+    to: updateDataBase.student,
+    subject: 'אישור בקשתך לקבלת שיעור עזר',
+    html: `<p dir="rtl">  הזמנתך לשיעור העזר עם המורה ${updateDataBase.teacherName}  אושרה בהצלחה!</p>
+
+  <p dir="rtl"> בהצלחה,</p>
+  <p dir="rtl">צוות שיעורי עזר.</p>`
+
+
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      res.send({ success: false });
+      console.log("there was an error sending email", err)
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.send({ success: true });
+    }
+  });
+  ExistingScheduleModel.insertMany(newExistingLesson)
 
 })
 

@@ -15,6 +15,22 @@ const Table = (props) => {
 
 
     function handleApprove(value, index) {
+        const updateDataBase = data[index]
+        fetch('/api/schedule/updatePendingFalse', {
+            method: "POST",
+            body: JSON.stringify({updateDataBase}),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+
+          fetch('/api/schedule/addToExistingLesson', {
+            method: "POST",
+            body: JSON.stringify({updateDataBase}),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
         let newArray = []
         for (let i = 0; i < data.length; i++) {
             if (i !== index) {
@@ -31,6 +47,15 @@ const Table = (props) => {
     }
 
     function handleDeny(value, index) {
+        const updateDataBase = data[index]
+        fetch('/api/schedule/updatePendingFalse', {
+            method: "POST",
+            body: JSON.stringify({updateDataBase}),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            
         let newArray = []
         console.log(data[index])
         for (let i = 0; i < data.length; i++) {
