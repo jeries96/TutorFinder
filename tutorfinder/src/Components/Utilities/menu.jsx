@@ -3,7 +3,7 @@ import { Dropdown } from "semantic-ui-react";
 import Cookies from "js-cookie";
 import { Link, useHistory } from 'react-router-dom';
 
-
+import jwt from "jsonwebtoken";
 
 
 
@@ -11,43 +11,54 @@ const Menu = (props) => {
   let pendingLessons = []
   let existingLessons = []
 
-  const teacherEmail = "nemrsh11@gmail.com"
+  let userEmail = ""
+  let userRole = ""
+
+
 
   useEffect(() => {
+    let token = Cookies.get('loginToken');
+    if (token != null) {
+      const decoded = jwt.decode(token);
+      userEmail = decoded.username
+      userRole = decoded.role
+    }
+    if(userRole == "teacher"){
     fetch('/api/schedule/getPendingLessons', {
       method: 'POST',
-      body: JSON.stringify({ teacherEmail }),
+      body: JSON.stringify({ userEmail}),
       headers: {
         "Content-Type": "application/json"
       }
     })
       .then(res => res.json())
       .then(data => {
-        if(data.success){
-        if (data.data.length > 0) {
-          console.log( data.data[0].pendingLessonsList)
-          pendingLessons = data.data[0].pendingLessonsList
+        if (data.success) {
+          if (data.data.length > 0) {
+            console.log(data.data[0].pendingLessonsList)
+            pendingLessons = data.data[0].pendingLessonsList
+          }
         }
-      }
       })
+    }
 
-      fetch('/api/schedule/getExistingLessons', {
-        method: 'POST',
-        body: JSON.stringify({ teacherEmail }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(res => res.json())
-        .then(data => {
-          if(data.success){
+    fetch('/api/schedule/getExistingLessons', {
+      method: 'POST',
+      body: JSON.stringify({ userEmail, userRole }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
           if (data.data.length > 0) {
             existingLessons = data.data[0].existingLessonsList
             console.log(existingLessons)
           }
         }
-        })
-        })
+      })
+  })
 
   const history = useHistory()
   const { user } = props
@@ -61,10 +72,10 @@ const Menu = (props) => {
   }
   const handleDashboard = () => {
     history.push
-    ({
-      pathname: "/dashboard",
-      state: { pendingLessons: pendingLessons, existingLessons: existingLessons }
-    })
+      ({
+        pathname: "/dashboard",
+        state: { pendingLessons: pendingLessons, existingLessons: existingLessons }
+      })
   }
   // useEffect(() => {
   //   const loginToken =  Cookies.get('loginToken')

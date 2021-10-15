@@ -128,19 +128,38 @@ router.post('/getPendingLessons', async (req, res) => {
 
 
 router.post('/getExistingLessons', async (req, res) => {
-  const teacherEmail = req.body
-  console.log(teacherEmail.teacherEmail)
-  const existingLessons = await ExistingScheduleModel.aggregate([
-    {
-      $match: { "teacher": teacherEmail.teacherEmail, time: { $gte: new Date() } }
-    },
-    {
-      $group: {
-        _id: null,
-        existingLessonsList: { $addToSet: "$$ROOT" },
+  const userEmail = req.body
+  const userRole = req.body
+  console.log(userEmail.userEmail)
+  console.log(userRole.userRole)
+
+  if (userRole.userRole == "teacher") {
+    const existingLessons = await ExistingScheduleModel.aggregate([
+      {
+        $match: { "teacher": userEmail.userEmail, time: { $gte: new Date() } }
       },
-    }
-  ])
+      {
+        $group: {
+          _id: null,
+          existingLessonsList: { $addToSet: "$$ROOT" },
+        },
+      }
+    ])
+  }
+
+  if (userRole.userRole == "student") {
+    const existingLessons = await ExistingScheduleModel.aggregate([
+      {
+        $match: { "student": userEmail.userEmail, time: { $gte: new Date() } }
+      },
+      {
+        $group: {
+          _id: null,
+          existingLessonsList: { $addToSet: "$$ROOT" },
+        },
+      }
+    ])
+  }
 
   if (existingLessons.length > 0) {
     res.send({ success: true, data: existingLessons })
