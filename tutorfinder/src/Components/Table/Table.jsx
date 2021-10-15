@@ -24,30 +24,30 @@ const Table = (props) => {
 
     const submit = (value, index)=> {
          confirmAlert({
-          title: 'Confirm to submit',
-          message: 'Are you sure to do this.',
+          title: 'אישור שיעור',
+          message: 'האם אתה מאשר קבלת השיעור?',
           buttons: [
             {
-              label: 'Yes',
+              label: 'כן',
               onClick: () => handleApprove(value, index)
             },
             {
-              label: 'No',
+              label: 'לא',
             }
           ]
         })};
     
     const deny = (value, index)=> {
         confirmAlert({
-         title: 'Confirm to submit',
-         message: 'Are you sure to do this.',
+         title: 'דחיית השיעור',
+         message: 'האם אתה רוצה לדחות השיעור?',
          buttons: [
            {
-             label: 'Yes',
+             label: 'כן',
              onClick: () => handleDeny(value, index)
            },
            {
-             label: 'No',
+             label: 'לא',
            }
          ]
        })};
@@ -136,10 +136,16 @@ const Table = (props) => {
                         <th>שם המורה</th>
                         <th>שם הסטודנט</th>
                         <th>אימייל המורה</th>
-                        {status &&
-                            <th>סטטוס</th>}
-                        {ratings &&
-                        <th>ציון</th>}
+                        {
+                        status &&
+                            <th>סטטוס</th>
+                        }
+                        
+                        {
+                        ratings &&
+                        <th>ציון</th>
+                        }
+
                     </tr>
 
                 </thead>

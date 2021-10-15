@@ -34,7 +34,7 @@ function SubjectCard(props) {
 
                             {subject.subsubjects.map((subSubject, index) => {
                                 return (
-                                    <Link key={index} dir="rtl" to={{
+                                    <Link key={index} dir="ltr" to={{
                                         pathname: "/teachers",
                                         aboutProps: { name: subSubject._id.id }
                                     }}>
