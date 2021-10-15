@@ -23,10 +23,9 @@ const Menu = (props) => {
       userEmail = decoded.username
       userRole = decoded.role
     }
-    if(userRole == "teacher"){
     fetch('/api/schedule/getPendingLessons', {
       method: 'POST',
-      body: JSON.stringify({ userEmail}),
+      body: JSON.stringify({userEmail, userRole}),
       headers: {
         "Content-Type": "application/json"
       }
@@ -40,7 +39,7 @@ const Menu = (props) => {
           }
         }
       })
-    }
+    
 
     fetch('/api/schedule/getExistingLessons', {
       method: 'POST',
@@ -74,7 +73,7 @@ const Menu = (props) => {
     history.push
       ({
         pathname: "/dashboard",
-        state: { pendingLessons: pendingLessons, existingLessons: existingLessons }
+        state: { pendingLessons: pendingLessons, existingLessons: existingLessons, userRole: userRole}
       })
   }
   // useEffect(() => {

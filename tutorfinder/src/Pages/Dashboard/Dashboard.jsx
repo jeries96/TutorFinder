@@ -12,6 +12,7 @@ const Dashboard = (props) => {
     let [existingLessons, setExistingLessons] = useState([]);
     let [pending, setPending] = useState(0);
     let [upComing, setUpComing] = useState(0);
+    let [userRole, setUserRole] = useState("student")
 
     useEffect(() => {
         if (props.location.state != undefined) {
@@ -19,6 +20,7 @@ const Dashboard = (props) => {
             setPending(props.location.state.pendingLessons.length)
             setExistingLessons(props.location.state.existingLessons)
             setUpComing(props.location.state.existingLessons.length)
+            setUserRole(props.location.state.userRole)
         }
     }, [])
 
@@ -30,24 +32,25 @@ const Dashboard = (props) => {
 
             <div className='dashboard-table'>
                 <div className='Table__Title'>שיעורים שלי</div>
-                <Table status={false}  ratings={true} data={existingLessons} />
+                <Table status={false} ratings={true} data={existingLessons} />
             </div>
-            {pendingLessons.length>0 && 
-            <div className='dashboard-table'>
-                <div className='Table__Title'>שיעורים מחכים לאישור</div>
-                <Table
-                    status={true}
-                    ratings={false}
-                    setPendingLessons={setPendingLessons}
-                    data={pendingLessons}
-                    setExistingLessons={setExistingLessons}
-                    existingLessons={existingLessons}
-                    setUpComing={setUpComing}
-                    upComing={upComing}
-                    pending={pending}
-                    setPending={setPending}
-                />
-            </div>}
+            {pendingLessons.length > 0 &&
+                <div className='dashboard-table'>
+                    <div className='Table__Title'>שיעורים מחכים לאישור</div>
+                    <Table
+                        status={true}
+                        ratings={false}
+                        setPendingLessons={setPendingLessons}
+                        data={pendingLessons}
+                        setExistingLessons={setExistingLessons}
+                        existingLessons={existingLessons}
+                        setUpComing={setUpComing}
+                        upComing={upComing}
+                        pending={pending}
+                        setPending={setPending}
+                        userRole={userRole}
+                    />
+                </div>}
         </div>
     );
 }

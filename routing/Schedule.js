@@ -103,18 +103,36 @@ router.post('/requestLessonTime', async (req, res) => {
 
 router.post('/getPendingLessons', async (req, res) => {
   const userEmail = req.body
+  const userRole = req.body
+  let pendingLessons = []
   console.log(userEmail.userEmail)
-  const pendingLessons = await PendingScheduleModel.aggregate([
-    {
-      $match: { "teacher": userEmail.userEmail, "pending": true, time: { $gte: new Date() } }
-    },
-    {
-      $group: {
-        _id: null,
-        pendingLessonsList: { $addToSet: "$$ROOT" },
+  if (userRole.userRole == "teacher") {
+    pendingLessons = await PendingScheduleModel.aggregate([
+      {
+        $match: { "teacher": userEmail.userEmail, "pending": true, time: { $gte: new Date() } }
       },
-    }
-  ])
+      {
+        $group: {
+          _id: null,
+          pendingLessonsList: { $addToSet: "$$ROOT" },
+        },
+      }
+    ])
+  }
+
+  if (userRole.userRole == "student") {
+    pendingLessons = await PendingScheduleModel.aggregate([
+      {
+        $match: { "student": userEmail.userEmail, "pending": true, time: { $gte: new Date() } }
+      },
+      {
+        $group: {
+          _id: null,
+          pendingLessonsList: { $addToSet: "$$ROOT" },
+        },
+      }
+    ])
+  }
 
   if (pendingLessons.length > 0) {
     res.send({ success: true, data: pendingLessons })
@@ -134,7 +152,7 @@ router.post('/getExistingLessons', async (req, res) => {
   console.log(userRole.userRole)
   let existingLessons = []
   if (userRole.userRole == "teacher") {
-     existingLessons = await ExistingScheduleModel.aggregate([
+    existingLessons = await ExistingScheduleModel.aggregate([
       {
         $match: { "teacher": userEmail.userEmail, time: { $gte: new Date() } }
       },
@@ -148,7 +166,7 @@ router.post('/getExistingLessons', async (req, res) => {
   }
 
   if (userRole.userRole == "student") {
-     existingLessons = await ExistingScheduleModel.aggregate([
+    existingLessons = await ExistingScheduleModel.aggregate([
       {
         $match: { "student": userEmail.userEmail, time: { $gte: new Date() } }
       },
