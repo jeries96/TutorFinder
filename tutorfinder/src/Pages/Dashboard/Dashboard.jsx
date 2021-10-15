@@ -14,11 +14,12 @@ const Dashboard = (props) => {
     let [upComing, setUpComing] = useState(0);
 
     useEffect(() => {
-        setPendingLessons(props.location.state.pendingLessons)
-        setPending(props.location.state.pendingLessons.length)
-        setExistingLessons(props.location.state.existingLessons)
-        setUpComing(props.location.state.existingLessons.length)
-
+        if (props.location.state != undefined) {
+            setPendingLessons(props.location.state.pendingLessons)
+            setPending(props.location.state.pendingLessons.length)
+            setExistingLessons(props.location.state.existingLessons)
+            setUpComing(props.location.state.existingLessons.length)
+        }
     }, [])
 
     return (
@@ -28,11 +29,11 @@ const Dashboard = (props) => {
             </div>
 
             <div className='dashboard-table'>
-                <div className= 'Table__Title'>שיעורים שלי</div>
+                <div className='Table__Title'>שיעורים שלי</div>
                 <Table status={false} data={existingLessons} />
             </div>
             <div className='dashboard-table'>
-                <div className= 'Table__Title'>שיעורים מחכים לאישור</div>
+                <div className='Table__Title'>שיעורים מחכים לאישור</div>
                 <Table
                     status={true}
                     setPendingLessons={setPendingLessons}
