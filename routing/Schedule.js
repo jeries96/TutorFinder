@@ -102,11 +102,11 @@ router.post('/requestLessonTime', async (req, res) => {
 
 
 router.post('/getPendingLessons', async (req, res) => {
-  const teacherEmail = req.body
-  console.log(teacherEmail.teacherEmail)
+  const userEmail = req.body
+  console.log(userEmail.userEmail)
   const pendingLessons = await PendingScheduleModel.aggregate([
     {
-      $match: { "teacher": teacherEmail.teacherEmail, "pending": true, time: { $gte: new Date() } }
+      $match: { "teacher": userEmail.userEmail, "pending": true, time: { $gte: new Date() } }
     },
     {
       $group: {
@@ -132,9 +132,9 @@ router.post('/getExistingLessons', async (req, res) => {
   const userRole = req.body
   console.log(userEmail.userEmail)
   console.log(userRole.userRole)
-
+  let existingLessons = []
   if (userRole.userRole == "teacher") {
-    const existingLessons = await ExistingScheduleModel.aggregate([
+     existingLessons = await ExistingScheduleModel.aggregate([
       {
         $match: { "teacher": userEmail.userEmail, time: { $gte: new Date() } }
       },
@@ -148,7 +148,7 @@ router.post('/getExistingLessons', async (req, res) => {
   }
 
   if (userRole.userRole == "student") {
-    const existingLessons = await ExistingScheduleModel.aggregate([
+     existingLessons = await ExistingScheduleModel.aggregate([
       {
         $match: { "student": userEmail.userEmail, time: { $gte: new Date() } }
       },

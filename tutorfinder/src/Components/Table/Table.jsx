@@ -16,7 +16,7 @@ import RatingStar from "../Utilities/Rating/RatingStar";
 
 
 const Table = (props) => {
-    const { status, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending } = props
+    const { status,ratings, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending } = props
     const [setRating, rating] = useState(0)
     const [setIsReadOnly, readOnly] = useState(false)
     const [setShowRating, showRating] = useState(true)
@@ -138,7 +138,8 @@ const Table = (props) => {
                         <th>אימייל המורה</th>
                         {status &&
                             <th>סטטוס</th>}
-                        <th>ציון</th>
+                        {ratings &&
+                        <th>ציון</th>}
                     </tr>
 
                 </thead>
@@ -158,7 +159,8 @@ const Table = (props) => {
                                             <div onClick={() => submit(value, index)}><img src={tick} /> </div>
                                             <div onClick={() => deny(value, index)}><img src={clear} /></div>
                                         </td>}
-                                    <td><RatingStar onClick={() => deny(value, index)} value={value}/></td>
+                                      {ratings && 
+                                    <td><RatingStar onClick={() => deny(value, index)} value={value}/></td>}
                                 </tr>
                             )
                         })
