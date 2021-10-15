@@ -31,6 +31,7 @@ const Dashboard = (props) => {
                 <div className= 'Table__Title'>שיעורים שלי</div>
                 <Table status={false} data={existingLessons} />
             </div>
+            {pendingLessons.length>0 && 
             <div className='dashboard-table'>
                 <div className= 'Table__Title'>שיעורים מחכים לאישור</div>
                 <Table
@@ -44,7 +45,7 @@ const Dashboard = (props) => {
                     pending={pending}
                     setPending={setPending}
                 />
-            </div>
+            </div>}
         </div>
     );
 }

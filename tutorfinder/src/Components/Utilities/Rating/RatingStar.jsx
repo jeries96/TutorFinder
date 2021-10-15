@@ -1,13 +1,23 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
 function RatingStar(props) {
-        const {value} =props
+    const {ratings}=props
+    const [setRating, rating] = useState(0)
+    const [setIsReadOnly, isreadOnly] = useState(false)
+
+    function handleRating(value) {
+        setRating(value)
+        setIsReadOnly(true)
+    }
     return (
-        <div>
+        <div dir='ltr'>
             <Box component="fieldset" mb={3} borderColor="transparent">
-                <Rating name="read-only" value={value} precision={0.5} readOnly />
+                <Rating
+                    value={ratings}
+                    precision={1}
+                />
             </Box>
         </div>
     )
