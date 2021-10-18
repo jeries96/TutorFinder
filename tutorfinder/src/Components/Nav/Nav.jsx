@@ -46,9 +46,12 @@ function Nav() {
           }
           {
             isLoggedIn === false &&
+            <div>
             <Link to='/SignIn'>
               <a className="get-started-btn">התחבר</a>
             </Link>
+            <Link to='/teacherSignUp'> <a className="be-a-mentor-btn"> תהיה מורה </a></Link>
+            </div>
           }
 
         </div>
