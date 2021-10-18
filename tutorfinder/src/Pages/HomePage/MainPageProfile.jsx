@@ -32,8 +32,8 @@ function MainPageProfile() {
           {
             isLoggedIn === false &&
             <div>
-              <Link to='/SignIn'>  <a href="courses.html" className="btn-get-started">התחבר </a> </Link>
-              <Link to='/SignUp'>  <a href="courses.html" className="btn-get-started-right-side">הירשם </a> </Link>
+              <Link to='/SignIn'>  <a className="btn-get-started">התחבר </a> </Link>
+              <Link to='/SignUp'>  <a className="btn-get-started-right-side">הירשם </a> </Link>
             </div>
           }
 
