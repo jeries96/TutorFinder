@@ -24,42 +24,15 @@ function TeacherSignUp() {
     { value: "ortBrauda", label: "מכללת אורט בראודה" },
     { value: "other", label: "אחר" }
   ]
-  const areaLocationOptions = [
+  const RoleOptions = [
     {
-      label: "צפון",
+      
       options: [
-        { label: "חיפה והסביבה", value: "value_1" },
-        { label: "קריות והסביבה", value: "value_2" },
-        { label: "עכו-נהריה והסביבה", value: "value_1" },
-        { label: "גליל עליון", value: "value_2" },
-        { label: "כנרת והסביבה", value: "value_1" },
-        { label: "נצרת", value: "value_2" },
-        { label: "שפרעם", value: "value_2" },
-        { label: "ראש פינה ", value: "value_1" },
-        { label: "גליל תחתון", value: "value_2" },
+        { label: "סטודנט", value: "Student" },
+        { label: "מורה", value: "Teacher" },
       ]
     },
-    {
-      label: "דרום",
-      options: [
-        { label: "באר שבע", value: "value_3" },
-        { label: "אילת וערבה ", value: "value_4" },
-        { label: "ישובי הנגב ", value: "value_4" },
-        { label: " דרום ים המלח ", value: "value_4" },
-      ]
-    },
-    {
-      label: "מרכז",
-      options: [
-        { label: "תל אביב", value: "value_3" },
-        { label: "חולון-בת ים ", value: "value_4" },
-        { label: "רמת גן-גבעתיים ", value: "value_4" },
-        { label: "פתח תקווה והסביבה ", value: "value_4" },
-        { label: " ראשון לציון והסביבה ", value: "value_4" },
-      ]
-    },
-  ];
-
+  ]
   function savePassword(event) {
     let password = event.target.value
     passwordMatch.password = password
@@ -180,7 +153,7 @@ function TeacherSignUp() {
 
                 <div className="SignUpForm__inputs">
 
-                  <Select options={areaLocationOptions}
+                  <Select options={RoleOptions}
                     className="SignUpForm__passwordInput"
                     placeholder="תאשר סיסמה"
                     name="repeatPassword"

@@ -98,7 +98,13 @@
   right:30%;
 }
 
-
+.role-options-select{
+  width:85%;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2%;
+}
 
 /* For mobile phones And Tablets : */
 @media only screen and (max-width: 1024px) {
