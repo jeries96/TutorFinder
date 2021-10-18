@@ -23,21 +23,21 @@ function SignUp() {
 
   const [validatePassword, setValidatePassword] = useState("")
   const [error, setError] = useState("")
-  const subjectOptions= [
+  const subjectOptions = [
     { value: "epidemiology", label: "אפידמיולוגיה" },
     { value: "pharmacology", label: "פרמקולוגיה" },
-    { value: "microbiology", label: "מיקרוביולוגיה"},
+    { value: "microbiology", label: "מיקרוביולוגיה" },
     { value: "characterizationAndDesign", label: "אפיון ותכן" },
     { value: "Logic Design", label: "תכן לוגי" },
     { value: "Network protection", label: "הגנה ברשתות" },
     { value: "operatingSystems", label: "מערכות הפעלה" },
   ]
   const RoleOptions = [
-        { label: "סטודנט", value: "Student" },
-        { label: "מורה", value: "Teacher" },
+    { label: "סטודנט", value: "student" },
+    { label: "מורה", value: "teacher" },
   ]
-    
-  
+
+
 
   function savePassword(event) {
     let password = event.target.value
@@ -56,14 +56,14 @@ function SignUp() {
       return false
     }
   }
-  function handleRole(role){
-      console.log(role.value)
-      if (role.value == 'Teacher'){
-        setIsDisabled(false)
-      }
-      else{
-        setIsDisabled(true)
-      }
+  function handleRole(role) {
+    console.log(role.value)
+    if (role.value == 'teacher') {
+      setIsDisabled(false)
+    }
+    else {
+      setIsDisabled(true)
+    }
   }
 
   function HandleSignUp(event) {
@@ -71,12 +71,24 @@ function SignUp() {
     if (checkPassword() !== true) {
       setError('שתי הסיסמאות חיבבים להיות זהים')
     } else {
-      const { userName, lastName, email, password , role, subject} = event.target.elements;
+      const { userName, lastName, email, password, role, subject } = event.target.elements;
       serverSignUp.firstName = userName.value;
       serverSignUp.lastName = lastName.value;
       serverSignUp.email = email.value;
       serverSignUp.role = role.value;
-      serverSignUp.subject = subject.value;
+
+      if (role.value == 'teacher') {
+        if (subject != undefined) {
+          serverSignUp.subject = subject.value;
+        }
+        if (subject == "") {
+          serverSignUp.subject = null;
+        }
+      }
+      else {
+          serverSignUp.subject = null;
+        }
+      
 
       // if(phone.value!==""){
       //   serverSignUp.phoneNumber=phone.value;

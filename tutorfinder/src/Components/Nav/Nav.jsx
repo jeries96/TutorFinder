@@ -35,9 +35,9 @@ function Nav() {
         <div className="container d-flex align-items-center">
 
           <Link to='/'>
-            <h1 className="logo me-auto"><a href="index.html">Mentor</a></h1>
+            <h1 className="logo me-auto">Mentor</h1>
           </Link>
-          <a href="index.html" className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid" /></a>
+          <div className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid" /></div>
           {
             isLoggedIn &&
             <li className="get-started-btn">
@@ -48,9 +48,8 @@ function Nav() {
             isLoggedIn === false &&
             <div>
             <Link to='/SignIn'>
-              <a className="get-started-btn">התחבר</a>
+              <div className="get-started-btn">התחבר</div>
             </Link>
-            <Link to='/teacherSignUp'> <a className="be-a-mentor-btn"> תהיה מורה </a></Link>
             </div>
           }
 
