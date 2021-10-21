@@ -16,165 +16,201 @@ import RatingStar from "../Utilities/Rating/RatingStar";
 
 
 const Table = (props) => {
-    const { status,ratings, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending } = props
-    const [setRating, rating] = useState(0)
-    const [setIsReadOnly, readOnly] = useState(false)
-    const [setShowRating, showRating] = useState(true)
+  const { status, ratings, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending } = props
+  const [setRating, rating] = useState(0)
+  const [setIsReadOnly, readOnly] = useState(false)
+  const [setShowRating, showRating] = useState(true)
 
+  const date = new Date()
 
-    const submit = (value, index)=> {
-         confirmAlert({
-          title: 'אישור שיעור',
-          message: 'האם אתה מאשר קבלת השיעור?',
-          buttons: [
-            {
-              label: 'כן',
-              onClick: () => handleApprove(value, index)
-            },
-            {
-              label: 'לא',
-            }
-          ]
-        })};
-    
-    const deny = (value, index)=> {
-        confirmAlert({
-         title: 'דחיית השיעור',
-         message: 'האם אתה רוצה לדחות השיעור?',
-         buttons: [
-           {
-             label: 'כן',
-             onClick: () => handleDeny(value, index)
-           },
-           {
-             label: 'לא',
-           }
-         ]
-       })};
-    
-       const submitRating = (value, index)=> {
-        confirmAlert({
-         title: 'Confirm to submit',
-         message: 'Are you sure to do this.',
-         buttons: [
-           {
-             label: 'Yes',
-             onClick: () => handleRating(value, index)
-           },
-           {
-             label: 'No',
-           }
-         ]
-       })};
-
-    function handleApprove(value, index) {
-        const updateDataBase = data[index]
-        fetch('/api/schedule/updatePendingFalse', {
-            method: "POST",
-            body: JSON.stringify({updateDataBase}),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-
-          fetch('/api/schedule/addToExistingLesson', {
-            method: "POST",
-            body: JSON.stringify({updateDataBase}),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-        let newArray = []
-        for (let i = 0; i < data.length; i++) {
-            if (i !== index) {
-                newArray.push(data[i])
-            }
-            else {
-                existingLessons.push(data[i])
-            }
+  const submit = (value, index) => {
+    confirmAlert({
+      title: 'אישור שיעור',
+      message: 'האם אתה מאשר קבלת השיעור?',
+      buttons: [
+        {
+          label: 'כן',
+          onClick: () => handleApprove(value, index)
+        },
+        {
+          label: 'לא',
         }
-        setPendingLessons(newArray)
-        setExistingLessons(existingLessons)
-        setUpComing(upComing + 1)
-        setPending(pending - 1)
-    }
+      ]
+    })
+  };
 
-    function handleDeny(value, index) {
-        const updateDataBase = data[index]
-        fetch('/api/schedule/updatePendingFalse', {
-            method: "POST",
-            body: JSON.stringify({updateDataBase}),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            
-        let newArray = []
-        console.log(data[index])
-        for (let i = 0; i < data.length; i++) {
-            if (i !== index) {
-                newArray.push(data[i])
-            }
+  const deny = (value, index) => {
+    confirmAlert({
+      title: 'דחיית השיעור',
+      message: 'האם אתה רוצה לדחות השיעור?',
+      buttons: [
+        {
+          label: 'כן',
+          onClick: () => handleDeny(value, index)
+        },
+        {
+          label: 'לא',
         }
-        setPendingLessons(newArray)
-        setPending(pending - 1)
-    }
+      ]
+    })
+  };
 
-    function handleRating(value, index) {      
-      setShowRating(false)
+  const submitRating = (value, index) => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => handleRating(value, index)
+        },
+        {
+          label: 'No',
+        }
+      ]
+    })
+  };
+
+  function handleApprove(value, index) {
+    const updateDataBase = data[index]
+    fetch('/api/schedule/updatePendingFalse', {
+      method: "POST",
+      body: JSON.stringify({ updateDataBase }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    fetch('/api/schedule/addToExistingLesson', {
+      method: "POST",
+      body: JSON.stringify({ updateDataBase }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    let newArray = []
+    for (let i = 0; i < data.length; i++) {
+      if (i !== index) {
+        newArray.push(data[i])
       }
-  
-    return (
-        <div class="table-wrapper">
-            <table dir='rtl' class="fl-table">
+      else {
+        existingLessons.push(data[i])
+      }
+    }
+    setPendingLessons(newArray)
+    setExistingLessons(existingLessons)
+    setUpComing(upComing + 1)
+    setPending(pending - 1)
+  }
 
-                <thead>
+  function handleDeny(value, index) {
+    const updateDataBase = data[index]
+    fetch('/api/schedule/updatePendingFalse', {
+      method: "POST",
+      body: JSON.stringify({ updateDataBase }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
 
-                    <tr className='fl-table-header'>
-                        <th>תאריך</th>
-                        <th>שעה</th>
-                        <th>שם המורה</th>
-                        <th>שם הסטודנט</th>
-                        <th>אימייל המורה</th>
-                        {
-                        status &&
-                            <th>סטטוס</th>
-                        }
-                        
-                        {
-                        ratings &&
-                        <th>ציון</th>
-                        }
+    let newArray = []
+    console.log(data[index])
+    for (let i = 0; i < data.length; i++) {
+      if (i !== index) {
+        newArray.push(data[i])
+      }
+    }
+    setPendingLessons(newArray)
+    setPending(pending - 1)
+  }
 
-                    </tr>
+  function handleRating(value, index) {
+    setShowRating(false)
+  }
 
-                </thead>
+  function timeChecker(dateTime) {
+    const dateToday = new Date()
+    const lessonDate = new Date(dateTime)
 
-                <tbody>
-                    {data.length > 0 &&
-                        data.map((value, index) => {
-                            return (
-                                <tr>
-                                    <td> {dateFormat(value.time, "mediumDate")}</td>
-                                    <td> {dateFormat(value.time, "HH:MM")}</td>
-                                    <td>{value.teacherName}</td>
-                                    <td>{value.student}</td>
-                                    <td>{value.teacher}</td>
-                                    {status &&
-                                        <td className='approval_buttons'> 
-                                            <div onClick={() => submit(value, index)}><img src={tick} /> </div>
-                                            <div onClick={() => deny(value, index)}><img src={clear} /></div>
-                                        </td>}
-                                      {ratings && 
-                                    <td><RatingStar onClick={() => deny(value, index)} value={value}/></td>}
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
-    );
+    console.log(dateToday, lessonDate)
+    console.log(dateToday.getTime(), lessonDate.getTime())
+    console.log('MALEKK :' , dateToday , lessonDate)
+    let result = false
+    if (dateToday < lessonDate) {
+      result = true
+    }
+    else {
+      result = false
+    }
+    console.log(result)
+    return result
+  }
+
+  return (
+    <div class="table-wrapper">
+      <table dir='rtl' class="fl-table">
+
+        <thead>
+
+          <tr className='fl-table-header'>
+            <th>תאריך</th>
+            <th>שעה</th>
+            <th>שם המורה</th>
+            <th>שם הסטודנט</th>
+            <th>אימייל המורה</th>
+            {
+              status &&
+              <th>סטטוס</th>
+            }
+
+            {
+              ratings &&
+              <th>ציון</th>
+            }
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+          {data.length > 0 &&
+            data.map((value, index) => {
+              return (
+                <tr>
+                  <td> {dateFormat(value.time, "mediumDate")}</td>
+                  <td> {dateFormat(value.time, "HH:MM")}</td>
+                  <td>{value.teacherName}</td>
+                  <td>{value.student}</td>
+                  <td>{value.teacher}</td>
+                  {status &&
+                    <td className='approval_buttons'>
+                      <div onClick={() => submit(value, index)}><img src={tick} /> </div>
+                      <div onClick={() => deny(value, index)}><img src={clear} /></div>
+                    </td>}
+                  {ratings && date < new Date(value.time) &&
+                      <td>
+                          <button className='surveyButtonDisabled' disabled='true'> משוב 
+                          <span class="tooltiptext">אין אפשרות לתת משוב לפני קבלת השיעור</span>
+                          </button>
+                      </td>
+                  }
+                  {ratings && date > new Date(value.time) &&
+                      <td>
+                        <Link to='/survey'>
+                          <button className='surveyButton'> משוב </button>
+                        </Link>
+                      </td>
+                  }
+
+                </tr>
+              )
+            })
+          }
+
+        </tbody>
+      </table>
+    </div>
+  );
 
 }
 

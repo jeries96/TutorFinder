@@ -136,7 +136,7 @@ router.post('/getExistingLessons', async (req, res) => {
   if (userRole.userRole == "teacher") {
      existingLessons = await ExistingScheduleModel.aggregate([
       {
-        $match: { "teacher": userEmail.userEmail, time: { $gte: new Date() } }
+        $match: { "teacher": userEmail.userEmail, time: { $gte: new Date() }}
       },
       {
         $group: {
@@ -150,7 +150,7 @@ router.post('/getExistingLessons', async (req, res) => {
   if (userRole.userRole == "student") {
      existingLessons = await ExistingScheduleModel.aggregate([
       {
-        $match: { "student": userEmail.userEmail, time: { $gte: new Date() } }
+        $match: { "student": userEmail.userEmail}
       },
       {
         $group: {

@@ -15,8 +15,9 @@ function RatingStar(props) {
         <div dir='ltr'>
             <Box component="fieldset" mb={3} borderColor="transparent">
                 <Rating
-                    value={ratings}
+                    value={4}
                     precision={1}
+                    readOnly
                 />
             </Box>
         </div>

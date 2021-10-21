@@ -1,0 +1,51 @@
+
+h1 {
+font-weight: 400;
+}
+#first {
+  display: flex;
+}
+.testbox {
+display: flex;
+justify-content: center;
+align-items: center;
+height: inherit;
+padding: 3px;
+}
+.form {
+  margin-left: 10%;
+width: 80%;
+padding: 20px;
+background: #fff;
+box-shadow: 0 2px 5px #ccc; 
+}
+.question {
+padding: 15px 0 5px;
+color: #095484;
+}
+.question-answer label {
+display: block;
+padding: 0 20px 10px 0;
+}
+.question-answer input {
+width: auto;
+}
+.btn-block {
+margin-top: 20px;
+text-align: center;
+}
+.button {
+width: 150px;
+padding: 10px;
+border: none;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+background-color: #095484;
+font-size: 16px;
+color: #fff;
+cursor: pointer;
+}
+.button:hover {
+background-color: #0666a3;
+}
