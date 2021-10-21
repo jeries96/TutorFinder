@@ -51,6 +51,8 @@ function EditProfile(props) {
       },
     })
     history.push("/")
+    window.location.reload(false)
+    window.location.reload(false)
   }
 
   return (

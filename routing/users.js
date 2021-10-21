@@ -264,6 +264,8 @@ router.put('/updatePassword', (req, res) => {
 
 router.post('/updateProfileInfo', (req, res) => {
     const { serverProfileUpdate } = req.body;
+    console.log(serverProfileUpdate, 'mayel')
+
     UserModel.findOne({ "userInfo.email": serverProfileUpdate.userEmail }).then(async docs => {
         if (docs) {
             if (serverProfileUpdate.bio != null) {
@@ -271,14 +273,48 @@ router.post('/updateProfileInfo', (req, res) => {
                 docs.userPersonalInfo.lastName = serverProfileUpdate.lastName;
                 docs.userLifeActivity.biography = serverProfileUpdate.bio;
                 docs.save();
+                const token = await jwt.sign({
+                    name: docs.userPersonalInfo.firstName + " " + docs.userPersonalInfo.lastName,
+                    username: docs.userInfo.email,
+                    role: docs.userInfo.role,
+                },
+                    secret
+                );
+
+                res.cookie("loginToken", token, {
+                    maxAge: 1800000
+                })
                 res.send({ success: true, error: null, info: null })
             }
             else {
                 docs.userPersonalInfo.firstName = serverProfileUpdate.firstName;
                 docs.userPersonalInfo.lastName = serverProfileUpdate.lastName;
                 docs.save();
+                const token = await jwt.sign({
+                    name: docs.userPersonalInfo.firstName + " " + docs.userPersonalInfo.lastName,
+                    username: docs.userInfo.email,
+                    role: docs.userInfo.role,
+                },
+                    secret
+                );
+
+                res.cookie("loginToken", token, {
+                    maxAge: 1800000
+                })
                 res.send({ success: true, error: null, info: null })
             }
+            const token = await jwt.sign({
+                name: docs.userPersonalInfo.firstName + " " + docs.userPersonalInfo.lastName,
+                username: docs.userInfo.email,
+                role: docs.userInfo.role,
+            },
+                secret
+            );
+
+            res.cookie("loginToken", token, {
+                maxAge: 1800000
+            })
+            res.send({ success: true, error: null, info: null })
 
         } else {
             res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
