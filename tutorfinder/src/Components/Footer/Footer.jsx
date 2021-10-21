@@ -4,7 +4,7 @@ import facebook from '../../utils/facebook.png'
 import instagram from '../../utils/instagram.png'
 import web from '../../utils/world-wide-web.png'
 const Footer = () => (
-    <div dir='rtl' class="footer-dark">
+    <div dir='rtl' className="footer-dark">
         <footer>
             <div className="container">
                 <div className="row">

@@ -10,56 +10,34 @@ const serverSignUp = {
   firstName: null,
   lastName: null,
   email: null,
-  password: null
+  password: null,
+  role: null,
+  subject: null,
 }
 
 const passwordMatch = { password: null, repeatPassword: null }
 
 function SignUp() {
   const history = useHistory()
+  const [isDisabled, setIsDisabled] = useState(true)
 
   const [validatePassword, setValidatePassword] = useState("")
   const [error, setError] = useState("")
-  const collegeOptions = [
-    { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
-    { value: "ortBrauda", label: "מכללת אורט בראודה" },
-    { value: "other", label: "אחר" }
+  const subjectOptions = [
+    { value: "epidemiology", label: "אפידמיולוגיה" },
+    { value: "pharmacology", label: "פרמקולוגיה" },
+    { value: "microbiology", label: "מיקרוביולוגיה" },
+    { value: "characterizationAndDesign", label: "אפיון ותכן" },
+    { value: "Logic Design", label: "תכן לוגי" },
+    { value: "Network protection", label: "הגנה ברשתות" },
+    { value: "operatingSystems", label: "מערכות הפעלה" },
   ]
-  const areaLocationOptions = [
-    {
-      label: "צפון",
-      options: [
-        { label: "חיפה והסביבה", value: "value_1" },
-        { label: "קריות והסביבה", value: "value_2" },
-        { label: "עכו-נהריה והסביבה", value: "value_1" },
-        { label: "גליל עליון", value: "value_2" },
-        { label: "כנרת והסביבה", value: "value_1" },
-        { label: "נצרת", value: "value_2" },
-        { label: "שפרעם", value: "value_2" },
-        { label: "ראש פינה ", value: "value_1" },
-        { label: "גליל תחתון", value: "value_2" },
-      ]
-    },
-    {
-      label: "דרום",
-      options: [
-        { label: "באר שבע", value: "value_3" },
-        { label: "אילת וערבה ", value: "value_4" },
-        { label: "ישובי הנגב ", value: "value_4" },
-        { label: " דרום ים המלח ", value: "value_4" },
-      ]
-    },
-    {
-      label: "מרכז",
-      options: [
-        { label: "תל אביב", value: "value_3" },
-        { label: "חולון-בת ים ", value: "value_4" },
-        { label: "רמת גן-גבעתיים ", value: "value_4" },
-        { label: "פתח תקווה והסביבה ", value: "value_4" },
-        { label: " ראשון לציון והסביבה ", value: "value_4" },
-      ]
-    },
-  ];
+  const RoleOptions = [
+    { label: "סטודנט", value: "student" },
+    { label: "מורה", value: "teacher" },
+  ]
+
+
 
   function savePassword(event) {
     let password = event.target.value
@@ -78,16 +56,39 @@ function SignUp() {
       return false
     }
   }
+  function handleRole(role) {
+    console.log(role.value)
+    if (role.value == 'teacher') {
+      setIsDisabled(false)
+    }
+    else {
+      setIsDisabled(true)
+    }
+  }
 
   function HandleSignUp(event) {
     event.preventDefault();
     if (checkPassword() !== true) {
       setError('שתי הסיסמאות חיבבים להיות זהים')
     } else {
-      const { userName, lastName, email, password } = event.target.elements;
+      const { userName, lastName, email, password, role, subject } = event.target.elements;
       serverSignUp.firstName = userName.value;
       serverSignUp.lastName = lastName.value;
       serverSignUp.email = email.value;
+      serverSignUp.role = role.value;
+
+      if (role.value == 'teacher') {
+        if (subject != undefined) {
+          serverSignUp.subject = subject.value;
+        }
+        if (subject == "") {
+          serverSignUp.subject = null;
+        }
+      }
+      else {
+          serverSignUp.subject = null;
+        }
+      
 
       // if(phone.value!==""){
       //   serverSignUp.phoneNumber=phone.value;
@@ -179,6 +180,27 @@ function SignUp() {
                   <h5 id="SignUp__checkPasswordInput">{validatePassword}</h5>
                 </div>
 
+                <div className="SignUpForm__inputs">
+
+                  <Select options={RoleOptions}
+                    onChange={handleRole}
+                    className='role-options-select'
+                    name="role"
+                    defaultValue={RoleOptions[0]}
+                    required />
+
+                </div>
+
+                <div className="SignUpForm__inputs">
+
+                  <Select options={subjectOptions}
+                    className='role-options-select'
+                    name="subject"
+                    placeholder='בחר נושא לימוד'
+                    isDisabled={isDisabled}
+                    required />
+
+                </div>
               </div>
 
 

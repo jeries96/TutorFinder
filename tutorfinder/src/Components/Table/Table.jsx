@@ -22,21 +22,50 @@ const Table = (props) => {
   const [setShowRating, showRating] = useState(true)
 
 
-  const submit = (value, index) => {
-    confirmAlert({
-      title: 'Confirm to submit',
-      message: 'Are you sure to do this.',
-      buttons: [
-        {
-          label: 'Yes',
-          onClick: () => handleApprove(value, index)
-        },
-        {
-          label: 'No',
-        }
-      ]
-    })
-  };
+    const submit = (value, index)=> {
+         confirmAlert({
+          title: 'אישור שיעור',
+          message: 'האם אתה מאשר קבלת השיעור?',
+          buttons: [
+            {
+              label: 'כן',
+              onClick: () => handleApprove(value, index)
+            },
+            {
+              label: 'לא',
+            }
+          ]
+        })};
+    
+    const deny = (value, index)=> {
+        confirmAlert({
+         title: 'דחיית השיעור',
+         message: 'האם אתה רוצה לדחות השיעור?',
+         buttons: [
+           {
+             label: 'כן',
+             onClick: () => handleDeny(value, index)
+           },
+           {
+             label: 'לא',
+           }
+         ]
+       })};
+    
+       const submitRating = (value, index)=> {
+        confirmAlert({
+         title: 'Confirm to submit',
+         message: 'Are you sure to do this.',
+         buttons: [
+           {
+             label: 'Yes',
+             onClick: () => handleRating(value, index)
+           },
+           {
+             label: 'No',
+           }
+         ]
+       })};
 
   const deny = (value, index) => {
     confirmAlert({
@@ -127,9 +156,23 @@ const Table = (props) => {
     setShowRating(false)
   }
 
-  return (
-    <div class="table-wrapper">
-      <table dir='rtl' class="fl-table">
+                    <tr className='fl-table-header'>
+                        <th>תאריך</th>
+                        <th>שעה</th>
+                        <th>שם המורה</th>
+                        <th>שם הסטודנט</th>
+                        <th>אימייל המורה</th>
+                        {
+                        status &&
+                            <th>סטטוס</th>
+                        }
+                        
+                        {
+                        ratings &&
+                        <th>ציון</th>
+                        }
+
+                    </tr>
 
         <thead>
 
