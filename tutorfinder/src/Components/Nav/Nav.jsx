@@ -1,11 +1,12 @@
 import React from 'react'
 import './Nav.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Cookies from "js-cookie";
 import 'semantic-ui-css/semantic.min.css'
 import Menu from '../Utilities/menu'
+
 
 
 function Nav() {
@@ -16,7 +17,7 @@ function Nav() {
   useEffect(() => {
     let token = Cookies.get('loginToken');
 
-    if (token != undefined) {
+    if (token !== undefined) {
       const decodedToken = jwt.verify(token, secret);
       setUserName(decodedToken.name)
       setIsLoggedIn(true)
@@ -29,12 +30,17 @@ function Nav() {
     Cookies.remove("loginToken")
     setIsLoggedIn(false)
   }
-  return (
+  const history = useHistory()
+  const handleRefresh = () => {
+    history.push('/')
+    window.location.reload(false)
+  }
+  return (  
     <div dir="rtl">
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center">
 
-          <Link to='/'>
+          <Link onClick={handleRefresh} to='/'>
             <h1 className="logo me-auto">Mentor</h1>
           </Link>
           <div className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid" /></div>

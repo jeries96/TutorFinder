@@ -19,11 +19,6 @@ function TeacherSignUp() {
 
   const [validatePassword, setValidatePassword] = useState("")
   const [error, setError] = useState("")
-  const collegeOptions = [
-    { value: "EmekYezrel", label: "מכללת עמק יזרעל" },
-    { value: "ortBrauda", label: "מכללת אורט בראודה" },
-    { value: "other", label: "אחר" }
-  ]
   const RoleOptions = [
     {
       

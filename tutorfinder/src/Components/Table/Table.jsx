@@ -1,99 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { Dropdown, Rating } from "semantic-ui-react";
-import Cookies from "js-cookie";
-import { Link, useHistory } from 'react-router-dom';
+import React from "react";
 
 import tick from '../../utils/tick.png'
 import clear from '../../utils/clear.png'
 import './Table.css'
-import DashboardCards from "./../DashboardCards/DashboardCards"
-import Footer from "../Footer/Footer";
 import dateFormat from "dateformat";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import { Box } from "@material-ui/core";
 import RatingStar from "../Utilities/Rating/RatingStar";
 
 
 const Table = (props) => {
   const { status, ratings, setPendingLessons, setExistingLessons, data, existingLessons, upComing, setUpComing, pending, setPending, userRole } = props
-  const [setRating, rating] = useState(0)
-  const [setIsReadOnly, readOnly] = useState(false)
-  const [setShowRating, showRating] = useState(true)
 
-
-    const submit = (value, index)=> {
-         confirmAlert({
-          title: 'אישור שיעור',
-          message: 'האם אתה מאשר קבלת השיעור?',
-          buttons: [
-            {
-              label: 'כן',
-              onClick: () => handleApprove(value, index)
-            },
-            {
-              label: 'לא',
-            }
-          ]
-        })};
-    
-    const deny = (value, index)=> {
-        confirmAlert({
-         title: 'דחיית השיעור',
-         message: 'האם אתה רוצה לדחות השיעור?',
-         buttons: [
-           {
-             label: 'כן',
-             onClick: () => handleDeny(value, index)
-           },
-           {
-             label: 'לא',
-           }
-         ]
-       })};
-    
-       const submitRating = (value, index)=> {
-        confirmAlert({
-         title: 'Confirm to submit',
-         message: 'Are you sure to do this.',
-         buttons: [
-           {
-             label: 'Yes',
-             onClick: () => handleRating(value, index)
-           },
-           {
-             label: 'No',
-           }
-         ]
-       })};
-
-  const deny = (value, index) => {
+  const submit = (value, index) => {
     confirmAlert({
-      title: 'Confirm to submit',
-      message: 'Are you sure to do this.',
+      title: 'אישור שיעור',
+      message: 'האם אתה מאשר קבלת השיעור?',
       buttons: [
         {
-          label: 'Yes',
-          onClick: () => handleDeny(value, index)
+          label: 'כן',
+          onClick: () => handleApprove(value, index)
         },
         {
-          label: 'No',
+          label: 'לא',
         }
       ]
     })
   };
 
-  const submitRating = (value, index) => {
+  const deny = (value, index) => {
     confirmAlert({
-      title: 'Confirm to submit',
-      message: 'Are you sure to do this.',
+      title: 'דחיית השיעור',
+      message: 'האם אתה רוצה לדחות השיעור?',
       buttons: [
         {
-          label: 'Yes',
-          onClick: () => handleRating(value, index)
+          label: 'כן',
+          onClick: () => handleDeny(value, index)
         },
         {
-          label: 'No',
+          label: 'לא',
         }
       ]
     })
@@ -131,7 +76,7 @@ const Table = (props) => {
     setPending(pending - 1)
   }
 
-  function handleDeny(value, index) {
+  function handleDeny(index) {
     const updateDataBase = data[index]
     fetch('/api/schedule/updatePendingFalse', {
       method: "POST",
@@ -152,27 +97,9 @@ const Table = (props) => {
     setPending(pending - 1)
   }
 
-  function handleRating(value, index) {
-    setShowRating(false)
-  }
-
-                    <tr className='fl-table-header'>
-                        <th>תאריך</th>
-                        <th>שעה</th>
-                        <th>שם המורה</th>
-                        <th>שם הסטודנט</th>
-                        <th>אימייל המורה</th>
-                        {
-                        status &&
-                            <th>סטטוס</th>
-                        }
-                        
-                        {
-                        ratings &&
-                        <th>ציון</th>
-                        }
-
-                    </tr>
+  return (
+    <div className='table-wrapper'>
+      <table dir='rtl' class="fl-table">
 
         <thead>
 
@@ -200,12 +127,12 @@ const Table = (props) => {
                   <td>{value.teacherName}</td>
                   <td>{value.student}</td>
                   <td>{value.teacher}</td>
-                  {userRole == "teacher" && status &&
+                  {userRole === "teacher" && status &&
                     <td className='approval_buttons'>
-                      <div onClick={() => submit(value, index)}><img src={tick} /> </div>
-                      <div onClick={() => deny(value, index)}><img src={clear} /></div>
+                      <div onClick={() => submit(value, index)}><img src={tick} alt="tick" /> </div>
+                      <div onClick={() => deny(value, index)}><img src={clear} alt="clear"/></div>
                     </td>}
-                  {userRole == "student" && status &&
+                  {userRole === "student" && status &&
                     <td>
                       מחכה לאישור
                     </td>}

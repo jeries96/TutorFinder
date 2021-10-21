@@ -9,9 +9,7 @@ const PeopleRating = new mongoose.Schema({
   ratingInfo: {
     creationDate: Date,
     rate: Number,
-    description: String,
     subject: String,
-    img: Image
   }
 })
 

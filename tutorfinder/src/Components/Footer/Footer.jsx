@@ -11,9 +11,9 @@ const Footer = () => (
                     <div className="text">
                         <h3>המכללה האקדמית עמק יזרעאל </h3>
                     </div>
-                    <div className="col item social"><a href="https://www.facebook.com/yvc.ac/"><i><img className='facebook-icon' src={facebook} /></i></a>
-                        <a href="https://www.instagram.com/yezreelvalleycollege/?hl=en"><i><img className='facebook-icon' src={instagram} /></i></a>
-                        <a href="https://www.yvc.ac.il/"><i><img className='facebook-icon' src={web} /></i></a>
+                    <div className="col item social"><a href="https://www.facebook.com/yvc.ac/"><i><img className='facebook-icon' src={facebook} alt = "img"/></i></a>
+                        <a href="https://www.instagram.com/yezreelvalleycollege/?hl=en"><i><img className='facebook-icon' src={instagram} alt = "img"/></i></a>
+                        <a href="https://www.yvc.ac.il/"><i><img className='facebook-icon' src={web} alt = "img"/></i></a>
                     </div>
                 </div>
                 <p className="copyright">Mentor Team © 2021</p>

@@ -3,10 +3,8 @@ import './HomePage.css';
 //Components
 import SubjectCards from '../../Components/Cards/SubjectCards/SubjectCard'
 
-import Testimonials from '../HomePage/Testimonials/Testimonials'
 import { useState, useEffect } from 'react';
 import MainPageProfile from './MainPageProfile';
-import Schedule from '../../Components/Utilities/Schedule/Schedule';
 import Footer from '../../Components/Footer/Footer';
 
 

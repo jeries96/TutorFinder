@@ -1,5 +1,4 @@
 import React from 'react'
-import image from '../../utils/emek.jpg'
 import './MainPageProfile.css';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
@@ -12,7 +11,7 @@ function MainPageProfile() {
   useEffect(() => {
     let token = Cookies.get('loginToken');
 
-    if (token != undefined) {
+    if (token !== undefined) {
       setIsLoggedIn(true)
     }
   }, [isLoggedIn])

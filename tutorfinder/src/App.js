@@ -17,8 +17,6 @@ import Nav from './Components/Nav/Nav'
 import MatchingTeachers from './Pages/MatchingTeachers/MatchingTeachers'
 import Schedule from './Components/Utilities/Schedule/Schedule';
 import Footer from './Components/Footer/Footer';
-import EditProfile from './Pages/EditProfile/EditProfilePage';
-import Table from './Components/Table/Table'
 import Dashboard from './Pages/Dashboard/Dashboard';
 import TeacherSignUp from './Pages/SignUp/TeacherSignUp';
 

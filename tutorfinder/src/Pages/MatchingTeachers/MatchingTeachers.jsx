@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Filters from '../../Components/Utilities/Filters/Filters'
 import MiniProfileCard from '../../Components/Cards/MiniProfileCard/MiniProfileCard'
 
 import './MatchingTeachers.css'

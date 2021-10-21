@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Dropdown } from "semantic-ui-react";
 import Cookies from "js-cookie";
-import { Link, useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 
 import jwt from "jsonwebtoken";
 
@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 const Menu = (props) => {
   let pendingLessons = []
   let existingLessons = []
+  let currentUser = ""
 
   let userEmail = ""
   let userRole = ""
@@ -23,6 +24,21 @@ const Menu = (props) => {
       userEmail = decoded.username
       userRole = decoded.role
     }
+    fetch('/api/users/getCurrentUserDetails', {
+      method: 'POST',
+      body: JSON.stringify({userEmail}),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log(data)
+          currentUser = data.currentUser
+        }
+      })
+
     fetch('/api/schedule/getPendingLessons', {
       method: 'POST',
       body: JSON.stringify({userEmail, userRole}),
@@ -34,7 +50,6 @@ const Menu = (props) => {
       .then(data => {
         if (data.success) {
           if (data.data.length > 0) {
-            console.log(data.data[0].pendingLessonsList)
             pendingLessons = data.data[0].pendingLessonsList
           }
         }
@@ -53,7 +68,6 @@ const Menu = (props) => {
         if (data.success) {
           if (data.data.length > 0) {
             existingLessons = data.data[0].existingLessonsList
-            console.log(existingLessons)
           }
         }
       })
@@ -67,7 +81,11 @@ const Menu = (props) => {
     window.location.reload(false)
   }
   const handleEditProfile = () => {
-    history.push("/editprofile")
+    history.push
+      ({
+        pathname: "/editprofile",
+        state: { currentUser}
+      })
   }
   const handleDashboard = () => {
     history.push

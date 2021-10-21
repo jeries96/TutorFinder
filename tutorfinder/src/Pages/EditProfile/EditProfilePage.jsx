@@ -1,59 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useHistory} from "react-router-dom";
+
 import './EditProfile.css'
-import { Link, useHistory } from 'react-router-dom';
 
-
-// Components : 
-import Select from 'react-select';
-
-const serverSignUp = {
+const serverProfileUpdate = {
   firstName: null,
-  email: null,
-  password: null
+  lastName: null,
+  bio: null,
+  userEmail: null
 }
 
-const passwordMatch = { password: null, repeatPassword: null }
+function EditProfile(props) {
+  const history=useHistory()
 
-function EditProfile() {
-  const history = useHistory()
+  const [userRole, setUserRole] = useState("student")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [bio, setBio] = useState("")
+
+  useEffect(() => {
+    if (props.location.state !== undefined) {
+      setFirstName(props.location.state.currentUser.userPersonalInfo.firstName)
+      setLastName(props.location.state.currentUser.userPersonalInfo.lastName)
+      serverProfileUpdate.lastName = (props.location.state.currentUser.userPersonalInfo.lastName)
+
+      setBio(props.location.state.currentUser.userLifeActivity.biography)
+      setUserRole(props.location.state.currentUser.userInfo.role)
+      serverProfileUpdate.userEmail = (props.location.state.currentUser.userInfo.email)
+    }
+  })
+  
 
   function handleEditProfile(event) {
     event.preventDefault();
-    const { userName, email, password } = event.target.elements;
-    serverSignUp.firstName = userName.value;
-    // serverSignUp.lastName=lastName.value;
-    serverSignUp.email = email.value;
-    // if(phone.value!==""){
-    //   serverSignUp.phoneNumber=phone.value;
-    // }
-    // if(area.value!==""){
-    //   serverSignUp.location=area.value;
-    // }
-    // if(education.value!==""){
-    //   serverSignUp.education=education.value;
-    // }
-    serverSignUp.password = password.value;
+    const { userName, lastName } = event.target.elements;
+    serverProfileUpdate.firstName = userName.value;
+    serverProfileUpdate.lastName = lastName.value;
+    const email = serverProfileUpdate.userEmail
+    console.log(email)
+    if (userRole === 'teacher') {
+      const { bio } = event.target.elements;
+      serverProfileUpdate.bio = bio.value;
+    }
 
-    console.log(serverSignUp)
-
-    fetch('/api/users/editUser', {
+    fetch('/api/users/updateProfileInfo', {
       method: "POST",
-      body: JSON.stringify({ serverSignUp }),
+      body: JSON.stringify({ serverProfileUpdate }),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success === true) {
-          history.push('/SignIn')
-        } else {
-        }
-      });
-
+    history.push("/")
   }
-
-
 
   return (
     <div dir="rtl" className="editprofile__Wrapper">
@@ -68,31 +66,26 @@ function EditProfile() {
 
               <div className="editprofile__personalInput">
                 <div className="editprofile__inputs">
-                  <input type="text" className="editprofile__textInput" placeholder="שם פרטי" name="userName" required />
+                  <input type="text" className="editprofile__textInput" placeholder="שם פרטי" name="userName" defaultValue={firstName} required />
                 </div>
 
                 <div className="editprofile__inputs">
-                  <input type="text" className="editprofile__textInput" placeholder="שם משפחה" name="lastName" required />
+                  <input type="text" className="editprofile__textInput" placeholder="שם משפחה" name="lastName" defaultValue={lastName} required />
                 </div>
+                {userRole === 'teacher' &&
+                  <div className="editprofile__inputs">
+                    <textarea type="text" className="editprofile__textInput" placeholder="ביוגרפי" name="bio" defaultValue={bio} />
+                  </div>}
               </div>
 
               <div className="editprofile__personalInput">
-                <div className="editprofile__inputs">
-                  <input type="email" className="editprofile__textInput" placeholder="דואר אלקטרוני" name="email" required />
-                </div>
-
-                {/* <div className="SignUpForm__inputs">
-         <h4> מספר פלפון </h4>
-         <input type="tel"  className="SignUpForm__textInput" name="phone" maxlength={10} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="מספר פלאפון"  />
-         </div> */}
               </div>
 
               <div className="editprofile__personalInput">
-                <div className="editprofile__inputs">
+                <div className="SignUpForm__inputs">
+
                 </div>
-
               </div>
-
 
               <button className="editprofile__button--register" type="submit">שמור  </button>
 

@@ -110,7 +110,7 @@ router.post('/createUser', (req, res) => {
                             teaching: {
                                 subSubjects: [subject],
                                 teachingPlaces: ["באינטרנט", "בית המורה"]
-                              },
+                            },
                         })
 
                     await UserModel.find({ 'userInfo.email': email }).then(async users => {
@@ -262,18 +262,35 @@ router.put('/updatePassword', (req, res) => {
 
 
 
-router.put('/updateProfileInfo', (req, res) => {
+router.post('/updateProfileInfo', (req, res) => {
     const { serverProfileUpdate } = req.body;
-    const { email, lastName, location, education, phoneNumber, personalPhoto } = serverProfileUpdate;
-    UserModel.findOne({ "userInfo.email": email }).then(async docs => {
+    UserModel.findOne({ "userInfo.email": serverProfileUpdate.userEmail }).then(async docs => {
         if (docs) {
-            docs.userPersonalInfo.lastName = lastName;
-            docs.userPersonalInfo.location = location;
-            docs.userPersonalInfo.education = education;
-            docs.userPersonalInfo.phoneNumber = phoneNumber;
-            docs.userPersonalInfo.personalPhoto = personalPhoto;
-            docs.save();
-            res.send({ success: true, error: null, info: null })
+            if (serverProfileUpdate.bio != null) {
+                docs.userPersonalInfo.firstName = serverProfileUpdate.firstName;
+                docs.userPersonalInfo.lastName = serverProfileUpdate.lastName;
+                docs.userLifeActivity.biography = serverProfileUpdate.bio;
+                docs.save();
+                res.send({ success: true, error: null, info: null })
+            }
+            else {
+                docs.userPersonalInfo.firstName = serverProfileUpdate.firstName;
+                docs.userPersonalInfo.lastName = serverProfileUpdate.lastName;
+                docs.save();
+                res.send({ success: true, error: null, info: null })
+            }
+
+        } else {
+            res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })
+        }
+    })
+})
+
+router.post('/getCurrentUserDetails', (req, res) => {
+    const { userEmail } = req.body;
+    UserModel.findOne({ "userInfo.email": userEmail }).then(async docs => {
+        if (docs) {
+            res.send({ success: true, currentUser: docs })
 
         } else {
             res.send({ success: false, error: "דואר אלקטרוני שגוי", info: null })

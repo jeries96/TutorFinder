@@ -59,7 +59,6 @@ router.get('/getScheduleTableStudent', async (req, res) => {
 
 router.post('/requestLessonTime', async (req, res) => {
   const { studentEmail, teacherEmail, date, teacherName } = req.body
-  console.log(studentEmail)
   const schedules = await PendingScheduleModel.insertMany(
     {
       teacher: teacherEmail,
@@ -105,7 +104,6 @@ router.post('/getPendingLessons', async (req, res) => {
   const userEmail = req.body
   const userRole = req.body
   let pendingLessons = []
-  console.log(userEmail.userEmail)
   if (userRole.userRole == "teacher") {
     pendingLessons = await PendingScheduleModel.aggregate([
       {
@@ -148,8 +146,6 @@ router.post('/getPendingLessons', async (req, res) => {
 router.post('/getExistingLessons', async (req, res) => {
   const userEmail = req.body
   const userRole = req.body
-  console.log(userEmail.userEmail)
-  console.log(userRole.userRole)
   let existingLessons = []
   if (userRole.userRole == "teacher") {
     existingLessons = await ExistingScheduleModel.aggregate([
@@ -194,7 +190,6 @@ router.post('/getExistingLessons', async (req, res) => {
 router.post('/updatePendingFalse', async (req, res) => {
   let updateDataBase = req.body
   updateDataBase = updateDataBase.updateDataBase
-  console.log(updateDataBase.updateDataBase)
   PendingScheduleModel.findOne({ "_id": updateDataBase._id }).then(async docs => {
     if (docs) {
       docs.pending = false;
@@ -209,8 +204,6 @@ router.post('/updatePendingFalse', async (req, res) => {
 router.post('/addToExistingLesson', async (req, res) => {
   let updateDataBase = req.body
   updateDataBase = updateDataBase.updateDataBase
-  console.log(updateDataBase)
-
 
   const newExistingLesson = [{
     teacherName: updateDataBase.teacherName,

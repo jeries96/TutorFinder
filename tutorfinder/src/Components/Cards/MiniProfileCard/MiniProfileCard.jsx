@@ -12,7 +12,7 @@ function MiniProfileCard(props) {
     <div>
       <div id='GOBACK__Button'>
         <Link to='/'>
-          <img id='backarrowImage' src={leftArrow} />
+          <img id='backarrowImage' src={leftArrow} alt="left" />
         </Link>
       </div>
       {teachers.teachers.length > 0 && teachers.teachers.map((teacher, index) => {
@@ -22,7 +22,6 @@ function MiniProfileCard(props) {
           <div className="MiniProfileCard__Header__ProfileInfo_holder" >
             <h2 className="MiniProfileCard__Header__ProfileInfo_Name" >{teacher.userPersonalInfo.firstName} {teacher.userPersonalInfo.lastName} </h2>
             <div><RatingStar value={4} readOnly/></div>
-            <div>באינטרנט</div>
           </div>
           <div className="MiniProfileCard__Header__TeachingLocation_holder">
             <h6 className="MiniProfileCard__Header__TeachingLocation_Title">מיקומי הוראה:
