@@ -147,6 +147,66 @@ const Table = (props) => {
     </div>
   );
 
+          <tr className='fl-table-header'>
+            <th>תאריך</th>
+            <th>שעה</th>
+            <th>שם המורה</th>
+            <th>שם הסטודנט</th>
+            <th>אימייל המורה</th>
+            {
+              status &&
+              <th>סטטוס</th>
+            }
+
+            {
+              ratings &&
+              <th>ציון</th>
+            }
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+          {data.length > 0 &&
+            data.map((value, index) => {
+              return (
+                <tr>
+                  <td> {dateFormat(value.time, "mediumDate")}</td>
+                  <td> {dateFormat(value.time, "HH:MM")}</td>
+                  <td>{value.teacherName}</td>
+                  <td>{value.student}</td>
+                  <td>{value.teacher}</td>
+                  {status &&
+                    <td className='approval_buttons'>
+                      <div onClick={() => submit(value, index)}><img src={tick} /> </div>
+                      <div onClick={() => deny(value, index)}><img src={clear} /></div>
+                    </td>}
+                  {ratings && date < new Date(value.time) &&
+                      <td>
+                          <button className='surveyButtonDisabled' disabled='true'> משוב 
+                          <span class="tooltiptext">אין אפשרות לתת משוב לפני קבלת השיעור</span>
+                          </button>
+                      </td>
+                  }
+                  {ratings && date > new Date(value.time) &&
+                      <td>
+                        <Link to='/survey'>
+                          <button className='surveyButton'> משוב </button>
+                        </Link>
+                      </td>
+                  }
+
+                </tr>
+              )
+            })
+          }
+
+        </tbody>
+      </table>
+    </div>
+  );
+
 }
 
 export default Table;

@@ -122,7 +122,7 @@ const Menu = (props) => {
       text: "התנתק",
       value: "LOGOUT",
       onClick: handleLogOut
-    }
+    },
   ];
   // }, [])
 

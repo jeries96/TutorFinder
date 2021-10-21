@@ -49,6 +49,51 @@
     align-items: center;
     justify-content: space-around;
 }
+.surveyButtonDisabled{
+    background-color: #095484;
+    opacity: 0.5;
+    width: 100px;
+    padding: 10px;
+    border: none;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    font-size: 16px;
+    color: #fff;
+}
+.tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    left: 5%;
+  }
+.surveyButtonDisabled:hover .tooltiptext {
+    visibility: visible;
+  }
+.surveyButton{
+        width: 100px;
+        padding: 10px;
+        border: none;
+        -webkit-border-radius: 5px; 
+        -moz-border-radius: 5px; 
+        border-radius: 5px; 
+        background-color: #095484;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;}
+.button:hover {
+background-color: #0666a3;
+}
+        
 
 /* Responsive */
 

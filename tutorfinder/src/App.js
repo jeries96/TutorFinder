@@ -19,6 +19,7 @@ import Schedule from './Components/Utilities/Schedule/Schedule';
 import Footer from './Components/Footer/Footer';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import TeacherSignUp from './Pages/SignUp/TeacherSignUp';
+import Survey from './Components/survey/survey';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
          <Route path="/editprofile" component={EditProfilePage} />
          <Route path="/dashboard" component={Dashboard} />
          <Route path="/teacherSignUp" component={TeacherSignUp} />
+         <Route path="/survey" component={Survey} /> 
          <Route path="/footer" component={Footer} /> 
          {/* <Route path="/editProfile" component={EditProfilePage}/> */}
       </Switch> 
