@@ -21,7 +21,7 @@ function MiniProfileCard(props) {
             <img className="MiniProfileCard__Header__ProfilePicture" src={teacher.userPersonalInfo.personalPhoto} alt="profilepicture" /></div>
           <div className="MiniProfileCard__Header__ProfileInfo_holder" >
             <h2 className="MiniProfileCard__Header__ProfileInfo_Name" >{teacher.userPersonalInfo.firstName} {teacher.userPersonalInfo.lastName} </h2>
-            <div><RatingStar value={4} readOnly/></div>
+            <div><RatingStar value={teacher.ratings.overallRate} readOnly/></div>
           </div>
           <div className="MiniProfileCard__Header__TeachingLocation_holder">
             <h6 className="MiniProfileCard__Header__TeachingLocation_Title">מיקומי הוראה:

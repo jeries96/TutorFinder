@@ -20,8 +20,8 @@ const saltRounds = 10
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'lessonsassistanceservice@gmail.com',
-        pass: 'Azsx31800'
+        user: 'yvcmentor@gmail.com',
+        pass: 'Azxc1997'
     }
 });
 

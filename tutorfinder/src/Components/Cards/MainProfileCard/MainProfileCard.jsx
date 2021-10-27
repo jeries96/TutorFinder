@@ -33,7 +33,7 @@ function MainProfileCard(props) {
               <img className="MainProfileCard__Header__ProfilePicture" src={teacher.userPersonalInfo.personalPhoto} alt="profilepicture" /></div>
             <div className="MainProfileCard__Header__ProfileInfo_holder" >
               <h2 className="MainProfileCard__Header__ProfileInfo_Name" >{teacher.userPersonalInfo.firstName} {teacher.userPersonalInfo.lastName}</h2>
-              <div><RatingStar value={4} /></div>
+              <div><RatingStar value={teacher.ratings.overallRate} /></div>
             </div>
             <div className="MainProfileCard__Header__TeachingLocation_holder">
               <h6 className="MainProfileCard__Header__TeachingLocation_Title">מיקומי הוראה:
