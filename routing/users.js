@@ -96,9 +96,6 @@ router.post('/createUser', (req, res) => {
                             userPersonalInfo: {
                                 firstName: firstName,
                                 lastName: lastName,
-                                location: null,
-                                education: null,
-                                phoneNumber: null,
                                 personalPhoto: "https://s1.gifyu.com/images/default-large-203eb4e0d39209a7d102039e731eab6110a14e666350bf5c94be31aee9001d1a.png",
                             },
                             userActivity: {

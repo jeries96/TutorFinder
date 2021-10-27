@@ -138,6 +138,7 @@ const Table = (props) => {
                   {userRole === "student" && status &&
                     <td>
                       ממתין לאישור
+                      <div onClick={() => deny(value, index)}><img src={clear} alt="clear" /></div>
                     </td>}
                   {ratings && date < new Date(value.time) &&
                     <td>
