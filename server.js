@@ -200,7 +200,7 @@ const ExistingScheduleSchema = require('./schemas/ExistingScheduleSchema')
 const ExistingScheduleModel = mongoose.model("ExistingScheduleModel", ExistingScheduleSchema)
 //UserModel.insertMany(teachers).then(console.log("Adding Success.!"));
 
-ExistingScheduleModel.insertMany(times).then(console.log("Adding Success.!"));
+// ExistingScheduleModel.insertMany(times).then(console.log("Adding Success.!"));
 
 
 

@@ -21,7 +21,7 @@ function TeacherSignUp() {
   const [error, setError] = useState("")
   const RoleOptions = [
     {
-      
+
       options: [
         { label: "סטודנט", value: "Student" },
         { label: "מורה", value: "Teacher" },
@@ -66,8 +66,6 @@ function TeacherSignUp() {
       //   serverSignUp.education=education.value;
       // }
       serverSignUp.password = password.value;
-
-      console.log(serverSignUp)
 
       fetch('/api/users/createUser', {
         method: "POST",
@@ -153,7 +151,7 @@ function TeacherSignUp() {
                     placeholder="תאשר סיסמה"
                     name="repeatPassword"
                     required />
-                  
+
                 </div>
 
               </div>

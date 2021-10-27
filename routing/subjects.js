@@ -32,14 +32,6 @@ router.get('/getSubjects', async (req, res) => {
 
 
   ])
-  // subjects[0].id.map(async(subject,index)=> {
-  //     SubSubjectModel.find({ parents: subject }).then(subjects=>{
-  //       console.log(subjects)
-  //     })
-
-
-
-  // })
   await Promise.all(subjects[0].id.map(async (subject, index) => {
     subjectsOfSubject = await SubSubjectModel.aggregate([
       {

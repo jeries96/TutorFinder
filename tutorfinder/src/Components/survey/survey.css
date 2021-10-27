@@ -49,3 +49,12 @@ cursor: pointer;
 .button:hover {
 background-color: #0666a3;
 }
+
+#thankyou-message{
+  position: absolute;
+  top: 50%;
+  left:30%;
+  transform: translate(50,50);
+  font-size: 50px;
+  color: steelblue;
+}

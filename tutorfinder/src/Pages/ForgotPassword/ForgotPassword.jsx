@@ -38,7 +38,6 @@ function ForgotPassword(){
         event.preventDefault();
         let {key}=event.target.elements;
         key=key.value;
-        console.log(email)
         fetch('/api/users/checkValidKey', {
             method: "POST",
             body: JSON.stringify({email,key}),
@@ -91,7 +90,6 @@ function ForgotPassword(){
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 if(data.success===true) {
                 history.push('/')
             }

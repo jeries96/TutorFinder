@@ -48,6 +48,7 @@ const Table = (props) => {
   };
 
   function handleApprove(value, index) {
+    
     const updateDataBase = data[index]
     fetch('/api/schedule/updatePendingFalse', {
       method: "POST",
@@ -79,7 +80,7 @@ const Table = (props) => {
     setPending(pending - 1)
   }
 
-  function handleDeny(index) {
+  function handleDeny(value,index) {
     const updateDataBase = data[index]
     fetch('/api/schedule/updatePendingFalse', {
       method: "POST",
@@ -90,7 +91,6 @@ const Table = (props) => {
     })
 
     let newArray = []
-    console.log(data[index])
     for (let i = 0; i < data.length; i++) {
       if (i !== index) {
         newArray.push(data[i])
@@ -110,7 +110,7 @@ const Table = (props) => {
             <th>תאריך</th>
             <th>שעה</th>
             <th>שם המורה</th>
-            <th>שם הסטודנט</th>
+            <th>אימייל הסטודנט</th>
             <th>אימייל המורה</th>
             {status &&
               <th>סטטוס</th>}
@@ -137,7 +137,7 @@ const Table = (props) => {
                     </td>}
                   {userRole === "student" && status &&
                     <td>
-                      מחכה לאישור
+                      ממתין לאישור
                     </td>}
                   {ratings && date < new Date(value.time) &&
                     <td>

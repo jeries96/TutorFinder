@@ -34,7 +34,6 @@ const Menu = (props) => {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          console.log(data)
           currentUser = data.currentUser
         }
       })
@@ -94,11 +93,7 @@ const Menu = (props) => {
         state: { pendingLessons: pendingLessons, existingLessons: existingLessons, userRole: userRole}
       })
   }
-  // useEffect(() => {
-  //   const loginToken =  Cookies.get('loginToken')
-  //   console.log(loginToken)
-  //   const decodedToken = jwt.verify(loginToken, secret);
-  //   const username = decodedToken.name
+
   const friendOptions = [
     {
       key: user,

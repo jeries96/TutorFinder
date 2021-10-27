@@ -17,6 +17,7 @@ function Schedule(props) {
     let teacherEmail = ""
     let studentEmail = ""
     let teacherName = ""
+    let existingAvailableTimeCurrent = []
     if (props.location.aboutProps) {
         teacher = props.location.aboutProps.teacher
         teacherEmail = teacher.userInfo.email
@@ -30,27 +31,25 @@ function Schedule(props) {
 
         fetch('/api/schedule/getScheduleTableTeacher', {
             method: 'POST',
-            body: JSON.stringify({ teacherEmail }),
+            body: JSON.stringify({ email: teacherEmail }),
             headers: {
                 "Content-Type": "application/json"
             }
         })
             .then(res => res.json())
             .then(data => {
-                if (data.length > 0) {
+                if (data.data.length > 0) {
                     if (data.success === true) {
-                        setAvailableTeacherTime(data.data[0].availableTime)
+                        
+                        data.data[0].availableTime.map((place, index) => {
+                            existingAvailableTimeCurrent.push(new Date(place))
+                        })
+                        setAvailableTeacherTime(existingAvailableTimeCurrent)
                     }
                 }
             })
 
     }, [])
-
-    const array = [
-        new Date('Sep 24, 2021  17:45:00'),
-        new Date('Sep 16, 2021  18:45:00'),
-        new Date('Sep 16, 2021  19:00:00'),
-    ]
 
     const [isScheduling, setIsScheduling] = useState(false);
     const [isScheduled, setIsScheduled] = useState(false);
@@ -74,22 +73,24 @@ function Schedule(props) {
     const handleScheduled = date => {
         setIsScheduling(true);
         setScheduleErr('');
-
+        const loginToken = Cookies.get('loginToken')
+        const decodedToken = jwt.verify(loginToken, secret);
+        studentEmail = decodedToken.username
         fetch('/api/schedule/requestLessonTime', {
+            
             method: 'POST',
-            body: JSON.stringify({ studentEmail, teacherEmail, date, teacherName }),
+            body: JSON.stringify({ studentEmail, email:teacherEmail, date, teacherName }),
             headers: {
                 "Content-Type": "application/json"
             }
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.success === true) {
                     setIsScheduling(false);
                     setIsScheduled(true)
                 }
-                else{
+                else {
                     setScheduleErr("!בעית תקשורת אנא נסה שוב מאוחר יותר");
                 }
             })

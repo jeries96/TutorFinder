@@ -71,7 +71,6 @@ router.post('/login', (req, res) => {
 router.post('/createUser', (req, res) => {
     const { serverSignUp } = req.body;
     const { firstName, lastName, email, password, role, subject } = serverSignUp;
-    console.log(subject)
     let regex = /[^A-Za-z0-9]/;
     let containSepcChars = regex.test(password);
 
@@ -264,7 +263,6 @@ router.put('/updatePassword', (req, res) => {
 
 router.post('/updateProfileInfo', (req, res) => {
     const { serverProfileUpdate } = req.body;
-    console.log(serverProfileUpdate, 'mayel')
 
     UserModel.findOne({ "userInfo.email": serverProfileUpdate.userEmail }).then(async docs => {
         if (docs) {

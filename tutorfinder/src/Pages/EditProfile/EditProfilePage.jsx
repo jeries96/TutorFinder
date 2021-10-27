@@ -37,7 +37,6 @@ function EditProfile(props) {
     serverProfileUpdate.firstName = userName.value;
     serverProfileUpdate.lastName = lastName.value;
     const email = serverProfileUpdate.userEmail
-    console.log(email)
     if (userRole === 'teacher') {
       const { bio } = event.target.elements;
       serverProfileUpdate.bio = bio.value;

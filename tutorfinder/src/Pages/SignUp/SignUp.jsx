@@ -57,7 +57,6 @@ function SignUp() {
     }
   }
   function handleRole(role) {
-    console.log(role.value)
     if (role.value == 'teacher') {
       setIsDisabled(false)
     }
@@ -100,8 +99,6 @@ function SignUp() {
       //   serverSignUp.education=education.value;
       // }
       serverSignUp.password = password.value;
-
-      console.log(serverSignUp)
 
       fetch('/api/users/createUser', {
         method: "POST",

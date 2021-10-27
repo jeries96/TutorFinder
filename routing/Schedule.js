@@ -22,10 +22,9 @@ var transporter = nodemailer.createTransport({
 
 router.post('/getScheduleTableTeacher', async (req, res) => {
   const { email } = req.body
-  console.log(email)
-  schedules = await scheduleModel.aggregate([
+  schedules = await ExistingScheduleModel.aggregate([
     {
-      $match: { "teacher": email }
+      $match: { "teacher": email , time: { $gte: new Date() }}
     },
     {
       $group: {
@@ -35,7 +34,6 @@ router.post('/getScheduleTableTeacher', async (req, res) => {
 
     }
   ])
-  console.log(schedules)
   res.send({ success: true, data: schedules })
 
 })
@@ -58,10 +56,10 @@ router.get('/getScheduleTableStudent', async (req, res) => {
 
 
 router.post('/requestLessonTime', async (req, res) => {
-  const { studentEmail, teacherEmail, date, teacherName } = req.body
+  const { studentEmail, email, date, teacherName } = req.body
   const schedules = await PendingScheduleModel.insertMany(
     {
-      teacher: teacherEmail,
+      teacher: email,
       teacherName: teacherName,
       student: studentEmail,
       time: date,
@@ -75,7 +73,7 @@ router.post('/requestLessonTime', async (req, res) => {
     from: 'lessonsassistanceservice@gmail.com',
     to: studentEmail,
     subject: 'תודה שהזמנתה שיעור עזר באתר שלנו',
-    html: `<p dir="rtl">  הזמנתך לשיעור העזר עם המורה ${teacherName}  בתאריך התקבלה בהצלחה!</p>
+    html: `<p dir="rtl">  הזמנתך לשיעור העזר עם המורה ${email}  בתאריך התקבלה בהצלחה!</p>
     <p dir="rtl"> ברגע שהמורה מאשר את ההזמנה השיעור יקבע לך במערכת</p>
     <p dir="rtl"> ניתן לעקוב אחרי השיעורים שלך באתר שלנו</p>
 

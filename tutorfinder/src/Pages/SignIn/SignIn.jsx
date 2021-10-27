@@ -10,8 +10,6 @@ function SignIn() {
         let { email, password } = event.target.elements
         email = email.value;
         password = password.value;
-        console.log(email, password)
-
         fetch('/api/users/login', {
             method: "POST",
             body: JSON.stringify({ email, password }),
@@ -21,7 +19,6 @@ function SignIn() {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 if (data.success) {
                     history.push('/')
                     window.location.reload(false)
